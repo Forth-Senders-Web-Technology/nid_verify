@@ -336,7 +336,7 @@
         });
 
         $('.select2').select2({
-          minimumResultsForSearch: Infinity;
+          minimumResultsForSearch: Infinity
         });
 
         $('#datatable1').DataTable({
