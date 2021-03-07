@@ -65,3 +65,9 @@ $route['reset_password'] = 'home/reset_password';
 $route['login_check'] = 'auth/login';
 $route['logout'] = 'auth/logout';
 $route['nid_verify'] = 'admin/nid_verify';
+$route['birth_verify'] = 'admin/birth_verify_view';
+
+
+
+
+

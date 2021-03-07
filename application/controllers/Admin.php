@@ -34,4 +34,10 @@ class Admin extends CI_Controller {
         $data['setting_info'] = $this->setting_model->getSetting();
         $this->load->template('admin/nid_verify_view',  $data);
     }
+
+    public function birth_verify_view()
+    {
+        $data['setting_info'] = $this->setting_model->getSetting();
+        $this->load->template('admin/birth_verify_view',  $data);
+    }
 }
