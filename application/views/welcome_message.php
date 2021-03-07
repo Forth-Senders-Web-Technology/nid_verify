@@ -71,21 +71,21 @@
                     <p class="mg-b-0"><span class="square-8 rounded-circle bg-purple mg-r-10"></span> TCP Reset Packets</p>
                     <p class="mg-b-0"><span class="square-8 rounded-circle bg-pink mg-r-10"></span> TCP FIN Packets</p>
                   </div>
-                </div><!-- d-flex -->
+                </div><!--d-flex -->
               </div>
               <div class="pd-x-15 pd-b-15">
                 <div id="ch1" class="br-chartist br-chartist-2 ht-200 ht-sm-300"></div>
               </div>
             </div><!-- card -->
 
-            <div class="card bd-0 shadow-base pd-30 mg-t-20">
+            <!--<div class="card bd-0 shadow-base pd-30 mg-t-20">
               <div class="d-flex align-items-center justify-content-between mg-b-30">
                 <div>
                   <h6 class="tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1">Newly Registered Users</h6>
                   <p class="mg-b-0"><i class="icon ion-calendar mg-r-5"></i> From October 2017 - December 2017</p>
                 </div>
                 <a href="" class="btn btn-outline-info btn-oblong tx-11 tx-uppercase tx-mont tx-medium tx-spacing-1 pd-x-30 bd-2">See more</a>
-              </div><!-- d-flex -->
+              </div><-- d-flex ->
 
               <table class="table table-valign-middle mg-b-0">
                 <tbody>
@@ -151,24 +151,24 @@
                   </tr>
                 </tbody>
               </table>
-            </div><!-- card -->
+            </div><-- card -->
 
-            <div class="card shadow-base card-body pd-25 bd-0 mg-t-20">
+            <!--<div class="card shadow-base card-body pd-25 bd-0 mg-t-20">
               <div class="row">
                 <div class="col-sm-6">
                   <h6 class="card-title tx-uppercase tx-12">Statistics Summary</h6>
                   <p class="display-4 tx-medium tx-inverse mg-b-5 tx-lato">25%</p>
                   <div class="progress mg-b-10">
                     <div class="progress-bar bg-primary progress-bar-xs wd-30p" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div><!-- progress -->
+                  </div><!-- progress ->
                   <p class="tx-12">Nulla consequat massa quis enim. Donec pede justo, fringilla vel...</p>
                   <p class="tx-11 lh-3 mg-b-0">You can also use other progress variant found in <a href="progress.html" target="blank">progress section</a>.</p>
-                </div><!-- col-6 -->
+                </div><!-- col-6 ->
                 <div class="col-sm-6 mg-t-20 mg-sm-t-0 d-flex align-items-center justify-content-center">
                   <span class="peity-donut" data-peity='{ "fill": ["#0866C6", "#E9ECEF"],  "innerRadius": 60, "radius": 90 }'>30/100</span>
-                </div><!-- col-6 -->
-              </div><!-- row -->
-            </div><!-- card -->
+                </div><!-- col-6 ->
+              </div><!-- row ->
+            </div><!-- card -> -->
 
 
           </div><!-- col-9 -->
@@ -192,7 +192,7 @@
               
             </div><!-- card -->
 
-            <div class="card bg-transparent shadow-base bd-0 mg-t-20">
+            <!--<div class="card bg-transparent shadow-base bd-0 mg-t-20">
               <div class="bg-primary rounded-top">
                 <div class="pd-x-30 pd-t-30">
                   <h6 class="tx-13 tx-uppercase tx-white tx-semibold tx-spacing-1">Sale Status</h6>
@@ -208,18 +208,18 @@
                     <label class="tx-uppercase tx-10 tx-medium tx-spacing-1 mg-b-0">Average Sales</label>
                     <h6 class="tx-inverse mg-b-0 tx-lato tx-bold">$603, 201</h6>
                   </div>
-                </div><!-- d-flex -->
+                </div><!-- d-flex ->
                 <div class="d-flex align-items-center">
                   <div><span id="sparkline7">4,7,5,9,4,7,5</span></div>
                   <div class="mg-l-15">
                     <label class="tx-uppercase tx-10 tx-medium tx-spacing-1 mg-b-0">Total Sales</label>
                     <h6 class="tx-inverse mg-b-0 tx-lato tx-bold">$822, 677</h6>
                   </div>
-                </div><!-- d-flex -->
-              </div><!-- d-flex -->
-            </div><!-- card -->
+                </div><!-- d-flex ->
+              </div><!-- d-flex ->
+            </div><!-- card -> -->
 
-            <div class="card bd-0 mg-t-20">
+            <!-- <div class="card bd-0 mg-t-20">
               <div id="carousel2" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carousel2" data-slide-to="0" class="active"></li>
@@ -244,7 +244,7 @@
                           <a href="" class="tx-white-8 hover-white pd-x-5">43 Comments</a>
                         </nav>
                       </div>
-                    </div><!-- d-flex -->
+                    </div><!-- d-flex ->
                   </div>
                   <div class="carousel-item">
                     <div class="bg-info pd-30 ht-300 pos-relative d-flex align-items-center rounded">
@@ -263,7 +263,7 @@
                           <a href="" class="tx-white-8 hover-white pd-x-5">Delete</a>
                         </nav>
                       </div>
-                    </div><!-- d-flex -->
+                    </div><!-- d-flex ->
                   </div>
                   <div class="carousel-item">
                     <div class="bg-purple pd-30 ht-300 d-flex pos-relative align-items-center rounded">
@@ -282,17 +282,17 @@
                           <a href="" class="tx-white-8 hover-white pd-x-5">Delete</a>
                         </nav>
                       </div>
-                    </div><!-- d-flex -->
+                    </div><!-- d-flex ->
                   </div>
-                </div><!-- carousel-inner -->
-              </div><!-- carousel -->
-            </div><!-- card -->
+                </div><!-- carousel-inner ->
+              </div><!-- carousel ->
+            </div><!-- card -> -->
 
           </div><!-- col-3 -->
         </div><!-- row -->
 
       </div><!-- br-pagebody -->
-      <footer class="br-footer">
+      <!-- <footer class="br-footer">
         <div class="footer-left">
           <div class="mg-b-2">Copyright &copy; 2017. Bracket. All Rights Reserved.</div>
           <div>Attentively and carefully made by ThemePixels.</div>
@@ -302,4 +302,4 @@
           <a target="_blank" class="pd-x-5" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//themepixels.me/bracket/intro"><i class="fa fa-facebook tx-20"></i></a>
           <a target="_blank" class="pd-x-5" href="https://twitter.com/home?status=Bracket,%20your%20best%20choice%20for%20premium%20quality%20admin%20template%20from%20Bootstrap.%20Get%20it%20now%20at%20http%3A//themepixels.me/bracket/intro"><i class="fa fa-twitter tx-20"></i></a>
         </div>
-      </footer>
+      </footer> -->
