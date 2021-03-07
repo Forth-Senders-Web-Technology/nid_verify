@@ -42,6 +42,7 @@
     <script src="inc/lib/leaflet/leaflet-src.js"></script>
     <script src="inc/lib/mocha/mocha.js"></script>
     <script src="inc/lib/rickshaw/rickshaw.min.js"></script>
+    <script src="inc/lib/toastr/build/toastr.min.js"></script>
 
     
 
@@ -365,7 +366,20 @@
                 }
             });
         });
+      
       });
+
+
+	    <?php if ($this->session->flashdata('success')) {?>
+	        toastr.success("<?php echo $this->session->flashdata('success'); ?>", "Success");
+	    <?php } else if ($this->session->flashdata('error')) {?>
+	        toastr.error("<?php echo $this->session->flashdata('error'); ?>", "Error");
+	    <?php } else if ($this->session->flashdata('warning')) {?>
+	        toastr.warning("<?php echo $this->session->flashdata('warning'); ?>", "Deleted");
+	    <?php } else if ($this->session->flashdata('info')) {?>
+	        toastr.info("<?php echo $this->session->flashdata('info'); ?>", "Info");
+      <?php }?>
+      
       
     </script>
   </body>

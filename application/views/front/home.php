@@ -27,8 +27,8 @@
         <ul class="nav nav-outline active-info align-items-center flex-row" role="tablist">
           <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#posts" role="tab">Posts</a></li>
           <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#photos" role="tab">Photos</a></li>
-          <li class="nav-item"><a class="nav-link" href="reg" > Registration </a></li>
-          <li class="nav-item hidden-xs-down"><a class="nav-link" href="" > Login </a></li>
+          <li class="nav-item"><a class="nav-link" href="reg_form" > Registration </a></li>
+          <li class="nav-item hidden-xs-down"><a class="nav-link" href="login" > Login </a></li>
         </ul>
       </div>
 
@@ -311,3 +311,5 @@
 
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
+
+

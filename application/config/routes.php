@@ -56,4 +56,11 @@ $route['translate_uri_dashes'] = FALSE;
 // notfound
 
 
-$route['reg'] = 'home/registration';
+$route['reg_form'] = 'home/registration';
+$route['registration'] = 'home/signup';
+$route['waiting_msg'] = 'home/waiting_msg';
+$route['login'] = 'home/login';
+$route['forget_password_view'] = 'home/forget_password_view';
+$route['reset_password'] = 'home/reset_password';
+$route['login_check'] = 'auth/login';
+$route['logout'] = 'auth/logout';

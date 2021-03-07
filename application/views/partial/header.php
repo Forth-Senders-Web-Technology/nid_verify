@@ -67,6 +67,7 @@
     <link href="inc/lib/jquery.steps/jquery.steps.css" rel="stylesheet">
     <link href="inc/lib/jqvmap/jqvmap.min.css" rel="stylesheet">
     <link href="inc/lib/leaflet/leaflet.css" rel="stylesheet">
+    <link href="inc/lib/toastr/build/toastr.min.css" rel="stylesheet">
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="inc/css/bracket.css">
