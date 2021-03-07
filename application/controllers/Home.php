@@ -121,6 +121,9 @@ class Home extends CI_Controller {
 
     public function reset_password()
     {
+        $this->load->config('email');
+        $this->load->library('email');
+
         $entry_email = $this->input->post('entry_email');
 
         $this->email->from('your@example.com', 'Your Name');
@@ -128,11 +131,23 @@ class Home extends CI_Controller {
         // $this->email->cc('another@another-example.com');
         // $this->email->bcc('them@their-example.com');
 
+        // $this->email->set_newline("\r\n");
+        // $this->email->from($from);
+        // $this->email->to($to);
+        // $this->email->subject($subject);
+        // $this->email->message($message);
+
         $this->email->subject('Email Test');
         $this->email->message('Testing the email class.');
 
         $this->email->send();
         // $this->load->front('front/',);
+
+        if ($this->email->send()) {
+            echo 'Your Email has successfully been sent.';
+        } else {
+            show_error($this->email->print_debugger());
+        }
     }
 }
 
