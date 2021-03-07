@@ -28,4 +28,10 @@ class Admin extends CI_Controller {
         $data['setting_info'] = $this->setting_model->getSetting();
 		$this->load->template('welcome_message');
     }
+
+    public function nid_verify()
+    {
+        $data['setting_info'] = $this->setting_model->getSetting();
+        $this->load->template('admin/nid_verify_view',  $data);
+    }
 }

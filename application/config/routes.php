@@ -64,3 +64,4 @@ $route['forget_password_view'] = 'home/forget_password_view';
 $route['reset_password'] = 'home/reset_password';
 $route['login_check'] = 'auth/login';
 $route['logout'] = 'auth/logout';
+$route['nid_verify'] = 'admin/nid_verify';
