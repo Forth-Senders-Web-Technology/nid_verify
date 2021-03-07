@@ -33,7 +33,16 @@
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
       </div><!-- br-sideleft-menu -->
-      
+
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="birth_verify" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-file"></i>
+            <span class="menu-item-label"> Payment </span>
+          </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+      </div><!-- br-sideleft-menu -->
+            
 
 
 
