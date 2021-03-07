@@ -18,9 +18,9 @@ class Admin extends CI_Controller {
         $this->load->model('user_model');
         $this->load->model('ion_auth_model');
         
-        if (!$this->ion_auth->logged_in()) {
-            redirect('logout', 'refresh');
-        }
+        // if (!$this->ion_auth->logged_in()) {
+        //     redirect('logout', 'refresh');
+        // }
     }
 
     public function index()
