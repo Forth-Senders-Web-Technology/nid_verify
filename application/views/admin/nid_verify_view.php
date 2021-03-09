@@ -55,6 +55,115 @@
                 </center>
             </div>
 
+        <!--Upload File with table-->
+        <div>
+            <div style="margin-top: 20px;">
+                <table class="table">
+                    <thead class="thead-info">
+                        <tr>
+                            <th style="color: white;">Coulam 1</th>
+                            <th style="color: white;">Coulam 2</th>
+                            <th style="color: white;">Coulam 3</th>
+                            <th style="color: white;">Coulam 4</th>
+                        </tr>
+                    </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <center>
+                    <form style="width: 50%;">
+                        <div class="form-group" style="border: 2px dashed #17A2B8;">
+                                <span style="font-size: 150px; color: #17A2B8">
+                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                </span>
+                                <span>
+                                    <input style="margin-bottom: 20px; margin-top: -20px; padding-left: 100px;" type="file" class="form-control-file" id="exampleFormControlFile1">
+                                </span>
+                        </div>
+                    </form>
+                </center>
+            </div>
+        </div>
+
+        <!--Input Filde with table-->
+        <div>
+            <div style="margin-top: 20px;">
+                <form class="d-flex justify-content-center">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="inputPassword2" class="sr-only">Input Filde</label>
+                        <input type="password" class="form-control" id="inputPassword2" placeholder="Input Filde">
+                    </div>
+                    <button type="submit" class="btn btn-info mb-2">Submit</button>
+                </form>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <table class="table">
+                    <thead class="thead-info">
+                        <tr>
+                            <th style="color: white;">Coulam 1</th>
+                            <th style="color: white;">Coulam 2</th>
+                            <th style="color: white;">Coulam 3</th>
+                            <th style="color: white;">Coulam 4</th>
+                        </tr>
+                    </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+            </div>
+
+        </div>
 
 
         </div><!-- br-pagebody -->
