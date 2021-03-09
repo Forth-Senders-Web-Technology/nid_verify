@@ -1,7 +1,5 @@
+<br><br><br><br><br><br><br>
 
-      
-    </div><!-- br-mainpanel -->
-    <!-- ########## END: MAIN PANEL ########## -->
 
     <script src="inc/lib/popper.js/popper.js"></script>
     <script src="inc/lib/bootstrap/bootstrap.js"></script>
@@ -10,7 +8,6 @@
     <script src="inc/lib/jquery-ui/jquery-ui.js"></script>
     <script src="inc/lib/jquery-switchbutton/jquery.switchButton.js"></script>
     <script src="inc/lib/peity/jquery.peity.js"></script>
-    <script src="inc/lib/chartist/chartist.js"></script>
     <script src="inc/lib/jquery.sparkline.bower/jquery.sparkline.min.js"></script>
     <script src="inc/lib/d3/d3.js"></script>
     <script src="inc/lib/highlightjs/highlight.pack.js"></script>
@@ -41,11 +38,9 @@
     <script src="inc/lib/jqvmap/jquery.vmap.min.js"></script>
     <script src="inc/lib/leaflet/leaflet-src.js"></script>
     <script src="inc/lib/mocha/mocha.js"></script>
-    <script src="inc/lib/rickshaw/rickshaw.min.js"></script>
     <script src="inc/lib/toastr/build/toastr.min.js"></script>
 
     
-
 
     <script src="inc/js/bracket.js"></script>
 <!--    
@@ -94,6 +89,7 @@
             $('.show-sub + .br-menu-sub').slideDown();
           }
         }
+      });
 
         var initValue = '$(\'#btnLeftMenu\').on(\'click\', function(){\n  var menuText = $(\'.menu-item-label,.menu-item-arrow\');\n\n  if($(\'body\').hasClass(\'collapsed-menu\')) {\n    $(\'body\').removeClass(\'collapsed-menu\');\n\n    // show current sub menu when reverting back from collapsed menu\n    $(\'.show-sub + .br-menu-sub\').slideDown();\n\n    $(\'.br-sideleft\').one(\'transitionend\', function(e) {\n      menuText.removeClass(\'op-lg-0-force\');\n      menuText.removeClass(\'d-lg-none\');\n    });\n\n  } else {\n    $(\'body\').addClass(\'collapsed-menu\');\n\n    // hide toggled sub menu\n    $(\'.show-sub + .br-menu-sub\').slideUp();\n\n    menuText.addClass(\'op-lg-0-force\');\n    $(\'.br-sideleft\').one(\'transitionend\', function(e) {\n      menuText.addClass(\'d-lg-none\');\n    });\n  }\n  return false;\n});';
 
@@ -367,8 +363,6 @@
             });
         });
       
-      });
-
 
 	    <?php if ($this->session->flashdata('success')) {?>
 	        toastr.success("<?php echo $this->session->flashdata('success'); ?>", "Success");
@@ -379,8 +373,14 @@
 	    <?php } else if ($this->session->flashdata('info')) {?>
 	        toastr.info("<?php echo $this->session->flashdata('info'); ?>", "Info");
       <?php }?>
-      
+
+
+
+      $('.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
       
     </script>
+
+<script src="inc/lib/rickshaw/rickshaw.min.js"></script>
+<script src="inc/lib/chartist/chartist.js"></script>
   </body>
 </html>
