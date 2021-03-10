@@ -74,21 +74,60 @@
                                 <td>1</td>
                                 <td>Mark</td>
                                 <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>
+                                <div style="margin-right: -250px; margin-bottom: -20px;">
+                                    <form>
+                                        <div class="form-group">
+                                            <span style="color: #17A2B8; display:inline-flex;">
+                                                <span style="font-size: 30px; display:inline-flex; padding-right:10px;">
+                                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                                </span>
+                                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                                </td>
                             </tr>
 
                             <tr>
                                 <td>2</td>
                                 <td>Jacob</td>
                                 <td>Thornton</td>
-                                <td>@fat</td>
+                                <td>
+                                <div style="margin-right: -250px; margin-bottom: -20px;">
+                                    <form>
+                                        <div class="form-group">
+                                            <span style="color: #17A2B8; display:inline-flex;">
+                                                <span style="font-size: 30px; display:inline-flex; padding-right:10px;">
+                                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                                </span>
+                                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                                </td>
                             </tr>
 
                             <tr>
                                 <td>3</td>
                                 <td>Larry</td>
                                 <td>the Bird</td>
-                                <td>@twitter</td>
+                                <td>
+                                <div style="margin-right: -250px; margin-bottom: -20px;">
+                                    <form>
+                                        <div class="form-group">
+                                            <span style="color: #17A2B8; display:inline-flex;">
+                                                <span style="font-size: 30px; display:inline-flex; padding-right:10px;">
+                                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                                </span>
+                                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                                </td>
                             </tr>
 
                         </tbody>
@@ -96,33 +135,9 @@
                     </table>
             </div>
 
-            <div style="margin-top: 20px;">
-                <center>
-                    <form style="width: 50%;">
-                        <div class="form-group" style="border: 2px dashed #17A2B8;">
-                                <span style="font-size: 150px; color: #17A2B8">
-                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                </span>
-                                <span>
-                                    <input style="margin-bottom: 20px; margin-top: -20px; padding-left: 100px;" type="file" class="form-control-file" id="exampleFormControlFile1">
-                                </span>
-                        </div>
-                    </form>
-                </center>
-            </div>
         </div>
 
         <!--Input Filde with table-->
-        <div>
-            <div style="margin-top: 20px;">
-                <form class="d-flex justify-content-center">
-                    <div class="form-group mx-sm-3 mb-2">
-                        <label for="inputPassword2" class="sr-only">Input Filde</label>
-                        <input type="password" class="form-control" id="inputPassword2" placeholder="Input Filde">
-                    </div>
-                    <button type="submit" class="btn btn-info mb-2">Submit</button>
-                </form>
-            </div>
 
             <div style="margin-top: 20px;">
                 <table class="table">
@@ -141,21 +156,54 @@
                                 <td>1</td>
                                 <td>Mark</td>
                                 <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>
+                                    <div style="margin-right: -195px; margin-bottom: -10px;">
+                                        <div>
+                                            <form class="d-flex justify-content">
+                                                <div class="form-group mx-sm-1 mb-2">
+                                                    <label for="inputPassword2" class="sr-only">Input Filde</label>
+                                                    <input type="text" class="form-control" id="inputPassword2" placeholder="Input Filde">
+                                                </div>
+                                                <button type="submit" class="btn btn-info mb-2">Submit</button>
+                                            </form>
+                                    </div>
+                                </td>
                             </tr>
 
                             <tr>
                                 <td>2</td>
                                 <td>Jacob</td>
                                 <td>Thornton</td>
-                                <td>@fat</td>
+                                <td>
+                                    <div style="margin-right: -195px; margin-bottom: -10px;">
+                                        <div>
+                                            <form class="d-flex justify-content">
+                                                <div class="form-group mx-sm-1 mb-2">
+                                                    <label for="inputPassword2" class="sr-only">Input Filde</label>
+                                                    <input type="text" class="form-control" id="inputPassword2" placeholder="Input Filde">
+                                                </div>
+                                                <button type="submit" class="btn btn-info mb-2">Submit</button>
+                                            </form>
+                                    </div>
+                                </td>
                             </tr>
 
                             <tr>
                                 <td>3</td>
                                 <td>Larry</td>
                                 <td>the Bird</td>
-                                <td>@twitter</td>
+                                <td>
+                                    <div style="margin-right: -195px; margin-bottom: -10px;">
+                                        <div>
+                                            <form class="d-flex justify-content">
+                                                <div class="form-group mx-sm-1 mb-2">
+                                                    <label for="inputPassword2" class="sr-only">Input Filde</label>
+                                                    <input type="text" class="form-control" id="inputPassword2" placeholder="Input Filde">
+                                                </div>
+                                                <button type="submit" class="btn btn-info mb-2">Submit</button>
+                                            </form>
+                                    </div>
+                                </td>
                             </tr>
 
                         </tbody>

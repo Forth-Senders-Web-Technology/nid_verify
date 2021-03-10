@@ -42,4 +42,10 @@ class Admin extends CI_Controller {
         $this->load->template('admin/birth_verify_view',  $data);
     }
 
+    public function payment_system()
+    {
+        $data['setting_info'] = $this->setting_model->getSetting();
+        $this->load->template('admin/payment_system',  $data);
+    }
+
 }
