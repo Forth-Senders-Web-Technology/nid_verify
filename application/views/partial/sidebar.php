@@ -6,8 +6,9 @@
     <div class="br-logo"><a href=""><span>[</span>bracket<span>]</span></a></div>
     <div class="br-sideleft overflow-y-auto">
       <label class="sidebar-label pd-x-15 mg-t-20"> Sidebar Menu </label>
+
       <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="" class="br-menu-link">
+        <a href="admin" class="br-menu-link">
           <div class="br-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Dashboard</span>
@@ -15,8 +16,43 @@
         </a><!-- br-menu-link -->
       </div><!-- br-sideleft-menu -->
 
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="nid_verify" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-file"></i>
+            <span class="menu-item-label"> NID Verify </span>
+          </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+      </div><!-- br-sideleft-menu -->
 
-      
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="birth_verify" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-file"></i>
+            <span class="menu-item-label"> Birth Verify </span>
+          </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+      </div><!-- br-sideleft-menu -->
+
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="birth_verify" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-file"></i>
+            <span class="menu-item-label"> Payment </span>
+          </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+      </div><!-- br-sideleft-menu -->
+            
+
+
+
+
+
+<!-- 
+      NID Verify
+      Birth Verify
+ -->
+
       <br>
     </div><!-- br-sideleft -->
     <!-- ########## END: LEFT PANEL ########## -->

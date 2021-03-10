@@ -14,6 +14,19 @@ class Notfound extends CI_Controller {
     {
         $this->load->front('errors/not_found');
     }
+
+
+    public function birth_data()
+    {
+        $serial = $this->input->get('serial');
+        $dob = $this->input->get('dob');
+        
+        $result = $this->curl->simple_get('http://bdris.gov.bd/api/br/info/ubrn/'.$serial.'?dob='.$dob);
+        echo $result;
+        
+        $this->output->set_content_type('application/json');        
+    }
+    
 }
 
 /* End of file Notfound.php */

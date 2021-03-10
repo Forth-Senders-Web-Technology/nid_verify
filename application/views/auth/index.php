@@ -1,5 +1,6 @@
-<h1><?php echo lang('index_heading');?></h1>
-<p><?php echo lang('index_subheading');?></p>
+<h1> <span><a href="admin"> Admin Page </a></span></p></h1>
+<p><?php echo lang('index_subheading');?>
+
 
 <div id="infoMessage"><?php echo $message;?></div>
 
