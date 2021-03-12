@@ -19,6 +19,7 @@ class Admin extends CI_Controller {
         $this->load->model('user_model');
         $this->load->model('ion_auth_model');
         $this->load->model('payment_model');
+        $this->load->model('services_model');
         
         if (!$this->ion_auth->logged_in()) {
             redirect('logout', 'refresh');
@@ -62,10 +63,9 @@ class Admin extends CI_Controller {
 
     public function balance_query()
     {
-        $user_id = $this->ion_auth->user()->row()->user_full_tbl_id;
         // get_user_info($user_id)
-        $this->data['payment_added'] = $this->payment_model->payment_added_info($user_id);
-        $this->data['payment_cut'] = $this->payment_model->payment_cut_info($user_id);
+        $this->data['payment_added'] = $this->payment_model->payment_added_info($this->user_id);
+        $this->data['payment_cut'] = $this->payment_model->payment_cut_info($this->user_id);
         echo json_encode($this->data);
     }
 
@@ -83,7 +83,7 @@ class Admin extends CI_Controller {
 
     public function getNID_request_by_user()
     {
-        
+        $get_date = $this->services_model->getNID_requ($this->user_id);
     }
 
 }
