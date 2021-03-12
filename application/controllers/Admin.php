@@ -18,28 +18,72 @@ class Admin extends CI_Controller {
         $this->load->model('setting_model');
         $this->load->model('user_model');
         $this->load->model('ion_auth_model');
+        $this->load->model('payment_model');
         
         if (!$this->ion_auth->logged_in()) {
             redirect('logout', 'refresh');
         }
+
+        $this->user_id = $this->ion_auth->user()->row()->user_full_tbl_id;
+        $this->data['user_info'] = $this->user_model->get_user_info($this->user_id);
+        $this->data['setting_info'] = $this->setting_model->getSetting();
+
     }
 
     public function index()
     {
-        $data['setting_info'] = $this->setting_model->getSetting();
-		$this->load->template('welcome_message');
+		$this->load->template('welcome_message', $this->data);
     }
 
     public function nid_verify()
     {
-        $data['setting_info'] = $this->setting_model->getSetting();
-        $this->load->template('admin/nid_verify_view',  $data);
+        $this->load->template('admin/nid_verify_view',  $this->data);
     }
 
     public function birth_verify_view()
     {
-        $data['setting_info'] = $this->setting_model->getSetting();
-        $this->load->template('admin/birth_verify_view',  $data);
+        $this->load->template('admin/birth_verify_view',  $this->data);
+    }
+
+    public function payment_view()
+    {
+        $this->load->template('admin/payment_view',  $this->data);
+    }
+
+    public function statement_view()
+    {
+        $this->load->template('admin/payment_view',  $this->data);
+    }
+
+    public function get_nid_no()
+    {
+        $this->load->template('admin/get_nid_no',  $this->data);
+    }
+
+    public function balance_query()
+    {
+        $user_id = $this->ion_auth->user()->row()->user_full_tbl_id;
+        // get_user_info($user_id)
+        $this->data['payment_added'] = $this->payment_model->payment_added_info($user_id);
+        $this->data['payment_cut'] = $this->payment_model->payment_cut_info($user_id);
+        echo json_encode($this->data);
+    }
+
+    // get nid no Services data by user id
+    public function get_nid_data_use()
+    {
+        $user_id = $this->ion_auth->user()->row()->user_full_tbl_id;
+
+    }
+
+    public function down()
+    {
+        $this->load->template('admin/download_file',  $this->data);
+    }
+
+    public function getNID_request_by_user()
+    {
+        
     }
 
 }

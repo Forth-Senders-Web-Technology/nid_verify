@@ -28,4 +28,17 @@ class User_model extends CI_Model {
     {
         $this->db->insert('users_groups', $user_group);
     }
+
+    public function login_info_insert($login_info)
+    {
+        $this->db->insert('login_attempts', $login_info);        
+    }
+
+    public function get_user_info($user_id)
+    {
+        $this->db->where('udc_list_auto_p_iidd', $user_id);
+        $this->db->join('user_s', 'user_s.user_full_tbl_id = customer_full_info.udc_list_auto_p_iidd', 'left');
+        $sql = $this->db->get('customer_full_info');
+        return $sql->row();
+    }
 }

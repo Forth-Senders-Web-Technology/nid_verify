@@ -16,6 +16,7 @@ class Auth extends CI_Controller
 		$this->load->library(['ion_auth', 'form_validation']);
 		$this->load->helper(['url', 'language']);
         $this->load->model('setting_model');
+        $this->load->model('user_model');
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
@@ -52,6 +53,13 @@ class Auth extends CI_Controller
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{
 				//if the login is successful
+				// $user_id = $this->ion_auth->user()->row()->user_full_tbl_id;
+				$login_info = array(
+						'login' => $this->ion_auth->user()->row()->user_full_tbl_id, 
+						'time' => time(),
+						'ip_address' => $this->input->ip_address()
+					);
+				$this->user_model->login_info_insert($login_info);
 				//redirect them back to the home page
 				//    $this->ion_auth->in_group(array('admin', ''))
 				$this->session->set_flashdata('success', $this->ion_auth->messages());

@@ -6,25 +6,30 @@ class Home extends CI_Controller {
     public function __construct()
     {
         parent::__construct();           
+        $this->load->library('Ion_auth');
         $this->load->model('setting_model');
         $this->load->model('user_model');
         $this->load->model('ion_auth_model');
         $this->load->helper('url');
         $this->load->library('user_agent');
         $this->load->library('email');
+
+        if ($this->ion_auth->logged_in()) {
+            redirect('admin');
+        }
+
+        $this->data['setting_info'] = $this->setting_model->getSetting();
     }
 
     public function index()
     {
-        $data['setting_info'] = $this->setting_model->getSetting();
-        $this->load->front('front/home', $data);
+        $this->load->front('front/home', $this->data);
     }
 
     public function registration()
     {
-        $data['setting_info'] = $this->setting_model->getSetting();
-        $data['div_info'] = $this->setting_model->getDivision();
-        $this->load->front('front/reg', $data);
+        $this->data['div_info'] = $this->setting_model->getDivision();
+        $this->load->front('front/reg', $this->data);
     }
 
     // Get District by Division ID and Json Encoded
@@ -109,14 +114,12 @@ class Home extends CI_Controller {
 
     public function login()
     {
-        $data['setting_info'] = $this->setting_model->getSetting();
-        $this->load->front('front/login', $data);
+        $this->load->front('front/login', $this->data);
     }
 
     public function forget_password_view()
     {
-        $data['setting_info'] = $this->setting_model->getSetting();
-        $this->load->front('front/password_forget', $data);
+        $this->load->front('front/password_forget', $this->data);
     }
 
     public function reset_password()

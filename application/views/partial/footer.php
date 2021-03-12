@@ -341,13 +341,13 @@
           language: {
             searchPlaceholder: 'Search...',
             sSearch: '',
-            lengthMenu: '_MENU_ items/page',
+            lengthMenu: [10, 25, 50, "All"],
           }
         });
 
         $('#datatable2').DataTable({
           bLengthChange: false,
-          searching: false,
+          searching: true,
           responsive: true
         });
 

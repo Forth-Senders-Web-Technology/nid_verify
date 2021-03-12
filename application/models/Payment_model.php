@@ -1,0 +1,31 @@
+<?php 
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Payment_model extends CI_Model {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+    }
+    
+    public function payment_added_info($user_id)
+    {
+        $this->db->select_sum('added_amount');
+        $this->db->where('customer_id', $user_id);
+        $sql = $this->db->get('payment_add');
+        return $sql->row()->added_amount;
+    }
+
+    public function payment_cut_info($user_id)
+    {
+        $this->db->select_sum('cut_amount');
+        $this->db->where('cust_id', $user_id);
+        $sql = $this->db->get('payment_cut');
+        return $sql->row()->cut_amount;
+    }
+
+}
+
+/* End of file Payment_model.php */

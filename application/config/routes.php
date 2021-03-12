@@ -66,6 +66,9 @@ $route['login_check'] = 'auth/login';
 $route['logout'] = 'auth/logout';
 $route['nid_verify'] = 'admin/nid_verify';
 $route['birth_verify'] = 'admin/birth_verify_view';
+$route['payment'] = 'admin/payment_view';
+$route['statement'] = 'admin/statement_view';
+$route['get_nid_no'] = 'admin/get_nid_no';
 
 
 
