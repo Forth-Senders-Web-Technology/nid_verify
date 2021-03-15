@@ -148,13 +148,15 @@
             // Datepicker
             $('.fc-datepicker').datepicker({
                 showOtherMonths: true,
-                selectOtherMonths: true
+                selectOtherMonths: true,
+                dateFormat: 'dd-M-yy'
             });
 
             $('#datepickerNoOfMonths').datepicker({
                 showOtherMonths: true,
                 selectOtherMonths: true,
                 numberOfMonths: 2
+                
             });
 
             // Time Picker

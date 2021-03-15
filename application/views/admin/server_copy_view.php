@@ -2,7 +2,9 @@
     <div class="br-mainpanel">
         <div class="br-pageheader pd-y-15 pd-l-20">
             <div class="mx-auto ">
-               <h3> এই সার্ভিসের জন্য আপনার একাউন্ট থেকে <b> <?php echo $service_rate->serive_s_rate_s; ?> </b> টাকা কেটে নেওয়া হবে। </h3> 
+               <h3> এই সার্ভিসের জন্য আপনার একাউন্ট থেকে <b> <?php if (!empty($service_rate->serive_s_rate_s)) {
+                   echo $service_rate->serive_s_rate_s;
+               }  ?> </b> টাকা কেটে নেওয়া হবে। </h3> 
             </div>
         </div><!-- br-pageheader -->
             
@@ -14,7 +16,7 @@
         <!--  br-pagebody --> 
         <div class="br-pagebody">
             
-            <a href="" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-toggle="modal" data-target="#new_nid_requ">Get NID Request</a>
+            <a href="" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-toggle="modal" data-target="#new_nid_requ"> সার্ভার কপির জন্য আবেদন </a>
 
 
 
@@ -36,11 +38,11 @@
                             <tr>
                                 <th class="wd-15p">SL</th>
                                 <th class="wd-25p">Status</th>
-                                <th class="wd-25p">NID No</th>
                                 <th class="wd-15p">Slip No</th>
                                 <th class="wd-20p">Viter No</th>
                                 <th class="wd-15p">Name</th>
                                 <th class="wd-10p">Birth Date</th>
+                                <th class="wd-25p">NID No</th>
                                 <th class="wd-25p">Pin No</th>
                             </tr>
                         </thead>
@@ -88,7 +90,7 @@
     <script>
 
         $(document).on('click', '.save_btn', function () {
-            insert_nid_request();
+            insert_server_copy_request();
         });
 
         $(document).on('click', '.search_datewise_data', function () {
@@ -168,7 +170,7 @@
             let sl = 1;
             $.ajax({
                 type: "post",
-                url: "admin/getNID_request_by_user",
+                url: "admin/getServe_request_by_user",
                 data: {
                     query_date: query_date
                 },
@@ -182,7 +184,7 @@
                             if (table_data[l].requ_status == 0) {
                                 this_status = '<p style="background-color: #282923;color:white;font-weight:bold;">Wait</p>';
                             }else if (table_data[l].requ_status == 1) {
-                                this_status = '<p style="background-color: #67D8EF;color:black;font-weight:bold;">Success</p>';
+                                this_status = '<p style="background-color: #67D8EF;color:black;font-weight:bold;">Success</p><br><a href="'+table_data[l].online_copy_pdf_src+'" download> Download </a>';
                             }else if (table_data[l].requ_status == 2) {
                                 this_status = '<p style="background-color: #F9245E;color:white;font-weight:bold;">Reject</p>';
                             }else {
@@ -192,11 +194,11 @@
                                         <tr>
                                             <td>${sl}</td>
                                             <td>${this_status}</td>
-                                            <td>${table_data[l].nid_no}</td>
                                             <td>${table_data[l].slip_no}</td>
                                             <td>${table_data[l].voter_no}</td>
                                             <td>${table_data[l].person_name}</td>
                                             <td>${table_data[l].birth_date}</td>
+                                            <td>${table_data[l].nid_no}</td>
                                             <td>${table_data[l].nid_pin_no}</td>
                                         </tr>`;
                             sl += 1;
@@ -207,14 +209,14 @@
             });
         }
 
-        function insert_nid_request() {
+        function insert_server_copy_request() {
             if (($('.slip_no').val() == '' || $('.voter_no').val() == '') && $('.person_name').val() == '') {
                 $('.err_show').html('Please fill-up Slip or Voter and Person name');
             }else {
                 $('.err_show').html('');                
                 $.ajax({
                     type: "post",
-                    url: "admin/insert_new_NID_request",
+                    url: "admin/insert_new_server_copy_request",
                     data: {
                         slip_no: $('.slip_no').val(),
                         voter_no: $('.voter_no').val(),

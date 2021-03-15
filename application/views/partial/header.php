@@ -71,6 +71,7 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="inc/css/bracket.css">
+    <link rel="stylesheet" href="inc/css/custom.css">
 
 
     <!-- jQuery -->

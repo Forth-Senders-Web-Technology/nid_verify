@@ -58,6 +58,9 @@ class Admin extends CI_Controller {
 
     public function get_nid_no()
     {
+        $user_group_id = $this->ion_auth->get_users_groups()->row()->id;
+        $service_s_idd = '1';
+        $this->data['service_rate'] = $this->services_model->get_services_list($service_s_idd, $user_group_id);
         $this->load->template('admin/get_nid_no',  $this->data);
     }
 
@@ -83,7 +86,84 @@ class Admin extends CI_Controller {
 
     public function getNID_request_by_user()
     {
-        $get_date = $this->services_model->getNID_requ($this->user_id);
+        $select_date_temp = $this->input->post('query_date');
+        if (empty($select_date_temp)) {
+            $select_date = date('Y-m-d', time());
+        }else {
+            $select_date = date('Y-m-d', strtotime($select_date_temp));
+        }
+        $get_date = $this->services_model->getNID_requ($this->user_id, $select_date);
+        echo json_encode($get_date);
+        $this->output->set_content_type('application/json'); 
+    }
+
+    public function insert_new_server_copy_request()
+    {
+        $data_arr = array(
+                    'cut_amount'    => $this->input->post('services_rate'), 
+                    'cust_id'       => $this->user_id, 
+                    'services_iidd' => 2, 
+                    'time_s'        => time(), 
+                );
+        $last_insert_id = $this->services_model->insert_this_services_cost($data_arr);
+
+        $insert_data_arr = array(
+                        'slip_no' => $this->input->post('slip_no'), 
+                        'voter_no' => $this->input->post('voter_no'), 
+                        'person_name' => $this->input->post('person_name'), 
+                        'birth_date' => $this->input->post('birth_date'), 
+                        'entry_time' => time(), 
+                        'entry_date' => date('Y-m-d', time()), 
+                        'user_iddd' => $this->user_id, 
+                        'services_id ' => 2, 
+                        'payment_cut_a_iddd' => $last_insert_id
+                    );
+        $this->services_model->insert_services_data($insert_data_arr);
+    }
+    
+    public function insert_new_NID_request()
+    {
+        $data_arr = array(
+                    'cut_amount'    => $this->input->post('services_rate'), 
+                    'cust_id'       => $this->user_id, 
+                    'services_iidd' => 1, 
+                    'time_s'        => time(), 
+                );
+        $last_insert_id = $this->services_model->insert_this_services_cost($data_arr);
+
+        $insert_data_arr = array(
+                        'slip_no' => $this->input->post('slip_no'), 
+                        'voter_no' => $this->input->post('voter_no'), 
+                        'person_name' => $this->input->post('person_name'), 
+                        'birth_date' => $this->input->post('birth_date'), 
+                        'entry_time' => time(), 
+                        'entry_date' => date('Y-m-d', time()), 
+                        'user_iddd' => $this->user_id, 
+                        'services_id ' => 1, 
+                        'payment_cut_a_iddd' => $last_insert_id
+                    );
+        $this->services_model->insert_services_data($insert_data_arr);
+    }
+
+    public function ec_server_copy_view()
+    {
+        $user_group_id = $this->ion_auth->get_users_groups()->row()->id;
+        $service_s_idd = '2';
+        $this->data['service_rate'] = $this->services_model->get_services_list($service_s_idd, $user_group_id);
+        $this->load->template('admin/server_copy_view', $this->data);
+    }
+
+    public function getServe_request_by_user()
+    {
+        $select_date_temp = $this->input->post('query_date');
+        if (empty($select_date_temp)) {
+            $select_date = date('Y-m-d', time());
+        }else {
+            $select_date = date('Y-m-d', strtotime($select_date_temp));
+        }
+        $get_date = $this->services_model->getServer_copy_request($this->user_id, $select_date);
+        echo json_encode($get_date);
+        $this->output->set_content_type('application/json'); 
     }
 
 }

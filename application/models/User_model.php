@@ -12,7 +12,7 @@ class User_model extends CI_Model {
 
     public function insert_customer_info($data)
     {
-        $sql_insert = $this->db->insert('customer_full_info', $data);
+        $this->db->insert('customer_full_info', $data);
         $id = $this->db->insert_id();
         return $id;
     }
