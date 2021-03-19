@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
+    public function __construct()
+    {
+		parent::__construct();
+        $this->load->model('setting_model');
+	}
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -23,6 +29,32 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->template('welcome_message');
 	}
+
+
+    // Get District by Division ID and Json Encoded
+    public function getDistrict_byDivID()
+    {
+        $div_id = $this->input->post('div_id');
+        $data = $this->setting_model->getDistrict($div_id);
+        echo json_encode($data);
+    }
+
+    // Get Upazilla by District ID and Json Encoded
+    public function getUpazilla_byDistID()
+    {
+        $dist_id = $this->input->post('dist_id');
+        $data = $this->setting_model->getUpazilla($dist_id);
+        echo json_encode($data);
+    }
+
+    // Get Union by Upazilla ID and Json Encoded
+    public function getUnion_byUPID()
+    {
+        $upid = $this->input->post('upid');
+        $data = $this->setting_model->getUnion($upid);
+        echo json_encode($data);
+    }
+
 
 	
 }

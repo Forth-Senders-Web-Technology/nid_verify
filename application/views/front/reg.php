@@ -17,7 +17,7 @@
       <div class="row row-xs">
 
         <div class="col-sm-3">
-          <select class="form-control select2 div_list" name="div_list" required data-placeholder="Division">
+          <select class="form-control   div_list" name="div_list" required data-placeholder="Division">
             <option value="" > Select Division </option>
             <?php foreach ($div_info as $div) { ?>
                 <option value="<?php echo $div->div_id;  ?>" > <?php echo $div->div_name;  ?> </option>
@@ -26,15 +26,15 @@
         </div><!-- col-3 -->
 
         <div class="col-sm-3 mg-t-20 mg-sm-t-0">
-          <select class="form-control select2 dis_list" name="dis_list"  required data-placeholder="District"> </select>
+          <select class="form-control  dis_list" name="dis_list"  required data-placeholder="District"> </select>
         </div><!-- col-3 -->
 
         <div class="col-sm-3 mg-t-20 mg-sm-t-0">
-          <select class="form-control select2 up_list" name="up_list" required data-placeholder="Upazilla"> </select>
+          <select class="form-control  up_list" name="up_list" required data-placeholder="Upazilla"> </select>
         </div><!-- col-3 -->
 
         <div class="col-sm-3 mg-t-20 mg-sm-t-0">
-          <select class="form-control select2 un_list" name="un_list" required data-placeholder="Union"> </select>
+          <select class="form-control  un_list" name="un_list" required data-placeholder="Union"> </select>
         </div><!-- col-3 -->
 
       </div><!-- row -->
@@ -128,7 +128,7 @@
                 for (let n = 0; n < dist_info.length; n++) {
                     dist_data += '<option value="'+dist_info[n].dist_id+'" > '+dist_info[n].dist_name+' </option>';                    
                 }
-                $('.dis_list').html(dist_data);
+                $('.dis_list').html('<option value="" > Select District </option>'+dist_data);
             }
         });
     });
@@ -149,7 +149,7 @@
                 for (let n = 0; n < up_info.length; n++) {
                     up_data += '<option value="'+up_info[n].up_id+'" > '+up_info[n].up_name+' </option>';                    
                 }
-                $('.up_list').html(up_data);
+                $('.up_list').html('<option value="" > Select Upazilla </option>'+up_data);
             }
         });
     });
@@ -170,7 +170,7 @@
                 for (let n = 0; n < un_info.length; n++) {
                     un_data += '<option value="'+un_info[n].un_id+'" > '+un_info[n].un_name+' </option>';                    
                 }
-                $('.un_list').html(un_data);
+                $('.un_list').html('<option value="" > Select Union </option>'+un_data);
             }
         });
     });

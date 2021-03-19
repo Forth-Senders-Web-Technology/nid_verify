@@ -10,19 +10,10 @@ class Services_model extends CI_Model {
         $this->load->database();
     }
     
-    public function getNID_requ($user_id, $select_date)
+    public function getNID_requ($user_id, $select_date, $service_id_s)
     {
         $this->db->where('entry_date', $select_date);
-        $this->db->where('services_id', '1');
-        $this->db->where('user_iddd', $user_id);
-        $sql = $this->db->get('services_request_tbl');
-        return $sql->result(); 
-    }
-
-    public function getServer_copy_request($user_id, $select_date)
-    {
-        $this->db->where('entry_date', $select_date);
-        $this->db->where('services_id', '2');
+        $this->db->where('services_id', $service_id_s);
         $this->db->where('user_iddd', $user_id);
         $sql = $this->db->get('services_request_tbl');
         return $sql->result(); 

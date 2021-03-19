@@ -9,7 +9,6 @@
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="admin" class="br-menu-link">
           <div class="br-menu-item">
-            
             <span class="menu-item-label">Dashboard</span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
@@ -18,7 +17,6 @@
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="nid_verify" class="br-menu-link">
           <div class="br-menu-item">
-            
             <span class="menu-item-label"> NID Verify </span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
@@ -57,17 +55,9 @@
       </div><!-- br-sideleft-menu -->
 
       <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="" class="br-menu-link">
+        <a href="serve_view" class="br-menu-link">
           <div class="br-menu-item">
             <span class="menu-item-label"> EC Server Copy </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
-
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="" class="br-menu-link">
-          <div class="br-menu-item">
-            <span class="menu-item-label"> Search NID No </span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
       </div><!-- br-sideleft-menu -->
@@ -81,7 +71,15 @@
       </div><!-- br-sideleft-menu -->
 
       <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="" class="br-menu-link">
+        <a href="search_copy" class="br-menu-link">
+          <div class="br-menu-item">
+            <span class="menu-item-label"> Search NID No </span>
+          </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+      </div><!-- br-sideleft-menu -->
+
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="username_password" class="br-menu-link">
           <div class="br-menu-item">
             <span class="menu-item-label"> User ID Password Set </span>
           </div><!-- menu-item -->

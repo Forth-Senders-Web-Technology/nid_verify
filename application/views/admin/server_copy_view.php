@@ -170,9 +170,10 @@
             let sl = 1;
             $.ajax({
                 type: "post",
-                url: "admin/getServe_request_by_user",
+                url: "admin/get_full_data_table_by_service",
                 data: {
-                    query_date: query_date
+                    query_date: query_date,
+                    services_list_id: 2,
                 },
                 dataType: "json",
                 success: function (table_data) {

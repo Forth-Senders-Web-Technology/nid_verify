@@ -1,8 +1,11 @@
-    <!-- ########## START: MAIN PANEL ########## -->
+
+<!-- ########## START: MAIN PANEL ########## -->
     <div class="br-mainpanel">
         <div class="br-pageheader pd-y-15 pd-l-20">
             <div class="mx-auto ">
-               <h3> এই সার্ভিসের জন্য আপনার একাউন্ট থেকে <b> <?php echo $service_rate->serive_s_rate_s; ?> </b> টাকা কেটে নেওয়া হবে। </h3> 
+               <h3> এই সার্ভিসের জন্য আপনার একাউন্ট থেকে <b> <?php if (!empty($service_rate->serive_s_rate_s)) {
+                   echo $service_rate->serive_s_rate_s;
+               }  ?> </b> টাকা কেটে নেওয়া হবে। </h3> 
             </div>
         </div><!-- br-pageheader -->
             
@@ -14,12 +17,7 @@
         <!--  br-pagebody --> 
         <div class="br-pagebody">
             
-            <a href="" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-toggle="modal" data-target="#new_nid_requ">Get NID Request</a>
-
-
-
-            </div>
-
+            <a href="" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-toggle="modal" data-target="#new_nid_requ"> NID খোঁজার আবেদন </a>
 
 
             <div class="br-section-wrapper">
@@ -31,17 +29,15 @@
                     </div>
                 </div>
                 <div class="table-wrapper">
-                    <table id="datatable2" class="table display responsive nowrap">
+                    <table id="datatable2" class="table display responsive table-bordered table-colored table-pink">
                         <thead>
                             <tr>
                                 <th class="wd-15p">SL</th>
                                 <th class="wd-25p">Status</th>
+                                <th class="wd-15p des_col">Description</th>
                                 <th class="wd-25p">NID No</th>
-                                <th class="wd-15p">Slip No</th>
-                                <th class="wd-20p">Viter No</th>
-                                <th class="wd-15p">Name</th>
-                                <th class="wd-10p">Birth Date</th>
                                 <th class="wd-25p">Pin No</th>
+                                <th class="wd-25p">Remark</th>
                             </tr>
                         </thead>
                         <tbody class="table_assign_data">
@@ -88,7 +84,7 @@
     <script>
 
         $(document).on('click', '.save_btn', function () {
-            insert_nid_request();
+            insert_search_number_request();
         });
 
         $(document).on('click', '.search_datewise_data', function () {
@@ -127,18 +123,41 @@
                         $('.get_nid_request_form').html(`                            
                             <div class="row no-gutters">
                                 <div class="err_show" >  </div><br><br><br>
-                                <div class="col-md-6">
+
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="form-control-label">Slip No: <span class="tx-danger">*</span></label>
-                                        <input class="form-control slip_no" type="text" name="slip_no" value="" placeholder="Enter Slip No">
+                                        <label class="form-control-label">Division<span class="tx-danger">*</span></label>
+                                        <select class="form-control select2 div_list" name="div_list" required data-placeholder="Division">
+                                            <option value="" > Select Division </option>
+                                            <?php foreach ($div_info as $div) { ?>
+                                                <option value="<?php echo $div->div_id;  ?>" val_name="<?php echo $div->div_bn_name;  ?>" > <?php echo $div->div_bn_name;  ?> </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div> 
-                                <div class="col-md-6 mg-t--1 mg-md-t-0">
-                                    <div class="form-group mg-md-l--1">
-                                        <label class="form-control-label">Voter No: <span class="tx-danger">*</span></label>
-                                        <input class="form-control voter_no" type="text" name="voter_no" value="" placeholder="Enter Voter No">
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-control-label">District<span class="tx-danger">*</span></label>
+                                        <select class="form-control select2 dis_list" val_name="" name="dis_list"  required data-placeholder="District"> </select>
                                     </div>
                                 </div> 
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Upazilla<span class="tx-danger">*</span></label>
+                                        <select class="form-control select2 up_list" val_name="" name="up_list" required data-placeholder="Upazilla"> </select>
+                                    </div>
+                                </div> 
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Union<span class="tx-danger">*</span></label>
+                                        <select class="form-control select2 un_list" val_name="" name="un_list" required data-placeholder="Union"> </select>
+                                    </div>
+                                </div>
+
+
                                 <div class="col-md-6">
                                     <div class="form-group bd-t-0-force">
                                         <label class="form-control-label">Name: <span class="tx-danger">*</span></label>
@@ -146,9 +165,27 @@
                                     </div>
                                 </div> 
                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Father Name: <span class="tx-danger">*</span></label>
+                                        <input class="form-control father_name" type="text" name="slip_no" value="" placeholder="Enter Father Name">
+                                    </div>
+                                </div> 
+                                <div class="col-md-6 mg-t--1 mg-md-t-0">
+                                    <div class="form-group mg-md-l--1">
+                                        <label class="form-control-label">Mother Name: <span class="tx-danger">*</span></label>
+                                        <input class="form-control mother_name" type="text" name="voter_no" value="" placeholder="Enter Mother Name">
+                                    </div>
+                                </div> 
+                                <div class="col-md-6">
                                     <div class="form-group bd-t-0-force">
                                         <label class="form-control-label">Birth Date: <span class="tx-danger"></span></label>
                                         <input class="form-control birth_date" type="text" name="birth_date" value="" placeholder="Enter Birth Date">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group bd-t-0-force">
+                                        <label class="form-control-label">জন্ম নিবন্ধন নং: <span class="tx-danger"></span></label>
+                                        <input class="form-control birth_certificate" type="text" name="birth_date" value="" placeholder="Enter Birth Certificate NO">
                                     </div>
                                 </div>
                             </div>`); 
@@ -171,7 +208,7 @@
                 url: "admin/get_full_data_table_by_service",
                 data: {
                     query_date: query_date,
-                    services_list_id: 1,
+                    services_list_id: 4,
                 },
                 dataType: "json",
                 success: function (table_data) {
@@ -183,7 +220,7 @@
                             if (table_data[l].requ_status == 0) {
                                 this_status = '<p style="background-color: #282923;color:white;font-weight:bold;">Wait</p>';
                             }else if (table_data[l].requ_status == 1) {
-                                this_status = '<p style="background-color: #67D8EF;color:black;font-weight:bold;">Success</p>';
+                                this_status = '<p style="background-color: #67D8EF;color:black;font-weight:bold;">Success</p><br><a href="'+table_data[l].online_copy_pdf_src+'" download> Download </a>';
                             }else if (table_data[l].requ_status == 2) {
                                 this_status = '<p style="background-color: #F9245E;color:white;font-weight:bold;">Reject</p>';
                             }else {
@@ -193,12 +230,10 @@
                                         <tr>
                                             <td>${sl}</td>
                                             <td>${this_status}</td>
+                                            <td class="des_col" >${table_data[l].des_cribe}, ব্যক্তির নামঃ ${table_data[l].person_name}, জন্ম তারিখঃ ${table_data[l].birth_date}</td>
                                             <td>${table_data[l].nid_no}</td>
-                                            <td>${table_data[l].slip_no}</td>
-                                            <td>${table_data[l].voter_no}</td>
-                                            <td>${table_data[l].person_name}</td>
-                                            <td>${table_data[l].birth_date}</td>
                                             <td>${table_data[l].nid_pin_no}</td>
+                                            <td>${table_data[l].coment_s}</td>
                                         </tr>`;
                             sl += 1;
                         }
@@ -208,17 +243,25 @@
             });
         }
 
-        function insert_nid_request() {
-            if (($('.slip_no').val() == '' || $('.voter_no').val() == '') && $('.person_name').val() == '') {
-                $('.err_show').html('Please fill-up Slip or Voter and Person name');
+        function insert_search_number_request() {
+
+            let v_div = $('.div_list option:selected').text();
+            let v_dist = $('.dis_list option:selected').text();
+            let v_up = $('.up_list option:selected').text();
+            let v_un = $('.un_list option:selected').text();
+            let v_father = $('.father_name').val();
+            let v_mother = $('.mother_name').val();
+            let birth_certificate = $('.birth_certificate').val();
+            
+            if ($('.div_list').val() == '' || $('.dis_list').val() == '' || $('.up_list').val() == ''|| $('.un_list').val() == '' || $('.person_name').val() == '' || $('.father_name').val() == '' || $('.mother_name').val() == '' || $('.birth_date').val() == '') {
+                $('.err_show').html('Please fill-up All Field');
             }else {
                 $('.err_show').html('');                
                 $.ajax({
                     type: "post",
-                    url: "admin/insert_new_NID_request",
+                    url: "admin/insert_new_search_request",
                     data: {
-                        slip_no: $('.slip_no').val(),
-                        voter_no: $('.voter_no').val(),
+                        description: `বিভাগঃ ${v_div}, জেলাঃ ${v_dist}, উপজেলাঃ ${v_up}, ইউনিয়নঃ ${v_un}, বাবাঃ ${v_father}, মাতাঃ ${v_mother}, জন্ম নিবন্ধন নংঃ ${birth_certificate}`,
                         person_name: $('.person_name').val(),
                         birth_date:  $('.birth_date').val(),
                         services_rate: services_rate,
@@ -232,4 +275,80 @@
 
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $(document).on('change', '.div_list', function () {
+        let div_id = $(this).val();
+        $.ajax({
+            type: "post",
+            url: "welcome/getDistrict_byDivID",
+            data: {
+                div_id: div_id
+            },
+            dataType: "json",
+            success: function (dist_info) {
+                let dist_data = '';
+                for (let n = 0; n < dist_info.length; n++) {
+                    dist_data += `<option value="${dist_info[n].dist_id}" val_name="${dist_info[n].dist_bn_name}"> ${dist_info[n].dist_bn_name} </option>`;                    
+                }
+                $('.dis_list').html(`<option value="" > Select Upazilla </option>${dist_data}`);
+            }
+        });
+    });
+
+
+
+    $(document).on('change', '.dis_list', function () {
+        let dist_id = $(this).val();
+        $.ajax({
+            type: "post",
+            url: "welcome/getUpazilla_byDistID",
+            data: {
+                dist_id: dist_id
+            },
+            dataType: "json",
+            success: function (up_info) {
+                let up_data = '';
+                for (let n = 0; n < up_info.length; n++) {
+                    up_data += `<option value="${up_info[n].up_id}" val_name="${up_info[n].up_bn_name}"> ${up_info[n].up_bn_name} </option>`;                    
+                }
+                $('.up_list').html(`<option value="" > Select Upazilla </option>${up_data}`);
+            }
+        });
+    });
+
+
+
+    $(document).on('change', '.up_list', function () {
+        let upid = $(this).val();
+        $.ajax({
+            type: "post",
+            url: "welcome/getUnion_byUPID",
+            data: {
+                upid: upid
+            },
+            dataType: "json",
+            success: function (un_info) {
+                let un_data = '';
+                for (let n = 0; n < un_info.length; n++) {
+                    un_data += `<option value="${un_info[n].un_id}" val_name="${un_info[n].un_bn_name}" > ${un_info[n].un_bn_name} </option>`;                    
+                }
+                $('.un_list').html(`<option value="" > Select Union </option>${un_data}`);
+            }
+        });
+    });
+
+    
     </script>
