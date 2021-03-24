@@ -130,7 +130,11 @@ class Download extends CI_Controller {
 				'nikosh' => [
 					'R' => 'Nikosh.ttf',
                     'I' => "Nikosh.ttf",
-				]
+				],
+				'Arial' => [
+					'R' => 'Arial.woff',
+                    'I' => "Arial.woff",
+                ],
 			],
 			'default_font' => 'solaimanlipi'
         ]);
