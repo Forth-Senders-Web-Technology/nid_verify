@@ -6,10 +6,12 @@
                <h3> এই সার্ভিসের জন্য আপনার একাউন্ট থেকে <b class="services_rates"> <?php if (!empty($service_rate->serive_s_rate_s)) {
                    echo $service_rate->serive_s_rate_s;
                }  ?> </b> টাকা কেটে নেওয়া হবে। </h3> 
+               
             </div>
         </div><!-- br-pageheader -->
             
         <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
+            <h5 class="text-center"> এই সার্ভিসে আপনি ভুল NID দিলেও টাকা কেটে নেওয়া হবে তাই খুব সতর্ক হয়ে NID নাম্বার দিন  </h5>
             <h4 class="tx-gray-800 mg-b-5">Your Balance: <span class="bal_value"></span></h4>
             <p class="mg-b-0"></p>
         </div>
@@ -49,13 +51,16 @@
     <script type="text/javascript">
 
         $(document).on('click', '.nid_data_search_btn', function () {
-            insert_porichoy_verify_request();
+            get_nid_data();
         });
 
         let services_rate = '<?php echo $service_rate->serive_s_rate_s; ?>';
         balance_query();
 
         let now_balance;
+        let full_data = '';
+        let get_date_const = '';
+
 
         function balance_query() {
             let total_added_money;
@@ -86,7 +91,7 @@
                     if (now_balance >= services_rate) {
                         $('.verify_box_set').html(`
                         <div class="input-group wd-xs-300">
-                            <input type="text" class="form-control nid_number_type" placeholder=" NID Number ">
+                            <input type="text" maxlength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' size="10" class="form-control nid_number_type" placeholder=" NID Number ">
                             <div class="input-group-btn">
                                 <button class="btn btn-info nid_data_search_btn" style="cursor:pointer"><i class="fa fa-search"></i></button>
                             </div>
@@ -95,9 +100,6 @@
                     }else {
                         $('.verify_box_set').html('আপনার একাউন্টে টাকা বেশি নেই দয়া করে আগে রিচার্গ করুন .... ');
                     }
-
-
-
                 }
             });
         }
@@ -116,7 +118,6 @@
                     },
                     success: function () {
                         balance_query();
-                        get_nid_data();
                     }
                 });
             }                
@@ -124,55 +125,77 @@
 
 
         function get_nid_data() {
-                        
+            let get_nid_no_typing = $('.nid_number_type').val();
+            if (get_nid_no_typing == '' || get_nid_no_typing.length != 10) {
+                alert('Please give nid number and NID must be 10 digits');
+            }else {
+                            
+                $.ajax({
+                    type: "post",
+                    url: "admin/nid_verify_data",
+                    data: {
+                        nid_number_type:  $('.nid_number_type').val()
+                    },
+                    success: function (get_data) {
+                        insert_porichoy_verify_request();
+
+                        let full_data = JSON.parse(get_data);
+                        let get_date_const = get_data;
+
+
+                        $('.nid_get_data').html(`
+                        <div style="width: 150px; margin-bottom: 30px;">
+                            <img src="data:image/png;base64,${full_data.voter.photo}" class="card-img-top" alt="image" style="">
+                        </div>
+                        <div style="width: 50%;">
+                            <table class="table">
+                                <!-- class="thead-info" -->
+                                <tr>
+                                    <th class="wd-25p"
+                                        style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
+                                        Name</th>
+                                    <td style="color: black; padding-left: 30px;">${full_data.voter.name}</td>
+                                </tr>
+
+                                <tr>
+                                    <th class="wd-25p"
+                                        style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
+                                        Father's Name</th>
+                                    <td style="color: black; padding-left: 30px;">${full_data.voter.father}</td>
+                                </tr>
+
+                                <tr>
+                                    <th class="wd-25p"
+                                        style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
+                                        Mother's Name</th>
+                                    <td style="color: black; padding-left: 30px;">${full_data.voter.mother}</td>
+                                </tr>
+                            </table>
+                        </div><br>                    
+                        <button style="cursor:pointer" class="btn btn-info mx-auto btn-lg click_download_btn" > Download </button>
+                        `); 
+
+                    }
+                });
+            }
+
+        }
+
+        $(document).on('click', '.click_download_btn', function () {
+            pass_data_to_controller_for_download(full_data.voter)
+        });
+
+        function pass_data_to_controller_for_download(param_s) {
             $.ajax({
                 type: "post",
-                url: "admin/nid_verify_data",
+                url: "download/porichoy_verify", 
                 data: {
-                    nid_number_type:  $('.nid_number_type').val()
+                    data_arr: param_s
                 },
-                success: function (get_data) {
-
-                    let full_data = JSON.parse(get_data);
-                    // console.log(full_data.voter.name);
-                    let { name, photo, father, mother } = full_data.voter;
-
-
-                    $('.nid_get_data').html(`
-                    <div style="width: 150px; margin-bottom: 30px;">
-                        <img src="data:image/png;base64,${photo}" class="card-img-top" alt="image" style="">
-                    </div>
-                    <div style="width: 50%;">
-                        <table class="table">
-                            <!-- class="thead-info" -->
-                            <tr>
-                                <th class="wd-25p"
-                                    style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
-                                    Name</th>
-                                <td style="color: black; padding-left: 30px;">${name}</td>
-                            </tr>
-
-                            <tr>
-                                <th class="wd-25p"
-                                    style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
-                                    Father's Name</th>
-                                <td style="color: black; padding-left: 30px;">${father}</td>
-                            </tr>
-
-                            <tr>
-                                <th class="wd-25p"
-                                    style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
-                                    Mother's Name</th>
-                                <td style="color: black; padding-left: 30px;">${mother}</td>
-                            </tr>
-                        </table>
-                    </div><br>                    
-                    <button style="cursor:pointer" class="btn btn-info mx-auto btn-lg"> Download </button>
-                    `); 
-
+                success: function () {
+                    window.open('download/porichoy_verify');
                 }
             });
-
         }
 
     

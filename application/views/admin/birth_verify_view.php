@@ -7,6 +7,9 @@
             </nav>
         </div><!-- br-pageheader -->
 
+
+        <h3 class="text-center"> এই সার্ভিস সম্পূর্ণ ফ্রী </h3>
+
         <!--  br-pagebody --> 
 
         <div class="br-pagebody mg-t-5 pd-x-30">
@@ -91,20 +94,28 @@
                     data: '',
                     dataType: 'json',
                     success: function (info) {
-                        $('.table_diplay').css('display', 'block');
-                        // english set
-                        $('.person_name_en').html(info.personNameEn);
-                        $('.father_name_en').html(info.fatherNameEn);
-                        $('.mothser_name_en').html(info.motherNameEn);
-                        $('.address_en').html(info.fullBirthPlaceEn);
 
-                        // bangla set
-                        $('.person_name_bn').html(info.personNameBn);
-                        $('.father_name_bn').html(info.fatherNameBn);
-                        $('.mothser_name_bn').html(info.motherNameBn);
-                        $('.address_bn').html(info.fullBirthPlaceBn);
-                        $('.union_name').html(info.registrationOfficeName);
-                        $('.union_address').html(info.officeAddress);
+                        if (info.success == false) {
+                            $('.table_diplay').css('display', 'none');
+                            alert('data not found...');
+                        }else {
+
+                            $('.table_diplay').css('display', 'block');
+                            // english set
+                            $('.person_name_en').html(info.personNameEn);
+                            $('.father_name_en').html(info.fatherNameEn);
+                            $('.mothser_name_en').html(info.motherNameEn);
+                            $('.address_en').html(info.fullBirthPlaceEn);
+
+                            // bangla set
+                            $('.person_name_bn').html(info.personNameBn);
+                            $('.father_name_bn').html(info.fatherNameBn);
+                            $('.mothser_name_bn').html(info.motherNameBn);
+                            $('.address_bn').html(info.fullBirthPlaceBn);
+                            $('.union_name').html(info.registrationOfficeName);
+                            $('.union_address').html(info.officeAddress);
+                        
+                        }
 
                     }
                 });

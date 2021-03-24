@@ -33,6 +33,10 @@ class Admin extends CI_Controller {
 
     public function index()
     {
+        $this_date = date('Y-m-d', time());
+        $this->data['payment_added'] = $this->payment_model->payment_added_info($this->user_id);
+        $this->data['payment_cut'] = $this->payment_model->payment_cut_info($this->user_id);
+        $this->data['services_info'] = $this->services_model->get_this_user_datewise_services_info($this->user_id, $this_date);
 		$this->load->template('welcome_message', $this->data);
     }
 
@@ -55,12 +59,13 @@ class Admin extends CI_Controller {
 
     public function payment_view()
     {
+        $this->data['payment_system_list'] = $this->payment_model->get_payment_system_list();
         $this->load->template('admin/payment_view',  $this->data);
     }
 
     public function statement_view()
     {
-        $this->load->template('admin/payment_view',  $this->data);
+        $this->load->template('admin/statement_s',  $this->data);
     }
 
     public function get_nid_no()
@@ -257,7 +262,7 @@ class Admin extends CI_Controller {
         );
 
         $fields= array(
-                    'national_id' => '1234567891',
+                    'national_id' => $nid_number_get,
                     'english_output' => true,
                 );
         /////////////////////get jobs/////////////////
@@ -322,6 +327,23 @@ class Admin extends CI_Controller {
 
     }
 
+    public function get_pending_payment_ss()
+    {
+        $query_data = $this->payment_model->get_pending_payment($this->user_id);
+        echo json_encode($query_data);
+        $this->output->set_content_type('application/json');
+    }
+
+    public function inser_payment_request_s()
+    {
+        $insert_data_ss = array(
+                            'payment_trid' => $this->input->post('trid'), 
+                            'payment_system_idd' => $this->input->post('pay_sys_id'), 
+                            'user_u_id' => $this->user_id,
+                            'requ_time' => time()
+                        ); 
+        $this->payment_model->inser_payment_request_s($insert_data_ss);
+    }
 
     
 

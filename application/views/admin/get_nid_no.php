@@ -38,7 +38,7 @@
                                 <th class="wd-25p">Status</th>
                                 <th class="wd-25p">NID No</th>
                                 <th class="wd-15p">Slip No</th>
-                                <th class="wd-20p">Viter No</th>
+                                <th class="wd-20p">Voter No</th>
                                 <th class="wd-15p">Name</th>
                                 <th class="wd-10p">Birth Date</th>
                                 <th class="wd-25p">Pin No</th>

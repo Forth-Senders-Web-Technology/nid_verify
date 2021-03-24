@@ -38,6 +38,14 @@ class Services_model extends CI_Model {
     {
         $this->db->insert('services_request_tbl', $insert_data_arr);  
     }
+
+    public function get_this_user_datewise_services_info($user_id, $this_date)
+    {
+        $this->db->where('entry_date', $this_date);
+        $this->db->where('user_iddd', $user_id);
+        $sql = $this->db->get('services_request_tbl');
+        return $sql->result(); 
+    }
 }
 
 /* End of file Services_model.php */
