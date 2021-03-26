@@ -374,6 +374,9 @@
 	        toastr.warning("<?php echo $this->session->flashdata('warning'); ?>", "Deleted");
 	    <?php } else if ($this->session->flashdata('info')) {?>
 	        toastr.info("<?php echo $this->session->flashdata('info'); ?>", "Info");
+          
+	    <?php } else if ($this->session->flashdata('message')) {?>
+	        toastr.error("<?php echo $this->session->flashdata('message'); ?>", "Error");
       <?php }?>
 
 

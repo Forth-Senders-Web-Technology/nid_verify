@@ -58,8 +58,6 @@
         balance_query();
 
         let now_balance;
-        let full_data = '';
-        let get_date_const = '';
 
 
         function balance_query() {
@@ -138,9 +136,10 @@
                     },
                     success: function (get_data) {
                         insert_porichoy_verify_request();
+                        
+                        let get_data_const = get_data;
 
                         let full_data = JSON.parse(get_data);
-                        let get_date_const = get_data;
 
 
                         $('.nid_get_data').html(`
@@ -171,8 +170,12 @@
                                     <td style="color: black; padding-left: 30px;">${full_data.voter.mother}</td>
                                 </tr>
                             </table>
-                        </div><br>                    
-                        <button style="cursor:pointer" class="btn btn-info mx-auto btn-lg click_download_btn" > Download </button>
+                        </div><br>
+                                    
+                        <form action="download/porichoy_verify" method="post">
+                            <input type="text" name="data_arr" value="${full_data.voter}">
+                            <input type="submit" class="btn btn-info mx-auto btn-lg click_download_btn" value="Download">
+                        </form>    
                         `); 
 
                     }
@@ -180,9 +183,9 @@
             }
 
         }
-
+/* 
         $(document).on('click', '.click_download_btn', function () {
-            pass_data_to_controller_for_download(full_data.voter)
+            pass_data_to_controller_for_download(full_data.voter);
         });
 
         function pass_data_to_controller_for_download(param_s) {
@@ -192,11 +195,14 @@
                 data: {
                     data_arr: param_s
                 },
-                success: function () {
-                    window.open('download/porichoy_verify');
+                success: function (response) {
+                    
                 }
             });
         }
-
+ */
     
     </script>
+
+
+

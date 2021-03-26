@@ -17,6 +17,24 @@ class CustomLanguageToFontImplementation extends \Mpdf\Language\LanguageToFont
 }
 
 
+
+class BanglaConverter {
+
+    public static $bn = array("১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০");
+    public static $en = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
+    
+    public static function bn2en($number) {
+        return str_replace(self::$bn, self::$en, $number);
+    }
+    
+    public static function en2bn($number) {
+        return str_replace(self::$en, self::$bn, $number);
+    }
+    
+}
+
+
+
 class Download extends CI_Controller {
 
     public function __construct()
@@ -35,26 +53,15 @@ class Download extends CI_Controller {
 
     public function porichoy_verify()
     {
-        $data_arr = array($this->input->post('data_arr'));
+        $data_arr = $this->input->post('data_arr');
+		$object['voter_info'] = $data_arr;
 
-
-        [$a, $b, $c] = $data_arr;
-
-        /* 
-        foreach ($data_arr as $val) {
-            echo $val;
-        }
- */
-
-
-
-
-
+var_dump($object['voter_info']);
+var_dump($object['voter_info']->name);
 
 
 /* 
-
-		$html = $this->load->view('download/download_porichoy_verify', $data_arr, true);
+		$html = $this->load->view('download/download_porichoy_verify', $object, true);
 		
 		$defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
 		$fontDirs = $defaultConfig['fontDir'];
@@ -94,14 +101,14 @@ class Download extends CI_Controller {
 		$mpdf->WriteHTML($stylesheet,1);
 		$mpdf->WriteHTML($html,2);
         $mpdf->Output($fileName,'D'); 
-        // 
+
  */
     }
 
 
     public function card_file()
     {
-       $html = $this->load->view('admin/card_view_file', '', true);
+       $html = $this->load->view('download/card_view_file', '', true);
 
 
 

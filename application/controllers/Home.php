@@ -73,8 +73,8 @@ class Home extends CI_Controller {
                 'institute_name' => $this->input->post('inistitute'),
                 'address_full' => $this->input->post('address'),
                 'nid_no' => $this->input->post('nid_no'),
-                'udc_phone_no' => $this->input->post('mobile_no'),
-                'udc_email_no' => $this->input->post('email_no')
+                'user_phone_no' => $this->input->post('mobile_no'),
+                'user_email_no' => $this->input->post('email_no')
             );
         $last_insert_id = $this->user_model->insert_customer_info($data);
 
