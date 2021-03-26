@@ -9,22 +9,25 @@
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="admin" class="br-menu-link">
           <div class="br-menu-item">
+            <i class="fa fa-home"></i>
             <span class="menu-item-label">Dashboard</span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          </div>
+        </a>
+      </div>
 
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="nid_verify" class="br-menu-link">
           <div class="br-menu-item">
+            <i class="fa fa-id-card"></i>
             <span class="menu-item-label"> NID Verify </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          </div>
+        </a>
+      </div>
 
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="birth_verify" class="br-menu-link">
           <div class="br-menu-item">
+            <i class="fa fa-credit-card"></i>
             <span class="menu-item-label"> Birth Verify </span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
@@ -33,6 +36,7 @@
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="payment" class="br-menu-link">
           <div class="br-menu-item">
+            <i class="fa fa-btc"></i>
             <span class="menu-item-label"> Payment </span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
@@ -41,14 +45,17 @@
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="statement" class="br-menu-link">
           <div class="br-menu-item">
+            <i class="fa fa-align-justify"></i>
             <span class="menu-item-label"> Statement </span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
       </div><!-- br-sideleft-menu -->
 
+      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent', 's_udc'))) { ?>
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="get_nid_no" class="br-menu-link">
           <div class="br-menu-item">
+            <i class="fa fa-list-ol"></i>
             <span class="menu-item-label"> Get NID NO </span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
@@ -57,14 +64,16 @@
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="serve_view" class="br-menu-link">
           <div class="br-menu-item">
+            <i class="fa fa-address-book"></i>
             <span class="menu-item-label"> EC Server Copy </span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
       </div><!-- br-sideleft-menu -->
 
       <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="" class="br-menu-link">
+        <a href="card_view" class="br-menu-link">
           <div class="br-menu-item">
+            <i class="fa fa-address-card"></i>
             <span class="menu-item-label"> Download Card </span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
@@ -73,6 +82,7 @@
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="search_copy" class="br-menu-link">
           <div class="br-menu-item">
+            <i class="fa fa-search"></i>
             <span class="menu-item-label"> Search NID No </span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
@@ -81,11 +91,25 @@
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="username_password" class="br-menu-link">
           <div class="br-menu-item">
+            <i class="fa fa-user-secret"></i>
             <span class="menu-item-label"> User ID Password Set </span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
       </div><!-- br-sideleft-menu -->
 
+      <?php } ?>
+      
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-dollar"></i>
+            <span class="menu-item-label"> Payment Withdraw </span>
+          </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+      </div><!-- br-sideleft-menu -->
+
+
+    <?php if ($this->ion_auth->in_group(array('admin', 's_admin'))) { ?>
     <div class="br-sideleft-menu " id="sidebar-menu">
       <a href="" class="br-menu-link">
         <div class="br-menu-item">
@@ -109,15 +133,10 @@
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
       </div><!-- br-sideleft-menu -->
+    <?php } ?>
 
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="" class="br-menu-link">
-          <div class="br-menu-item">
-            <span class="menu-item-label"> Payment Withdraw </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
 
+    <?php if ($this->ion_auth->in_group(array('s_admin'))) { ?>
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="" class="br-menu-link">
           <div class="br-menu-item">
@@ -149,14 +168,7 @@
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
       </div><!-- br-sideleft-menu -->
-
-
-
-
-<!-- 
-      NID Verify
-      Birth Verify
- -->
+    <?php } ?>
 
       <br>
     </div><!-- br-sideleft -->
@@ -184,7 +196,6 @@
               <ul class="list-unstyled user-profile-nav">
                 <li><a href=""><i class="icon ion-ios-person"></i> Edit Profile</a></li>
                 <li><a href=""><i class="icon ion-ios-gear"></i> Settings</a></li>
-                <li><a href="my_download"><i class="icon ion-ios-download"></i> Downloads</a></li>
                 <li><a href="logout"><i class="icon ion-power"></i> Sign Out</a></li>
               </ul>
             </div><!-- dropdown-menu -->

@@ -64,7 +64,7 @@
                 <div style="margin-top: 0px;">
                     <div style="font-family: SolaimanLipi; font-size: 12px; float: left; margin:  4px 0 0 9px ;">Date of
                         Birth:
-                        <span style="color: #FF0000; font-weight: bolder;"> <?php echo date('d F Y', strtotime($voter_info->voter->dob)); ?></span>
+                        <span style="color: #FF0000; font-weight: bolder;"> <?php echo date('d M Y', strtotime($voter_info->voter->dob)); ?></span>
                     </div>
                     <div style="font-family: SolaimanLipi; font-size: 13px; float: left; margin: 2px 0 0 9px ;">ID NO:
                         <span style="color: #FF0000; font-weight: bold; font-size: 12px; ">0000000000</span>
@@ -122,7 +122,7 @@
                 </div>
             </div>
             <center style="margin: 5px 0 0 5px;">
-                <img src="inc/bar_code/barcode.png" width="310px" height="40" alt="">
+                <img src="<?php echo $pdf417_barcode->encoded; ?>" width="310px" height="40" alt="">
             </center>
         </div>
     </div>

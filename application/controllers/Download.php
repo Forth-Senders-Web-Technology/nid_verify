@@ -1,6 +1,10 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use BigFish\PDF417\PDF417;
+use BigFish\PDF417\Renderers\ImageRenderer;
+use BigFish\PDF417\Renderers\SvgRenderer;
+
 
 class CustomLanguageToFontImplementation extends \Mpdf\Language\LanguageToFont
 {
@@ -48,9 +52,11 @@ class BanglaConverter {
 
 class Download extends CI_Controller {
 
+
     public function __construct()
     {
         parent::__construct();           
+		
         $this->load->library('Ion_auth');
         $this->load->model('setting_model');
         $this->load->model('user_model');
@@ -63,15 +69,17 @@ class Download extends CI_Controller {
             redirect('logout', 'refresh');
         }
 
-
         $this->data['setting_info'] = $this->setting_model->getSetting();
     }
 
     public function porichoy_verify()
     {
+		// Get Json Data From View File
         $data_arr = $this->input->post('data_arr');
+		// Decode Json Data 
 		$object['voter_info'] = json_decode($data_arr);
 
+		// PHP Curl for get Signature
         $headers = array(
             'Content-Type:application/json',
             'x-api-key:53c64d02-81d1-485b-97ba-b113ae251734',
@@ -85,6 +93,7 @@ class Download extends CI_Controller {
                 );
         /////////////////////get jobs/////////////////
 
+		// Signature URL
         $url_path="https://porichoy.azurewebsites.net/api/Kyc/test-nid-person-sig";
 
         $ch = curl_init( $url_path );
@@ -97,13 +106,15 @@ class Download extends CI_Controller {
         # Send request.
         $result = curl_exec($ch);
         curl_close($ch);
-        # Print response.
+        # Store Signature in Variable
 		$object['sign'] = json_decode($result);
+		// PHP Curl for get Signature
 
 
-
+		// This is View File
 		$html = $this->load->view('download/download_porichoy_verify', $object, true);
 		
+		// Genarate mpdf File
 		$defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
 		$fontDirs = $defaultConfig['fontDir'];
 
@@ -142,17 +153,20 @@ class Download extends CI_Controller {
 		$mpdf->WriteHTML($stylesheet,1);
 		$mpdf->WriteHTML($html,2);
         $mpdf->Output($fileName,'D'); 
-
-		// $fileName,'D'
+		// Genarate mpdf File
 		
     }
 
 
     public function card_file()
     {
+		// Get json data from view file
         $data_arr = $this->input->post('data_arr');
+		// decode json data
 		$object['voter_info'] = json_decode($data_arr);
 
+
+		// PHP Curl for get Signature
         $headers = array(
             'Content-Type:application/json',
             'x-api-key:53c64d02-81d1-485b-97ba-b113ae251734',
@@ -165,7 +179,7 @@ class Download extends CI_Controller {
 				
                 );
         /////////////////////get jobs/////////////////
-
+		// Signature Url
         $url_path="https://porichoy.azurewebsites.net/api/Kyc/test-nid-person-sig";
 
         $ch = curl_init( $url_path );
@@ -178,22 +192,46 @@ class Download extends CI_Controller {
         # Send request.
         $result = curl_exec($ch);
         curl_close($ch);
-        # Print response.
+        # store signature in variable
 		$object['sign'] = json_decode($result);
+		// PHP Curl for get Signature
+
+
+		// Genarate Barcode for This NID Card
+		// barcode Content
+		$string_for_barcode = "<pin>0000000000</pin><name> ".$object['voter_info']->voter->nameEn." </name><DOB>".date('d M Y', strtotime($object['voter_info']->voter->dob))."</DOB><FP></FP><F>Right Index</F><TYPE>A</TYPE><V>2.0</V><ds>302c0214733766837d7afc3514acc6b182cde5a8a8225dba02143ca6d1a777859b362102c2cda54407834ee0c7f2</ds>";
+		// barcode Content
+
+
+		$pdf417 = new PDF417();
+		$data = $pdf417->encode($string_for_barcode);
+
+		// Create a URL image, for barcode
+		$renderer = new ImageRenderer([
+			'format' => 'data-url',
+			'color' => '#000000',
+			'bgColor' => '#FFFFFF',
+			'scale' => 20,
+			'quality' => 90
+		]);
+		$img = $renderer->render($data);
+
+		$object['pdf417_barcode'] = $renderer->render($data);
+		// Genarate Barcode for This NID Card
 
 
 
+
+		// This is View File
        $html = $this->load->view('download/card_view_file', $object, true);
 
 
-
-
+		// Genarate mpdf file 
 		$defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
 		$fontDirs = $defaultConfig['fontDir'];
 
 		$defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
 		$fontData = $defaultFontConfig['fontdata'];
-
 		
 		$mpdf = new \Mpdf\Mpdf([
 			'format'=>'A4',
@@ -229,9 +267,9 @@ class Download extends CI_Controller {
 		$stylesheet = file_get_contents(FCPATH.'inc/style/mpdfStyle.css'); // external css
 		$mpdf->WriteHTML($stylesheet,1);
 		$mpdf->WriteHTML($html,2);
-        $mpdf->Output($fileName,'D'); 
+        $mpdf->Output($fileName,'D');
+		// Genarate mpdf file 
 
-    }
-
+	}
 
 }
