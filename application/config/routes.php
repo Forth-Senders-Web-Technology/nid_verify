@@ -72,6 +72,7 @@ $route['get_nid_no'] = 'admin/get_nid_no';
 $route['serve_view'] = 'admin/ec_server_copy_view';
 $route['search_copy'] = 'admin/search_copy_view';
 $route['username_password'] = 'admin/set_username_password_request';
+$route['card_view'] = 'admin/download_card_view';
 
 
 /* 

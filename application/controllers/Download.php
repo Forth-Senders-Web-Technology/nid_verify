@@ -30,6 +30,17 @@ class BanglaConverter {
     public static function en2bn($number) {
         return str_replace(self::$en, self::$bn, $number);
     }
+
+	public static function base64ToImage($base64_string, $output_file) {
+		$file = fopen($output_file, "wb");
+	
+		$data = explode(',', $base64_string);
+	
+		fwrite($file, base64_decode($data[1]));
+		fclose($file);
+	
+		return $output_file;
+	}
     
 }
 
@@ -48,19 +59,49 @@ class Download extends CI_Controller {
         $this->load->library('user_agent');
         $this->load->library('email');
 
+        if (!$this->ion_auth->logged_in()) {
+            redirect('logout', 'refresh');
+        }
+
+
         $this->data['setting_info'] = $this->setting_model->getSetting();
     }
 
     public function porichoy_verify()
     {
         $data_arr = $this->input->post('data_arr');
-		$object['voter_info'] = $data_arr;
+		$object['voter_info'] = json_decode($data_arr);
 
-var_dump($object['voter_info']);
-var_dump($object['voter_info']->name);
+        $headers = array(
+            'Content-Type:application/json',
+            'x-api-key:53c64d02-81d1-485b-97ba-b113ae251734',
+        );
+
+        $fields= array(
+					"person_dob" => $object['voter_info']->voter->dob,
+					"national_id" => "19911515395000337",
+					"person_fullname" => $object['voter_info']->voter->name,
+				
+                );
+        /////////////////////get jobs/////////////////
+
+        $url_path="https://porichoy.azurewebsites.net/api/Kyc/test-nid-person-sig";
+
+        $ch = curl_init( $url_path );
+        # Setup request to send json via POST.
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        # Return response instead of printing.
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+        # Send request.
+        $result = curl_exec($ch);
+        curl_close($ch);
+        # Print response.
+		$object['sign'] = json_decode($result);
 
 
-/* 
+
 		$html = $this->load->view('download/download_porichoy_verify', $object, true);
 		
 		$defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
@@ -92,7 +133,7 @@ var_dump($object['voter_info']->name);
 			'default_font' => 'solaimanlipi'
         ]);
         
-		$fileName = '0.pdf';
+		$fileName = $object['voter_info']->voter->nameEn.'.pdf';
 		$mpdf->defaultheaderline = 0;
 		$mpdf->defaultfooterline = 0;
 		// $mpdf->SetHeader('Document Title|Center Text|{PAGENO}');
@@ -102,13 +143,47 @@ var_dump($object['voter_info']->name);
 		$mpdf->WriteHTML($html,2);
         $mpdf->Output($fileName,'D'); 
 
- */
+		// $fileName,'D'
+		
     }
 
 
     public function card_file()
     {
-       $html = $this->load->view('download/card_view_file', '', true);
+        $data_arr = $this->input->post('data_arr');
+		$object['voter_info'] = json_decode($data_arr);
+
+        $headers = array(
+            'Content-Type:application/json',
+            'x-api-key:53c64d02-81d1-485b-97ba-b113ae251734',
+        );
+
+        $fields= array(
+					"person_dob" => $object['voter_info']->voter->dob,
+					"national_id" => "19911515395000337",
+					"person_fullname" => $object['voter_info']->voter->name,
+				
+                );
+        /////////////////////get jobs/////////////////
+
+        $url_path="https://porichoy.azurewebsites.net/api/Kyc/test-nid-person-sig";
+
+        $ch = curl_init( $url_path );
+        # Setup request to send json via POST.
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        # Return response instead of printing.
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+        # Send request.
+        $result = curl_exec($ch);
+        curl_close($ch);
+        # Print response.
+		$object['sign'] = json_decode($result);
+
+
+
+       $html = $this->load->view('download/card_view_file', $object, true);
 
 
 
@@ -146,7 +221,7 @@ var_dump($object['voter_info']->name);
 			'default_font' => 'solaimanlipi'
         ]);
         
-		$fileName = '0.pdf';
+		$fileName = 'nid_'.$$object['voter_info']->voter->nameEn.'_card.pdf';
 		$mpdf->defaultheaderline = 0;
 		$mpdf->defaultfooterline = 0;
 		// $mpdf->SetHeader('Document Title|Center Text|{PAGENO}');
@@ -154,10 +229,7 @@ var_dump($object['voter_info']->name);
 		$stylesheet = file_get_contents(FCPATH.'inc/style/mpdfStyle.css'); // external css
 		$mpdf->WriteHTML($stylesheet,1);
 		$mpdf->WriteHTML($html,2);
-        $mpdf->Output(); 
-
-// $fileName,'D'
-
+        $mpdf->Output($fileName,'D'); 
 
     }
 

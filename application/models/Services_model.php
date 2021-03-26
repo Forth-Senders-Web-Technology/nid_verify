@@ -12,6 +12,7 @@ class Services_model extends CI_Model {
     
     public function getNID_requ($user_id, $select_date, $service_id_s)
     {
+        $this->db->order_by('services_tbl_a_idd', 'desc');
         $this->db->where('entry_date', $select_date);
         $this->db->where('services_id', $service_id_s);
         $this->db->where('user_iddd', $user_id);

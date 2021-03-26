@@ -345,6 +345,13 @@ class Admin extends CI_Controller {
         $this->payment_model->inser_payment_request_s($insert_data_ss);
     }
 
+    public function download_card_view()
+    {
+        $user_group_id = $this->ion_auth->get_users_groups()->row()->id;
+        $service_s_idd = '3';
+        $this->data['service_rate'] = $this->services_model->get_services_list($service_s_idd, $user_group_id);
+        $this->load->template('admin/card_verify_view', $this->data);
+    }
     
 
 }

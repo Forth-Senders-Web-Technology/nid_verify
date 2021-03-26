@@ -30,9 +30,9 @@
             </p>
             <div style="border: 1px solid #000000 ; margin: 7px 0 0 0; padding: 0;"></div>
             <div class="" style=" width:72px; margin: 0; padding: 0; float: left; ">
-                <img width="68px" height="77px" src="inc/bar_code/man.png" alt=""
+                <img width="68px" height="77px" src="data:image/jpg;base64, <?php echo $voter_info->voter->photo; ?>" alt=""
                     style=" margin: 2px 2px 2px 2px; padding: 0;"><br>
-                <img width="68px" height="13px" src="inc/bar_code/sign.jpg" alt=""
+                <img width="68px" height="13px" src="data:image/jpg;base64, <?php echo $sign->photo; ?>" alt=""
                     style="margin: 5px 2px 2px 2px; padding: 0;">
             </div>
             <div style=" width: 245px; float: left; margin: 2px 0 0 0; background:url('inc/card_img/back.jpg'); background-repeat: no-repeat; background-size: 680px 380px; background-position: 5px 0px;"
@@ -41,33 +41,33 @@
                     নাম<span style="font-family: Arial;">:</span>
                 </div>
                 <div style="font-family: SolaimanLipi; font-size: 14px; margin: -18px 0 0 49px" class="name_bangla">
-                    <b>আমার বাংলা নাম</b>
+                    <b><?php echo $voter_info->voter->name; ?></b>
                 </div>
                 <div style="font-family: SolaimanLipi; font-size: 10px;float: left; margin: 7px 0 0 8px ;">
                     Name:
                 </div>
                 <div style="font-family: SolaimanLipi; font-size: 12px; float: left; margin: -16px 0 0 50px;">
-                    My English Name
+                    <?php echo $voter_info->voter->nameEn; ?>
                 </div>
                 <div style="font-family: SolaimanLipi; font-size: 12px; float: left; margin: 6px 0 0 8px ;">
                     পিতা:
                 </div>
                 <div style="font-family: SolaimanLipi; font-size: 12px; float: left; margin: -16px 0 0 50px;">
-                    আমার পিতার নাম বাংলা
+                    <?php echo $voter_info->voter->father; ?>
                 </div>
                 <div style="font-family: SolaimanLipi; font-size: 12px; float: left;  margin: 6px 0 0 8px ;">
                     মাতা:
                 </div>
                 <div style="font-family: SolaimanLipi; font-size: 12px; float: left; margin:  -16px 0 0 49px;">
-                    আমার মাতার নাম বাংলা
+                    <?php echo $voter_info->voter->mother; ?>
                 </div>
                 <div style="margin-top: 0px;">
                     <div style="font-family: SolaimanLipi; font-size: 12px; float: left; margin:  4px 0 0 9px ;">Date of
                         Birth:
-                        <span style="color: #FF0000; font-weight: bolder;">28 Jul 1988</span>
+                        <span style="color: #FF0000; font-weight: bolder;"> <?php echo date('d F Y', strtotime($voter_info->voter->dob)); ?></span>
                     </div>
                     <div style="font-family: SolaimanLipi; font-size: 13px; float: left; margin: 2px 0 0 9px ;">ID NO:
-                        <span style="color: #FF0000; font-weight: bold; font-size: 12px; ">1052884596</span>
+                        <span style="color: #FF0000; font-weight: bold; font-size: 12px; ">0000000000</span>
                     </div>
                 </div>
             </div>
@@ -87,9 +87,8 @@
                 style=" width: 30px; font-family: SolaimanLipi; font-size: 9.5px; margin: 1px 0px 6px 7px; float: left;">
                 ঠিকানা:
             </div>
-            <div style="font-family: SolaimanLipi; font-size: 9.5px; margin: 1px 3px 20px 2px;">
-                বাসা/হোল্ডিং: আনু মোল্লা বাড়ী, গ্রাম/রাস্তা: কালাম্পাড়া, ডাকঘর: বানু সওঃ বাড়ি - ২৩৫০, হাবিলদার এলাকা,
-                কক্সবাজার
+            <div style="font-family: SolaimanLipi; font-size: 9.5px; margin: 1px 3px 20px 2px; height: 30px">
+                <?php echo $voter_info->voter->permanentAddress; ?>
             </div>
 
             <div class=""
@@ -103,7 +102,7 @@
                 </span>
             </div>
             <div style="margin-left: 5px; font-size: 9px; width: 100px; float: left;">
-                জন্মস্থান: চট্টগ্রাম
+                জন্মস্থান: <?php $strArray = explode(' ',$voter_info->voter->permanentAddress); $lastElement = end($strArray); echo $lastElement; ?>
             </div>
             <div
                 style="font-family: SolaimanLipi; font-size: 8.8px; color: white; background-color: #000000; width: 35px; margin: 0; float: right; padding: 0 1px 1px 0; ">

@@ -171,7 +171,7 @@
                             </table>
                         </div><br>
                                     
-                        <form action="download/porichoy_verify" method="post">
+                        <form action="download/card_file" method="post">
                             <textarea name="data_arr" id="" style="display:none" cols="30" rows="10">${get_data}</textarea>
                             <input type="submit" style="cursor:pointer;" class="btn btn-info mx-auto btn-lg click_download_btn" value="Download">
                         </form>    
