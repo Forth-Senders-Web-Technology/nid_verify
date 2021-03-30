@@ -49,10 +49,15 @@ class Payment_model extends CI_Model {
     public function get_pending_withdraw_payment($user_id)
     {
         $this->db->limit(10);
-        $this->db->where('user_iddd', $user);
+        $this->db->where('user_iddd', $user_id);
         $this->db->join('payment_system_list', 'payment_system_list.payment_list_id = withsraw_request.payment_list_iidddd', 'left');
         $sql = $this->db->get('withsraw_request');
         return $sql->result();
+    }
+
+    public function insert_payment_withdraw_request($insert_data)
+    {
+        $this->db->insert('withsraw_request', $insert_data);        
     }
 
 }

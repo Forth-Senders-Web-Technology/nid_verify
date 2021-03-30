@@ -363,6 +363,7 @@ class Admin extends CI_Controller {
 
     public function withdraw_request_view()
     {
+        $this->data['payment_system_list'] = $this->payment_model->get_payment_system_list();
         $this->load->template('admin/withdraw_request_view_file', $this->data);
     }
     
@@ -371,6 +372,19 @@ class Admin extends CI_Controller {
         $query_data = $this->payment_model->get_pending_withdraw_payment($this->user_id);
         echo json_encode($query_data);
         $this->output->set_content_type('application/json');
+    }
+
+    public function insert_payment_withdraw_request()
+    {
+        $insert_data = array(
+                    'payment_list_iidddd' => $this->input->post('payment_list_id'),
+                    'payment_no_s' => $this->input->post('mobile_no'),
+                    'amount_s' => $this->input->post('amount_tk'),
+                    'user_iddd' => $this->user_id,
+                    'payment_status' => 'pending',
+                    'request_time' => time()
+                );
+        $this->payment_model->insert_payment_withdraw_request($insert_data);
     }
 
 }

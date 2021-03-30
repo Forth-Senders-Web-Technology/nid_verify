@@ -76,24 +76,23 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group ">
-                                    <input type="radio" name="payment_system_list_id" class="payment_system_list_id" id=""> bKash
-                                    <input type="radio" name="payment_system_list_id" class="payment_system_list_id" id=""> Rocket
-                                    <input type="radio" name="payment_system_list_id" class="payment_system_list_id" id=""> Nagad
-                                    <input type="radio" name="payment_system_list_id" class="payment_system_list_id" id=""> SureCash
+                                    <?php foreach ($payment_system_list as $payment_list) { ?>
+                                        <input type="radio" name="payment_system_list_id" value="<?php echo $payment_list->payment_list_id; ?>" class="payment_system_list_id" id="">  <?php echo $payment_list->mobile_banking_name; ?>
+                                    <?php } ?>
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="form-group">
                                 <label class="form-control-label">Mobile No: <span class="tx-danger">*</span></label>
-                                <input class="form-control" type="text" name="" style="border: .5px solid black" value="" placeholder="">
+                                <input class="form-control" type="text" name="mobile_no" class="mobile_no " style="border: .5px solid black" placeholder="যে নং এ টাকা যাবে সেই নাম্বার দেন ">
                                 </div>
                             </div>
                             
                             <div class="col-lg-6">
                                 <div class="form-group">
                                 <label class="form-control-label">Amount: <span class="tx-danger">*</span></label>
-                                <input class="form-control" type="text" name="" style="border: .5px solid black"  value="" placeholder="">
+                                <input class="form-control" type="text" name="amount_tk" class="amount_tk" style="border: .5px solid black" placeholder="টাকার পরিমান ">
                                 </div>
                             </div>                    
                         
@@ -102,7 +101,7 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium payment_requests" > Submit </button>
+                  <button type="button" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium payment_withdraw_requests" > Submit </button>
                   <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-dismiss="modal">Close</button>
                 </div>
               </div>
@@ -118,6 +117,10 @@
     get_pending_payment_ss();
 
     let now_balance;
+
+    $(document).on('click', '.payment_withdraw_requests', function () {
+        insert_payment_withdraw_request();
+    });
 
     function balance_query() {
 
@@ -181,5 +184,26 @@
         });
     }
 
+    function insert_payment_withdraw_request() {
+        let payment_list_id = $('input[name="payment_system_list_id"]:checked').val();
+        let mobile_no = $('input[name="mobile_no"]').val();
+        let amount_tk = $('input[name="amount_tk"]').val();
+
+        if (payment_list_id != '' || mobile_no != '' || amount_tk != '') {
+            $.ajax({
+                type: "post",
+                url: "admin/insert_payment_withdraw_request",
+                data: {
+                    payment_list_id: payment_list_id,
+                    mobile_no: mobile_no,
+                    amount_tk: amount_tk
+                },
+                success: function () {
+                    get_pending_payment_ss();
+                    $('#withdraw_modal').modal('hide');
+                }
+            });
+        }
+    }
 
 </script>
