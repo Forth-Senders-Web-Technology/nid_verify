@@ -8,7 +8,14 @@
                     Payment 
                 </span>
             </nav>
-        </div><!-- br-pageheader -->
+        </div>
+
+        <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
+            <h5 class="text-center">   </h5>
+            <h4 class="tx-gray-800 mg-b-5">Your Balance: <span class="bal_value"></span></h4>
+            <p class="mg-b-0"></p>
+        </div>
+        
 
 
     <div class="br-pagebody mg-t-5 pd-x-30">
@@ -65,10 +72,10 @@
 
 
           
-        </div><!-- row -->
-        
+        </div>
 
-        <h6 class="tx-inverse tx-uppercase tx-bold tx-14 mg-t-80 mg-b-10"> Your Panding List </h6>
+
+        <h6 class="tx-inverse tx-uppercase tx-bold tx-14 mg-t-80 mg-b-10"> Last 5 Payment List </h6>
 
         <div class="table-responsive">
             <table class="table table-bordered table-colored table-dark">
@@ -106,6 +113,10 @@
         let tr_id = $(this).parents('.model_s_content').find('.trid_number').val();
         insert_payment_request(tr_id, pay_sys_id)
     });
+
+    balance_query();
+
+    let now_balance;
 
     get_pending_payment_ss();
 
@@ -153,6 +164,55 @@
             }
         });
     }
+
+
+
+
+    function balance_query() {
+
+        let total_added_money;
+        let total_cut_money;
+
+        $.ajax({
+            type: "get",
+            url: "admin/balance_query",
+            data: "",
+            dataType: "json",
+            success: function (bal) {
+
+                if (bal.payment_added) {
+                    total_added_money = bal.payment_added;
+                }else {
+                    total_added_money = 0;
+                }
+
+                if (bal.payment_cut) {
+                    total_cut_money = bal.payment_cut;
+                }else {
+                    total_cut_money = 0;
+                }
+                now_balance = parseInt(total_added_money) - parseInt(total_cut_money);
+
+                $('.bal_value').html(now_balance);
+                
+
+                if (now_balance >= services_rate) {
+                    $('.verify_box_set').html(`
+                    <div class="input-group wd-xs-300">
+                        <input type="text" maxlength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' size="10" class="form-control nid_number_type" placeholder=" NID Number ">
+                        <div class="input-group-btn">
+                            <button class="btn btn-info nid_data_search_btn" style="cursor:pointer"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>  
+                    `);
+                }else {
+                    $('.verify_box_set').html('আপনার একাউন্টে টাকা বেশি নেই দয়া করে আগে রিচার্গ করুন .... ');
+                }
+            }
+        });
+    }
+
+
 </script>
 
 

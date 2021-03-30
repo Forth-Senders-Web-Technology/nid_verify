@@ -97,6 +97,15 @@
         </a><!-- br-menu-link -->
       </div><!-- br-sideleft-menu -->
 
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="create_card" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-id-card"></i>
+            <span class="menu-item-label"> কার্ড তৈরী </span>
+          </div> 
+        </a> 
+      </div>
+
       <?php } ?>
       
       <div class="br-sideleft-menu " id="sidebar-menu">

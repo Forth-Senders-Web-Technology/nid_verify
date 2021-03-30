@@ -7,6 +7,7 @@
 
       <div class="br-pagebody mg-t-5 pd-x-30">
         <div class="row row-sm">
+
           <div class="col-sm-6 col-xl-3">
             <div class="bg-teal rounded overflow-hidden">
               <div class="pd-25 d-flex align-items-center">
@@ -18,7 +19,8 @@
                 </div>
               </div>
             </div>
-          </div><!-- col-3 -->
+          </div> 
+
           <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
             <div class="bg-danger rounded overflow-hidden">
               <div class="pd-25 d-flex align-items-center">
@@ -30,7 +32,12 @@
                 </div>
               </div>
             </div>
-          </div><!-- col-3 -->
+          </div> 
+
+
+
+
+        <?php if ($this->ion_auth->in_group(array('admin', 's_admin'))) { ?>
           <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
             <div class="bg-primary rounded overflow-hidden">
               <div class="pd-25 d-flex align-items-center">
@@ -42,7 +49,8 @@
                 </div>
               </div>
             </div>
-          </div><!-- col-3 -->
+          </div> 
+
           <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
             <div class="bg-br-primary rounded overflow-hidden">
               <div class="pd-25 d-flex align-items-center">
@@ -54,16 +62,18 @@
                 </div>
               </div>
             </div>
-          </div><!-- col-3 -->
-        </div><!-- row -->
+          </div>
+          <?php } ?>
+          
+        </div>
 
         <div class="row row-sm mg-t-20">
           <div class="col-8">
 
             <div class="card pd-0 bd-0 shadow-base">
               <div class="pd-x-30 pd-t-30 pd-b-15">
-                <div class="">
-                  <!-- Speacial Status in this place -->
+                <div class="" style="font-size: 22px; color: black; ">
+                   এই সাইটের ইনকাম থেকে 1% টাকা খরচ হবে গরীব, অসহায়, এতীমের উন্নতির জন্য।  
                 </div>
               </div>
             </div><!-- card -->

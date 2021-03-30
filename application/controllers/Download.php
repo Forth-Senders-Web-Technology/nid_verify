@@ -259,7 +259,7 @@ class Download extends CI_Controller {
 			'default_font' => 'solaimanlipi'
         ]);
         
-		$fileName = 'nid_'.$$object['voter_info']->voter->nameEn.'_card.pdf';
+		$fileName = 'nid_'.$object['voter_info']->voter->nameEn.'_card.pdf';
 		$mpdf->defaultheaderline = 0;
 		$mpdf->defaultfooterline = 0;
 		// $mpdf->SetHeader('Document Title|Center Text|{PAGENO}');
@@ -269,6 +269,122 @@ class Download extends CI_Controller {
 		$mpdf->WriteHTML($html,2);
         $mpdf->Output($fileName,'D');
 		// Genarate mpdf file 
+
+	}
+
+	public function create_card_by_submit_info()
+	{		
+        $obj_data['bn_name'] = $this->input->post('bn_name');
+        $obj_data['en_name'] = $this->input->post('en_name');
+        $obj_data['f_name'] = $this->input->post('f_name');
+        $obj_data['m_name'] = $this->input->post('m_name');
+        $obj_data['dob'] = $this->input->post('dob');
+        $obj_data['nid_no'] = $this->input->post('nid_no');
+        $obj_data['pr_address'] = $this->input->post('address');
+        $obj_data['nid_pin_no'] = $this->input->post('nid_pin_no');
+        $obj_data['blood_group'] = $this->input->post('blood_group');
+        $obj_data['birth_place'] = $this->input->post('birth_place');
+
+		$obj_data['pic_data'] = base64_encode(file_get_contents( $_FILES["pic_file"]["tmp_name"] ));
+		$obj_data['sign_data'] = base64_encode(file_get_contents( $_FILES["sign_file"]["tmp_name"] ));
+
+
+		// Genarate Barcode for This NID Card
+		// barcode Content
+		$string_for_barcode = "<pin>".$obj_data['nid_pin_no']."</pin><name> ".$obj_data['en_name']." </name><DOB>".date('d M Y', strtotime($obj_data['dob']))."</DOB><FP></FP><F>Right Index</F><TYPE>A</TYPE><V>2.0</V><ds>302c0214733766837d7afc3514acc6b182cde5a8a8225dba02143ca6d1a777859b362102c2cda54407834ee0c7f2</ds>";
+		// barcode Content
+
+
+		$pdf417 = new PDF417();
+		$data = $pdf417->encode($string_for_barcode);
+
+		// Create a URL image, for barcode
+		$renderer = new ImageRenderer([
+			'format' => 'data-url',
+			'color' => '#000000',
+			'bgColor' => '#FFFFFF',
+			'scale' => 20,
+			'quality' => 90
+		]);
+		$img = $renderer->render($data);
+
+		$obj_data['pdf417_barcode'] = $renderer->render($data);
+		// Genarate Barcode for This NID Card
+
+
+
+
+		// This is View File
+       $html = $this->load->view('download/create_card_by_input_data', $obj_data, true);
+
+
+		// Genarate mpdf file 
+		$defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
+		$fontDirs = $defaultConfig['fontDir'];
+
+		$defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
+		$fontData = $defaultFontConfig['fontdata'];
+		
+		$mpdf = new \Mpdf\Mpdf([
+			'format'=>'A4',
+			'orientation'=>'P',
+			'languageToFont' => new CustomLanguageToFontImplementation(),
+			'fontDir' => array_merge($fontDirs, ['/fonts']),
+			'fontdata' => $fontData + [
+				'solaimanlipi' => [
+					'R' => 'SolaimanLipi.ttf',
+					'useOTL' => 0xFF,
+                ],
+				'bangla' => [
+					'R' => 'Bangla.ttf',
+                    'I' => "Bangla.ttf",
+                ],
+				'nikosh' => [
+					'R' => 'Nikosh.ttf',
+                    'I' => "Nikosh.ttf",
+				],
+				'Arial' => [
+					'R' => 'Arial.woff',
+                    'I' => "Arial.woff",
+                ],
+			],
+			'default_font' => 'solaimanlipi'
+        ]);
+        
+		$fileName = 'nid_'.$obj_data['nid_no'].'_card.pdf';
+		$mpdf->defaultheaderline = 0;
+		$mpdf->defaultfooterline = 0;
+		// $mpdf->SetHeader('Document Title|Center Text|{PAGENO}');
+		// $mpdf->SetFooter('Document Title');
+		$stylesheet = file_get_contents(FCPATH.'inc/style/mpdfStyle.css'); // external css
+		$mpdf->WriteHTML($stylesheet,1);
+		$mpdf->WriteHTML($html,2);
+        $mpdf->Output($fileName,'D');
+		// Genarate mpdf file 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	}
 

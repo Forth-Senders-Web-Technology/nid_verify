@@ -352,6 +352,25 @@ class Admin extends CI_Controller {
         $this->data['service_rate'] = $this->services_model->get_services_list($service_s_idd, $user_group_id);
         $this->load->template('admin/card_verify_view', $this->data);
     }
+
+    public function create_card_view()
+    {
+        $user_group_id = $this->ion_auth->get_users_groups()->row()->id;
+        $service_s_idd = '10';
+        $this->data['service_rate'] = $this->services_model->get_services_list($service_s_idd, $user_group_id);
+        $this->load->template('admin/create_card_view_form', $this->data);
+    }
+
+    public function withdraw_request_view()
+    {
+        $this->load->template('admin/withdraw_request_view_file', $this->data);
+    }
     
+    public function get_pending_withdraw_payment()
+    {
+        $query_data = $this->payment_model->get_pending_withdraw_payment($this->user_id);
+        echo json_encode($query_data);
+        $this->output->set_content_type('application/json');
+    }
 
 }
