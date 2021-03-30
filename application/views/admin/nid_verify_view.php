@@ -171,7 +171,8 @@
                             </table>
                         </div><br>
                                     
-                        <form action="download/porichoy_verify" method="post">
+                        <form action="download/porichoy_verify" method="post" target="_blank" id="html_submit_form">
+                            <input type="hidden" value="${get_nid_no_typing}" name="nid_typing_data">
                             <textarea name="data_arr" id="" style="display:none" cols="30" rows="10">${get_data}</textarea>
                             <input type="submit" style="cursor:pointer;" class="btn btn-info mx-auto btn-lg click_download_btn" value="Download">
                         </form>    
@@ -182,11 +183,23 @@
             }
 
         }
-/* 
+
+
+
+
         $(document).on('click', '.click_download_btn', function () {
-            pass_data_to_controller_for_download(full_data.voter);
+            setTimeout(function() {
+                $('.nid_get_data').html(``);
+            }, 1500);
         });
 
+/* 
+        $("#html_submit_form").submit(function(event) {
+
+            
+            $('.nid_get_data').html(``);
+
+        });
         function pass_data_to_controller_for_download(param_s) {
             $.ajax({
                 type: "post",

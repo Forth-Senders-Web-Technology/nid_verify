@@ -67,7 +67,7 @@
                         <span style="color: #FF0000; font-weight: bolder;"> <?php echo date('d M Y', strtotime($voter_info->voter->dob)); ?></span>
                     </div>
                     <div style="font-family: SolaimanLipi; font-size: 13px; float: left; margin: 2px 0 0 9px ;">ID NO:
-                        <span style="color: #FF0000; font-weight: bold; font-size: 12px; ">0000000000</span>
+                        <span style="color: #FF0000; font-weight: bold; font-size: 12px; "><?php echo $nid_no_type; ?></span>
                     </div>
                 </div>
             </div>

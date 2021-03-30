@@ -41,6 +41,17 @@
     </div><!-- form-group -->
 
 
+    <div class="form-layout form-layout-2">
+      <div class="row no-gutters mt-3">
+          <div class="col-md-12">
+              <div class="form-group bd-t-0-force">
+                <label class="form-control-label">Your Full Name <span class="tx-danger">*</span></label>
+                <input required class="form-control" type="text" name="person_name" value="" placeholder="Enter Your Full Name">
+              </div>
+          </div>
+      </div>
+    </div>
+
     
     <div class="form-layout form-layout-2">
       <div class="row no-gutters mt-3">

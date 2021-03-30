@@ -76,6 +76,8 @@ class Download extends CI_Controller {
     {
 		// Get Json Data From View File
         $data_arr = $this->input->post('data_arr');
+        $object['nid_no_type'] = $this->input->post('nid_typing_data');
+		
 		// Decode Json Data 
 		$object['voter_info'] = json_decode($data_arr);
 
@@ -87,7 +89,7 @@ class Download extends CI_Controller {
 
         $fields= array(
 					"person_dob" => $object['voter_info']->voter->dob,
-					"national_id" => "19911515395000337",
+					"national_id" => $object['nid_no_type'],
 					"person_fullname" => $object['voter_info']->voter->name,
 				
                 );
@@ -107,7 +109,7 @@ class Download extends CI_Controller {
         $result = curl_exec($ch);
         curl_close($ch);
         # Store Signature in Variable
-		$object['sign'] = json_decode($result);
+		$object['signa_ture'] = json_decode($result);
 		// PHP Curl for get Signature
 
 
@@ -162,6 +164,9 @@ class Download extends CI_Controller {
     {
 		// Get json data from view file
         $data_arr = $this->input->post('data_arr');
+
+        $object['nid_no_type'] = $this->input->post('nid_typing_data');
+
 		// decode json data
 		$object['voter_info'] = json_decode($data_arr);
 
@@ -174,7 +179,7 @@ class Download extends CI_Controller {
 
         $fields= array(
 					"person_dob" => $object['voter_info']->voter->dob,
-					"national_id" => "19911515395000337",
+					"national_id" => $object['nid_no_type'],
 					"person_fullname" => $object['voter_info']->voter->name,
 				
                 );
@@ -199,7 +204,7 @@ class Download extends CI_Controller {
 
 		// Genarate Barcode for This NID Card
 		// barcode Content
-		$string_for_barcode = "<pin>0000000000</pin><name> ".$object['voter_info']->voter->nameEn." </name><DOB>".date('d M Y', strtotime($object['voter_info']->voter->dob))."</DOB><FP></FP><F>Right Index</F><TYPE>A</TYPE><V>2.0</V><ds>302c0214733766837d7afc3514acc6b182cde5a8a8225dba02143ca6d1a777859b362102c2cda54407834ee0c7f2</ds>";
+		$string_for_barcode = "<pin>".$object['nid_no_type']."</pin><name> ".$object['voter_info']->voter->nameEn." </name><DOB>".date('d M Y', strtotime($object['voter_info']->voter->dob))."</DOB><FP></FP><F>Right Index</F><TYPE>A</TYPE><V>2.0</V><ds>302c0214733766837d7afc3514acc6b182cde5a8a8225dba02143ca6d1a777859b362102c2cda54407834ee0c7f2</ds>";
 		// barcode Content
 
 

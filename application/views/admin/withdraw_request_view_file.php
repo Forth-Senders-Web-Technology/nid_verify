@@ -85,14 +85,14 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                 <label class="form-control-label">Mobile No: <span class="tx-danger">*</span></label>
-                                <input class="form-control" type="text" name="mobile_no" class="mobile_no " style="border: .5px solid black" placeholder="যে নং এ টাকা যাবে সেই নাম্বার দেন ">
+                                <input class="form-control mobile_no" type="text" name="mobile_no" style="border: .5px solid black" placeholder="যে নং এ টাকা যাবে সেই নাম্বার দেন ">
                                 </div>
                             </div>
                             
                             <div class="col-lg-6">
                                 <div class="form-group">
                                 <label class="form-control-label">Amount: <span class="tx-danger">*</span></label>
-                                <input class="form-control" type="text" name="amount_tk" class="amount_tk" style="border: .5px solid black" placeholder="টাকার পরিমান ">
+                                <input class="form-control amount_tk" type="text" name="amount_tk" style="border: .5px solid black" placeholder="টাকার পরিমান ">
                                 </div>
                             </div>                    
                         
@@ -117,6 +117,14 @@
     get_pending_payment_ss();
 
     let now_balance;
+
+    $(document).on('keyup', '.amount_tk', function () {
+        let amount_tk = $(this).val();
+        if (now_balance < amount_tk ) {
+            alert('Your balance is low');
+            $('.amount_tk').val('0');
+        }
+    });
 
     $(document).on('click', '.payment_withdraw_requests', function () {
         insert_payment_withdraw_request();
@@ -200,6 +208,7 @@
                 },
                 success: function () {
                     get_pending_payment_ss();
+                    balance_query();
                     $('#withdraw_modal').modal('hide');
                 }
             });

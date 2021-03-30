@@ -73,7 +73,7 @@
             <div class="card pd-0 bd-0 shadow-base">
               <div class="pd-x-30 pd-t-30 pd-b-15">
                 <div class="" style="font-size: 22px; color: black; ">
-                   এই সাইটের ইনকাম থেকে 1% টাকা খরচ হবে গরীব, অসহায়, এতীমের উন্নতির জন্য।  
+                   <!-- এই সাইটের ইনকাম থেকে 1% টাকা খরচ হবে গরীব, অসহায়, এতীমের জন্য।   -->
                 </div>
               </div>
             </div><!-- card -->

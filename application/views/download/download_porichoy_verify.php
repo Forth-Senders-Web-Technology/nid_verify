@@ -18,12 +18,12 @@
                 <img style="margin: 3px" src="data:image/jpg;base64, <?php echo $voter_info->voter->photo; ?>" alt="">
             </div>
 
-            <div style="margin: 5px auto; width: 120px; border: 1.5px solid grey;" >
-                <img style="margin: 3px" src="data:image/jpg;base64, <?php echo $sign->photo; ?>" alt="">
+            <div style="margin: 3px auto; width: 120px; border: 1.5px solid grey;" >
+                <img style="margin: 3px" src="data:image/jpg;base64, <?php echo $signa_ture->photo; ?>" alt="">
             </div>
 
 
-            <table border="1" style="border-collapse: collapse; margin: 15px 10px 0 55px;">
+            <table border="1" style="border-collapse: collapse; margin: 5px 10px 0 55px;">
                 <tr>
                     <td class="td_head">নাম (বাংলা)</td>
                     <td class="td_value"> <?php echo $voter_info->voter->name; ?></td>
@@ -66,12 +66,12 @@
                 </tr>
                 <tr>
                     <td class="td_head">জাতীয় পরিচয় পত্র নম্বর</td>
-                    <td class="td_value"></td>
+                    <td class="td_value"><?php echo $nid_no_type; ?></td>
                 </tr>
-                <tr>
+<!--                 <tr>
                     <td class="td_head">পিন নম্বর</td>
                     <td class="td_value"></td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td class="td_head">বর্তমান ঠিকানা (বাংলা)</td>
                     <td class="td_value"><?php echo $voter_info->voter->presentAddress; ?></td>

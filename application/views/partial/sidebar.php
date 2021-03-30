@@ -109,7 +109,7 @@
       <?php } ?>
       
       <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="" class="br-menu-link">
+        <a href="withdraw_view" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-dollar"></i>
             <span class="menu-item-label"> Payment Withdraw </span>

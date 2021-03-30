@@ -377,14 +377,22 @@ class Admin extends CI_Controller {
     public function insert_payment_withdraw_request()
     {
         $insert_data = array(
-                    'payment_list_iidddd' => $this->input->post('payment_list_id'),
-                    'payment_no_s' => $this->input->post('mobile_no'),
-                    'amount_s' => $this->input->post('amount_tk'),
-                    'user_iddd' => $this->user_id,
-                    'payment_status' => 'pending',
-                    'request_time' => time()
+                    'payment_list_iidddd'   => $this->input->post('payment_list_id'),
+                    'payment_no_s'          => $this->input->post('mobile_no'),
+                    'amount_s'              => $this->input->post('amount_tk'),
+                    'user_iddd'             => $this->user_id,
+                    'payment_status'        => 'pending',
+                    'request_time'          => time()
                 );
         $this->payment_model->insert_payment_withdraw_request($insert_data);
+        
+        $data_arr = array(
+                    'cut_amount'            => $this->input->post('amount_tk'),
+                    'cust_id'               => $this->user_id,
+                    'time_s'                => time(),
+                    'payment_cut_causes'    => 'Withdraw'
+                );
+        $this->services_model->insert_this_services_cost($data_arr);
     }
 
 }
