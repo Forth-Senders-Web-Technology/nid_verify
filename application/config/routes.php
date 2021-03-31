@@ -75,6 +75,7 @@ $route['username_password'] = 'admin/set_username_password_request';
 $route['card_view'] = 'admin/download_card_view';
 $route['create_card'] = 'admin/create_card_view';
 $route['withdraw_view'] = 'admin/withdraw_request_view';
+$route['edit_profile'] = 'admin/edit_profile';
 
 
 /* 

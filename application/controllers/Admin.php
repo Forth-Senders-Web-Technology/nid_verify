@@ -395,4 +395,29 @@ class Admin extends CI_Controller {
         $this->services_model->insert_this_services_cost($data_arr);
     }
 
+    public function edit_profile()
+    {
+        $this->load->template('admin/edit_login_profile', $this->data);
+    }
+
+    public function insert_edited_profile()
+    {
+        $insert_data_array = array(
+                        'username' => $this->input->post('user_name'),
+                        'email' => $this->input->post('email_no'),
+                        'phone' => $this->input->post('phone_no'),
+                        'password' => $this->ion_auth_model->hash_password($this->input->post('new_password'))
+                    );
+            $this->user_model->update_user_info($insert_data_array, $this->ion_auth->user()->row()->id);
+
+
+        $update_customer_info = array(
+                        'user_phone_no' => $this->input->post('phone_no')
+                    );
+            $this->user_model->update_customer_info($update_customer_info, $this->user_id);
+
+            $this->session->set_flashdata('success', 'Update Successfuly');
+            redirect("edit_profile");
+    }
+
 }
