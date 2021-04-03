@@ -33,7 +33,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Bracket Responsive Bootstrap 4 Admin Template</title>
+    <title><?php echo $setting_info->name_s; ?></title>
 
     <!-- vendor css -->
     <link href="inc/lib/font-awesome/css/font-awesome.css" rel="stylesheet">

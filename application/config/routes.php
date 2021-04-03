@@ -53,17 +53,21 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// notfound
+// Auth Controller
+$route['login_check'] = 'auth/login';
+$route['logout'] = 'auth/logout';
+// Auth Controller
 
-
+// Home Controller
 $route['reg_form'] = 'home/registration';
 $route['registration'] = 'home/signup';
 $route['waiting_msg'] = 'home/waiting_msg';
 $route['login'] = 'home/login';
 $route['forget_password_view'] = 'home/forget_password_view';
 $route['reset_password'] = 'home/reset_password';
-$route['login_check'] = 'auth/login';
-$route['logout'] = 'auth/logout';
+// Home Controller
+
+// Admin Controller
 $route['nid_verify'] = 'admin/nid_verify';
 $route['birth_verify'] = 'admin/birth_verify_view';
 $route['payment'] = 'admin/payment_view';
@@ -76,7 +80,12 @@ $route['card_view'] = 'admin/download_card_view';
 $route['create_card'] = 'admin/create_card_view';
 $route['withdraw_view'] = 'admin/withdraw_request_view';
 $route['edit_profile'] = 'admin/edit_profile';
+// Admin Controller
 
+// Services Provider Controller
+$route['all_services'] = 'servicesprovider/index';
+$route['a'] = 'servicesprovider/a';
+// Services Provider Controller
 
 /* 
 

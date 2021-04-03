@@ -368,29 +368,6 @@ class Download extends CI_Controller {
 		// Genarate mpdf file 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 
 }

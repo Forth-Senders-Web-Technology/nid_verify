@@ -15,6 +15,17 @@
         </a>
       </div>
 
+      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'services'))) { ?>
+        <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="all_services" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-address-book"></i>
+            <span class="menu-item-label"> All Request </span>
+          </div> 
+        </a> 
+      </div>
+      <?php } ?>
+
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="nid_verify" class="br-menu-link">
           <div class="br-menu-item">
@@ -117,7 +128,6 @@
         </a><!-- br-menu-link -->
       </div><!-- br-sideleft-menu -->
 
-
     <?php if ($this->ion_auth->in_group(array('admin', 's_admin'))) { ?>
     <div class="br-sideleft-menu " id="sidebar-menu">
       <a href="" class="br-menu-link">
@@ -183,6 +193,8 @@
     </div><!-- br-sideleft -->
     <!-- ########## END: LEFT PANEL ########## -->
 
+
+
     <!-- ########## START: HEAD PANEL ########## -->
     <div class="br-header">
       <div class="br-header-left">
@@ -204,7 +216,7 @@
             <div class="dropdown-menu dropdown-menu-header wd-200">
               <ul class="list-unstyled user-profile-nav">
                 <li><a href="edit_profile"><i class="icon ion-ios-person"></i> Edit Profile</a></li>
-                <li><a href=""><i class="icon ion-ios-gear"></i> Settings</a></li>
+<!--                 <li><a href=""><i class="icon ion-ios-gear"></i> Settings</a></li> -->
                 <li><a href="logout"><i class="icon ion-power"></i> Sign Out</a></li>
               </ul>
             </div><!-- dropdown-menu -->
