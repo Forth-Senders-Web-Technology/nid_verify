@@ -47,6 +47,37 @@ class Services_model extends CI_Model {
         $sql = $this->db->get('services_request_tbl');
         return $sql->result(); 
     }
+
+    public function get_sevices_rate_for_provider()
+    {
+        $this->db->join('services_list_tbl', 'services_list_tbl.services_list_tbl_p_id = provider_rate.services_idd', 'left');
+        $sql = $this->db->get('provider_rate');
+        return $sql->result(); 
+    }
+
+    public function get_Waiting_services()
+    {
+        $this->db->where('requ_status', 0);
+        $this->db->where('check_in_user_id', NULL);
+        $this->db->join('services_list_tbl', 'services_list_tbl.services_list_tbl_p_id = services_request_tbl.services_id', 'left');        
+        $sql = $this->db->get('services_request_tbl');
+        return $sql->result(); 
+    }
+
+    public function select_this_services_in_login_user($select_service_id, $array_data)
+    {
+        $this->db->where('services_tbl_a_idd', $select_service_id);
+        $this->db->update('services_request_tbl', $array_data);
+    }
+
+    public function get_my_provide_services($user_id)
+    {
+        $this->db->where('requ_status', 0);
+        $this->db->where('check_in_user_id', $user_id);
+        $this->db->join('services_list_tbl', 'services_list_tbl.services_list_tbl_p_id = services_request_tbl.services_id', 'left');        
+        $sql = $this->db->get('services_request_tbl');
+        return $sql->result(); 
+    }
 }
 
 /* End of file Services_model.php */

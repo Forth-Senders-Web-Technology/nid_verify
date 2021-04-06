@@ -30,8 +30,6 @@
     <script src="inc/lib/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
     <script src="inc/lib/parsleyjs/parsley.js"></script>
     <script src="inc/lib/jquery.steps/jquery.steps.js"></script>
-    <script src="inc/lib/datatables/jquery.dataTables.js"></script>
-    <script src="inc/lib/datatables-responsive/dataTables.responsive.js"></script>
     <script src="inc/lib/raphael/raphael.min.js"></script>
     <script src="inc/lib/morris.js/morris.js"></script>
     <script src="inc/lib/Jcrop/Jcrop.js"></script>

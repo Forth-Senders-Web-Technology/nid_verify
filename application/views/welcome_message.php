@@ -70,13 +70,32 @@
         <div class="row row-sm mg-t-20">
           <div class="col-8">
 
+
+      <?php if ($this->ion_auth->in_group(array('services'))) { ?>
             <div class="card pd-0 bd-0 shadow-base">
               <div class="pd-x-30 pd-t-30 pd-b-15">
-                <div class="" style="font-size: 22px; color: black; ">
-                   <!-- এই সাইটের ইনকাম থেকে 1% টাকা খরচ হবে গরীব, অসহায়, এতীমের জন্য।   -->
+                <div class="" style="color: black; ">
+                   <h3> If you provide services under rate is for you.</h3>
+                      <table class="table table-border">
+                        <tr>
+                          <th>SL</th>
+                          <th>Service Name</th>
+                          <th>Rate</th>
+                        </tr>
+                   <?php $sl = 1 ; foreach ($provider_rate as $tk) { ?>
+                        <tr>
+                          <td><?php echo $sl; ?></td>
+                          <td><?php echo $tk->services_name; ?></td>
+                          <td><?php echo $tk->amount_rate_s; ?>/-</td>
+                        </tr>
+                   <?php $sl+=1; } ?>
+                      </table>
                 </div>
               </div>
-            </div><!-- card -->
+            </div>
+      <?php } ?>
+
+
 
 
           </div><!-- col-9 -->

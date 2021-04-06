@@ -84,7 +84,7 @@ $route['edit_profile'] = 'admin/edit_profile';
 
 // Services Provider Controller
 $route['all_services'] = 'servicesprovider/index';
-$route['a'] = 'servicesprovider/a';
+$route['my_provide'] = 'servicesprovider/my_basket_services';
 // Services Provider Controller
 
 /* 

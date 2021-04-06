@@ -76,6 +76,9 @@
 
     <!-- jQuery -->
     <script src="inc/lib/jquery/jquery.js"></script>
+
+    <script src="inc/lib/datatables/jquery.dataTables.js"></script>
+    <script src="inc/lib/datatables-responsive/dataTables.responsive.js"></script>
     
   </head>
   

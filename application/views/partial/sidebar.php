@@ -13,7 +13,7 @@
             <span class="menu-item-label">Dashboard</span>
           </div>
         </a>
-      </div>
+      </div> 
 
       <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'services'))) { ?>
         <div class="br-sideleft-menu " id="sidebar-menu">
@@ -21,6 +21,15 @@
           <div class="br-menu-item">
             <i class="fa fa-address-book"></i>
             <span class="menu-item-label"> All Request </span>
+          </div> 
+        </a> 
+      </div>
+
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="my_provide" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-shopping-basket"></i>
+            <span class="menu-item-label"> My Basket </span>
           </div> 
         </a> 
       </div>

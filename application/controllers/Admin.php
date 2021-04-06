@@ -37,6 +37,7 @@ class Admin extends CI_Controller {
         $this->data['payment_added'] = $this->payment_model->payment_added_info($this->user_id);
         $this->data['payment_cut'] = $this->payment_model->payment_cut_info($this->user_id);
         $this->data['services_info'] = $this->services_model->get_this_user_datewise_services_info($this->user_id, $this_date);
+        $this->data['provider_rate'] = $this->services_model->get_sevices_rate_for_provider();
 		$this->load->template('welcome_message', $this->data);
     }
 

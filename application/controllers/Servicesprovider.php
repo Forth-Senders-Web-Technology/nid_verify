@@ -34,4 +34,44 @@ class Servicesprovider extends CI_Controller
     {
         $this->load->template('provider/all_service', $this->data);
     }
+
+    public function get_all_Waiting_services()
+    {
+        $query_data = $this->services_model->get_Waiting_services();
+        echo json_encode($query_data);
+    }
+
+    public function select_this_services_in_login_user()
+    {
+        $select_service_id = $this->input->post('request_services_iid');
+
+        $array_data = array(
+                    'check_in_user_id' => $this->user_id, 
+                    'check_in_times' => time(), 
+                );
+        $this->services_model->select_this_services_in_login_user($select_service_id, $array_data);
+    }
+
+    public function my_basket_services()
+    {
+        $this->load->template('provider/my_basket_service', $this->data);
+    }
+
+    public function get_my_provide_services()
+    {
+        $query_data = $this->services_model->get_my_provide_services($this->user_id);
+        echo json_encode($query_data);
+    }
+
+    public function insert_nid_data()
+    {
+        $array_data = array(
+                    'nid_no' => $this->input->post('nid_no'), 
+                    'nid_pin_no' => $this->input->post('nid_pin_no'), 
+                    'requ_status' => 2, 
+                    'delivery_time' => time(), 
+                    'delivery_user_id' => $this->user_id, 
+                );
+        $this->services_model->select_this_services_in_login_user($array_data, $this->input->post('services_id'));
+    }
 }
