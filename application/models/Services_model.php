@@ -78,6 +78,7 @@ class Services_model extends CI_Model {
         $sql = $this->db->get('services_request_tbl');
         return $sql->result(); 
     }
+
 }
 
 /* End of file Services_model.php */
