@@ -79,6 +79,19 @@ class Services_model extends CI_Model {
         return $sql->result(); 
     }
 
+    public function updated_services_cost($data_arr, $services_payment_cut_idd)
+    {
+        $this->db->where('payment_cut_a_iidd', $services_payment_cut_idd);
+        $this->db->update('payment_cut', $data_arr);
+    }
+
+    public function get_services_activity_check()
+    {
+        $this->db->join('services_list_tbl', 'services_list_tbl.services_list_tbl_p_id = services_activity.services_iiddd', 'left');        
+        $sql = $this->db->get('services_activity');
+        return $sql->result(); 
+    }
+
 }
 
 /* End of file Services_model.php */

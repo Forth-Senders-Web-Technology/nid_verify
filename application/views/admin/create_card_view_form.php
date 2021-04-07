@@ -26,15 +26,16 @@
 
             <form action="download/create_card_by_submit_info" method="post" enctype="multipart/form-data" autocomplete="off" data-parsley-validate>
 
+
                 <div class="br-section-wrapper">
                     <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10"> Fill-up all information </h6>
                     <p class="mg-b-30 tx-gray-600"> </p>
 
                     <div class="form-layout form-layout-1">
                         <div class="row mg-b-25">
-
-
                         
+                        <input type="hidden" name="serive_group_rates" value="<?php echo $service_rate->serive_s_rate_s; ?>">
+
                         <div class="col-lg-6">
                             <div class="form-group">
                             <label class="form-control-label">নাম বাংলা: <span class="tx-danger">*</span></label>

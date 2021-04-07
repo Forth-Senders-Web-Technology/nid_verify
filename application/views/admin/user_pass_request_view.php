@@ -180,7 +180,7 @@
                             if (table_data[l].requ_status == 0) {
                                 this_status = '<p style="background-color: #282923;color:white;font-weight:bold;">Wait</p>';
                             }else if (table_data[l].requ_status == 1) {
-                                this_status = '<p style="background-color: #67D8EF;color:black;font-weight:bold;">Success</p><br><a href="'+table_data[l].online_copy_pdf_src+'" download> Download </a>';
+                                this_status = '<p style="background-color: #67D8EF;color:black;font-weight:bold;">Success</p>';
                             }else if (table_data[l].requ_status == 2) {
                                 this_status = '<p style="background-color: #F9245E;color:white;font-weight:bold;">Reject</p>';
                             }else {

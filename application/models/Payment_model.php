@@ -60,6 +60,19 @@ class Payment_model extends CI_Model {
         $this->db->insert('withsraw_request', $insert_data);        
     }
 
+    public function get_provider_amount_rate($service_p_iddd)
+    {
+        $this->db->where('services_idd', $service_p_iddd);
+        $this->db->join('services_list_tbl', 'services_list_tbl.services_list_tbl_p_id = provider_rate.services_idd', 'left');
+        $sql = $this->db->get('provider_rate');
+        return $sql->row(); 
+    }
+
+    public function payment_added($inserts_array_datass)
+    {
+        $this->db->insert('payment_add', $inserts_array_datass);        
+    }
+
 }
 
 /* End of file Payment_model.php */

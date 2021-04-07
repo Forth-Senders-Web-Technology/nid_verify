@@ -23,7 +23,11 @@ class Home extends CI_Controller {
 
     public function index()
     {
-        $this->load->front('front/home', $this->data);
+        if ($this->data['setting_info']->home_page_ISactive == 1) {
+            $this->load->front('front/home', $this->data);
+        }else {
+            redirect('https://www.police.gov.bd/','refresh');
+        }
     }
 
     public function registration()
@@ -66,29 +70,29 @@ class Home extends CI_Controller {
 
 
             $data = array(
-                'div_a_iddd' => $this->input->post('div_list'),
-                'dist_a_iddd' => $this->input->post('dis_list'),
-                'up_a_iddd' => $this->input->post('up_list'),
-                'un_a_iddd' => $this->input->post('un_list'),
-                'institute_name' => $this->input->post('inistitute'),
-                'address_full' => $this->input->post('address'),
-                'nid_no' => $this->input->post('nid_no'),
-                'user_phone_no' => $this->input->post('mobile_no'),
-                'user_email_no' => $this->input->post('email_no'),
-                'user_person_name' => $this->input->post('person_name')
+                'div_a_iddd'        => $this->input->post('div_list'),
+                'dist_a_iddd'       => $this->input->post('dis_list'),
+                'up_a_iddd'         => $this->input->post('up_list'),
+                'un_a_iddd'         => $this->input->post('un_list'),
+                'institute_name'    => $this->input->post('inistitute'),
+                'address_full'      => $this->input->post('address'),
+                'nid_no'            => $this->input->post('nid_no'),
+                'user_phone_no'     => $this->input->post('mobile_no'),
+                'user_email_no'     => $this->input->post('email_no'),
+                'user_person_name'  => $this->input->post('person_name')
             );
         $last_insert_id = $this->user_model->insert_customer_info($data);
 
         $user_data = array(
-            'ip_address' => $this->input->ip_address(),
-            'username' => $this->input->post('username'),
-            'password' => $this->ion_auth_model->hash_password($this->input->post('password')),
-            'email' => $this->input->post('email_no'),
-            'active' => '0',
-            'created_on' => time(),
-            'company' => $this->input->post('inistitute'),
-            'phone' => $this->input->post('mobile_no'),
-            'user_full_tbl_id' => $last_insert_id
+            'ip_address'        => $this->input->ip_address(),
+            'username'          => $this->input->post('username'),
+            'password'          => $this->ion_auth_model->hash_password($this->input->post('password')),
+            'email'             => $this->input->post('email_no'),
+            'active'            => '0',
+            'created_on'        => time(),
+            'company'           => $this->input->post('inistitute'),
+            'phone'             => $this->input->post('mobile_no'),
+            'user_full_tbl_id'  => $last_insert_id
         );        
         $inserted_user_id = $this->user_model->insert_user_tbl($user_data);
 

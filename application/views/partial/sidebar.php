@@ -72,60 +72,63 @@
       </div><!-- br-sideleft-menu -->
 
       <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent', 's_udc'))) { ?>
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="get_nid_no" class="br-menu-link">
-          <div class="br-menu-item">
-            <i class="fa fa-list-ol"></i>
-            <span class="menu-item-label"> Get NID NO </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+        <?php if ($setting_info->all_services_ISactive == 1) { ?>
 
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="serve_view" class="br-menu-link">
-          <div class="br-menu-item">
-            <i class="fa fa-address-book"></i>
-            <span class="menu-item-label"> EC Server Copy </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          <div class="br-sideleft-menu " id="sidebar-menu">
+            <a href="get_nid_no" class="br-menu-link">
+              <div class="br-menu-item">
+                <i class="fa fa-list-ol"></i>
+                <span class="menu-item-label"> Get NID NO </span>
+              </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+          </div><!-- br-sideleft-menu -->
 
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="card_view" class="br-menu-link">
-          <div class="br-menu-item">
-            <i class="fa fa-address-card"></i>
-            <span class="menu-item-label"> Download Card </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          <div class="br-sideleft-menu " id="sidebar-menu">
+            <a href="serve_view" class="br-menu-link">
+              <div class="br-menu-item">
+                <i class="fa fa-address-book"></i>
+                <span class="menu-item-label"> EC Server Copy </span>
+              </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+          </div><!-- br-sideleft-menu -->
 
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="search_copy" class="br-menu-link">
-          <div class="br-menu-item">
-            <i class="fa fa-search"></i>
-            <span class="menu-item-label"> Search NID No </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          <div class="br-sideleft-menu " id="sidebar-menu">
+            <a href="card_view" class="br-menu-link">
+              <div class="br-menu-item">
+                <i class="fa fa-address-card"></i>
+                <span class="menu-item-label"> Download Card </span>
+              </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+          </div><!-- br-sideleft-menu -->
 
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="username_password" class="br-menu-link">
-          <div class="br-menu-item">
-            <i class="fa fa-user-secret"></i>
-            <span class="menu-item-label"> User ID Password Set </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          <div class="br-sideleft-menu " id="sidebar-menu">
+            <a href="search_copy" class="br-menu-link">
+              <div class="br-menu-item">
+                <i class="fa fa-search"></i>
+                <span class="menu-item-label"> Search NID No </span>
+              </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+          </div><!-- br-sideleft-menu -->
 
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="create_card" class="br-menu-link">
-          <div class="br-menu-item">
-            <i class="fa fa-id-card"></i>
-            <span class="menu-item-label"> কার্ড তৈরী </span>
-          </div> 
-        </a> 
-      </div>
+          <div class="br-sideleft-menu " id="sidebar-menu">
+            <a href="username_password" class="br-menu-link">
+              <div class="br-menu-item">
+                <i class="fa fa-user-secret"></i>
+                <span class="menu-item-label"> User ID Password Set </span>
+              </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+          </div><!-- br-sideleft-menu -->
 
+          <div class="br-sideleft-menu " id="sidebar-menu">
+            <a href="create_card" class="br-menu-link">
+              <div class="br-menu-item">
+                <i class="fa fa-id-card"></i>
+                <span class="menu-item-label"> কার্ড তৈরী </span>
+              </div> 
+            </a> 
+          </div>
+
+        <?php } ?>
       <?php } ?>
       
       <div class="br-sideleft-menu " id="sidebar-menu">

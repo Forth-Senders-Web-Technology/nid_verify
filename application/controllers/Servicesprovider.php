@@ -46,8 +46,8 @@ class Servicesprovider extends CI_Controller
         $select_service_id = $this->input->post('request_services_iid');
 
         $array_data = array(
-                    'check_in_user_id' => $this->user_id, 
-                    'check_in_times' => time(), 
+                    'check_in_user_id'  => $this->user_id, 
+                    'check_in_times'    => time(), 
                 );
         $this->services_model->select_this_services_in_login_user($select_service_id, $array_data);
     }
@@ -65,36 +65,71 @@ class Servicesprovider extends CI_Controller
 
     public function insert_nid_data()
     {
+        $select_service_id = $this->input->post('services_id');
+
+        $service_p_iddd = 1;
+        $this_data_payment_infos = $this->payment_model->get_provider_amount_rate($service_p_iddd);
+
         $array_data = array(
-                    'nid_no' => $this->input->post('nid_no'), 
-                    'nid_pin_no' => $this->input->post('nid_pin_no'), 
-                    'requ_status' => 2, 
-                    'delivery_time' => time(), 
-                    'delivery_user_id' => $this->user_id, 
+                    'nid_no'            => $this->input->post('nid_no'), 
+                    'nid_pin_no'        => $this->input->post('nid_pin_no'), 
+                    'requ_status'       => 1,
+                    'delivery_time'     => time(), 
+                    'delivery_user_id'  => $this->user_id, 
                 );
-        $this->services_model->select_this_services_in_login_user($array_data, $this->input->post('services_id'));
+        $this->services_model->select_this_services_in_login_user($select_service_id, $array_data);
+
+        $inserts_array_datass = array(
+                    'added_amount'  => $this_data_payment_infos->amount_rate_s,
+                    'customer_id'   => $this->user_id,
+                    'time_stamp'    => time()
+                ); 
+        $this->payment_model->payment_added($inserts_array_datass);
+
+    }
+
+    public function search_insert_nid_data()
+    {
+        $select_service_id = $this->input->post('services_id');
+
+        $service_p_iddd = 4;
+        $this_data_payment_infos = $this->payment_model->get_provider_amount_rate($service_p_iddd);
+
+        $array_data = array(
+                    'nid_no'            => $this->input->post('search_nid_number'), 
+                    'nid_pin_no'        => $this->input->post('search_nid_pin_no'), 
+                    'requ_status'       => 1,
+                    'delivery_time'     => time(), 
+                    'delivery_user_id'  => $this->user_id, 
+                );
+        $this->services_model->select_this_services_in_login_user($select_service_id, $array_data);
+
+        $inserts_array_datass = array(
+                    'added_amount'  => $this_data_payment_infos->amount_rate_s,
+                    'customer_id'   => $this->user_id,
+                    'time_stamp'    => time()
+                ); 
+        $this->payment_model->payment_added($inserts_array_datass);
+
     }
 
     public function ec_server_file_upload()
     {
-
-
-
-
-        $this_service_id = $this->input->post('service_id');
+        $select_service_id = $this->input->post('service_id');
 
         $file_name = $_FILES['file']['name'];
         $file_name_pieces = explode('_', $file_name);
         $new_file_name = $this_service_id.".pdf";
 
         $config = array(
-            'file_name' => $new_file_name,
-            'upload_path' => "./inc/server_pdf/",
+            'file_name'     => $new_file_name,
+            'upload_path'   => "./inc/server_pdf/",
             'allowed_types' => "*", // All Kinds of file Accept
-            'overwrite' => False,
-            'max_size' => "20480000", // Can be set to particular file size , here it is 200 MB(2048 Kb)
-            'max_height' => "1768",
-            'max_width' => "2024"
+            'overwrite'     => False,
+            'max_size'      => "20480000", 
+            // Can be set to particular file size , here it is 200 MB(2048 Kb)
+            'max_height'    => "1768",
+            'max_width'     => "2024"
         );
         $this->load->library('Upload', $config);
         $this->upload->initialize($config);
@@ -108,20 +143,60 @@ class Servicesprovider extends CI_Controller
                             'delivery_time'              =>  time(),
                             'delivery_user_id'           =>  $this->user_id,              
                         );
-            $this->services_model->select_this_services_in_login_user($this_service_id, $array_data);
+            $this->services_model->select_this_services_in_login_user($select_service_id, $array_data);
+        }
 
-        } 
+        $service_p_iddd = 2;
+        $this_data_payment_infos = $this->payment_model->get_provider_amount_rate($service_p_iddd);
 
-
-
-
-
-
-
-
-
-
+        $inserts_array_datass = array(
+                    'added_amount'  => $this_data_payment_infos->amount_rate_s,
+                    'customer_id'   => $this->user_id,
+                    'time_stamp'    => time()
+                ); 
+        $this->payment_model->payment_added($inserts_array_datass);
 
 
     }
+
+    public function cancel_this_services()
+    {
+        $array_data = array(
+                    'coment_s'          => $this->input->post('problem_entry'),
+                    'requ_status'       => 2,
+                    'delivery_time'     => time(), 
+                    'delivery_user_id'  => $this->user_id, 
+                );
+        $this->services_model->select_this_services_in_login_user($this->input->post('services_id'), $array_data);
+
+        $data_arr = array(
+                    'cut_amount'    => 0,
+                );
+        $this->services_model->updated_services_cost($data_arr, $this->input->post('services_payment_cut_idd'));
+    }
+
+    public function set_user_password()
+    {
+        $array_data = array(
+                    'set_username'      => $this->input->post('set_username'),
+                    'set_password'      => $this->input->post('set_password'),
+                    'requ_status'       => 1,
+                    'delivery_time'     => time(), 
+                    'delivery_user_id'  => $this->user_id, 
+                );
+        $this->services_model->select_this_services_in_login_user($this->input->post('services_id'), $array_data);
+
+
+        $service_p_iddd = 5;
+        $this_data_payment_infos = $this->payment_model->get_provider_amount_rate($service_p_iddd);
+
+        $inserts_array_datass = array(
+                    'added_amount'      => $this_data_payment_infos->amount_rate_s,
+                    'customer_id'       => $this->user_id,
+                    'time_stamp'        => time()
+                ); 
+        $this->payment_model->payment_added($inserts_array_datass);
+
+    }
+
 }

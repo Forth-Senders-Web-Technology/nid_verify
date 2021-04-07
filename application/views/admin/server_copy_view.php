@@ -141,6 +141,20 @@
                                         <input class="form-control voter_no" type="text" name="voter_no" value="" placeholder="Enter Voter No">
                                     </div>
                                 </div> 
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Slip No: <span class="tx-danger">*</span></label>
+                                        <input class="form-control nid_no_s" type="text" name="nid_no_s" value="" placeholder="Enter Nid No">
+                                    </div>
+                                </div> 
+                                <div class="col-md-6 mg-t--1 mg-md-t-0">
+                                    <div class="form-group mg-md-l--1">
+                                        <label class="form-control-label">Voter No: <span class="tx-danger">*</span></label>
+                                        <input class="form-control nid_pin_no" type="text" name="nid_pin_no" value="" placeholder="Enter Nid Pin No">
+                                    </div>
+                                </div> 
+
                                 <div class="col-md-6">
                                     <div class="form-group bd-t-0-force">
                                         <label class="form-control-label">Name: <span class="tx-danger">*</span></label>
@@ -185,7 +199,7 @@
                             if (table_data[l].requ_status == 0) {
                                 this_status = '<p style="background-color: #282923;color:white;font-weight:bold;">Wait</p>';
                             }else if (table_data[l].requ_status == 1) {
-                                this_status = '<p style="background-color: #67D8EF;color:black;font-weight:bold;">Success</p><br><a href="'+table_data[l].online_copy_pdf_src+'" download> Download </a>';
+                                this_status = '<p style="background-color: #67D8EF;color:black;font-weight:bold;">Success</p><a href="'+table_data[l].online_copy_pdf_src+'" download> Download </a>';
                             }else if (table_data[l].requ_status == 2) {
                                 this_status = '<p style="background-color: #F9245E;color:white;font-weight:bold;">Reject</p>';
                             }else {
@@ -221,6 +235,10 @@
                     data: {
                         slip_no: $('.slip_no').val(),
                         voter_no: $('.voter_no').val(),
+
+                        nid_pin_no: $('.nid_pin_no').val(),
+                        nid_no_s: $('.nid_no_s').val(),
+
                         person_name: $('.person_name').val(),
                         birth_date:  $('.birth_date').val(),
                         services_rate: services_rate,

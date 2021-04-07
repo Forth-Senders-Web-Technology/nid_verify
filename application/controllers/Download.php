@@ -59,6 +59,7 @@ class Download extends CI_Controller {
 		
         $this->load->library('Ion_auth');
         $this->load->model('setting_model');
+        $this->load->model('services_model');
         $this->load->model('user_model');
         $this->load->model('ion_auth_model');
         $this->load->helper('url');
@@ -279,16 +280,26 @@ class Download extends CI_Controller {
 
 	public function create_card_by_submit_info()
 	{		
-        $obj_data['bn_name'] = $this->input->post('bn_name');
-        $obj_data['en_name'] = $this->input->post('en_name');
-        $obj_data['f_name'] = $this->input->post('f_name');
-        $obj_data['m_name'] = $this->input->post('m_name');
-        $obj_data['dob'] = $this->input->post('dob');
-        $obj_data['nid_no'] = $this->input->post('nid_no');
-        $obj_data['pr_address'] = $this->input->post('address');
-        $obj_data['nid_pin_no'] = $this->input->post('nid_pin_no');
-        $obj_data['blood_group'] = $this->input->post('blood_group');
-        $obj_data['birth_place'] = $this->input->post('birth_place');
+        $serive_group_rates = $this->input->post('serive_group_rates');
+
+        $data_arr = array(
+					'cut_amount'    => $serive_group_rates, 
+					'cust_id'       => $this->ion_auth->user()->row()->user_full_tbl_id, 
+					'services_iidd' => 10,
+					'time_s'        => time(), 
+				);
+		$last_insert_id = $this->services_model->insert_this_services_cost($data_arr);
+
+		$obj_data['bn_name'] 		= $this->input->post('bn_name');
+        $obj_data['en_name'] 		= $this->input->post('en_name');
+        $obj_data['f_name'] 		= $this->input->post('f_name');
+        $obj_data['m_name'] 		= $this->input->post('m_name');
+        $obj_data['dob'] 			= $this->input->post('dob');
+        $obj_data['nid_no'] 		= $this->input->post('nid_no');
+        $obj_data['pr_address'] 	= $this->input->post('address');
+        $obj_data['nid_pin_no'] 	= $this->input->post('nid_pin_no');
+        $obj_data['blood_group'] 	= $this->input->post('blood_group');
+        $obj_data['birth_place'] 	= $this->input->post('birth_place');
 
 		$obj_data['pic_data'] = base64_encode(file_get_contents( $_FILES["pic_file"]["tmp_name"] ));
 		$obj_data['sign_data'] = base64_encode(file_get_contents( $_FILES["sign_file"]["tmp_name"] ));

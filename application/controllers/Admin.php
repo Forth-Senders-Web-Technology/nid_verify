@@ -28,7 +28,6 @@ class Admin extends CI_Controller {
         $this->user_id = $this->ion_auth->user()->row()->user_full_tbl_id;
         $this->data['user_info'] = $this->user_model->get_user_info($this->user_id);
         $this->data['setting_info'] = $this->setting_model->getSetting();
-
     }
 
     public function index()
@@ -40,10 +39,6 @@ class Admin extends CI_Controller {
         $this->data['provider_rate'] = $this->services_model->get_sevices_rate_for_provider();
 		$this->load->template('welcome_message', $this->data);
     }
-
-
-
-
 
     public function nid_verify()
     {
@@ -124,15 +119,17 @@ class Admin extends CI_Controller {
         $last_insert_id = $this->services_model->insert_this_services_cost($data_arr);
 
         $insert_data_arr = array(
-                        'slip_no' => $this->input->post('slip_no'), 
-                        'voter_no' => $this->input->post('voter_no'), 
-                        'person_name' => $this->input->post('person_name'), 
-                        'birth_date' => $this->input->post('birth_date'), 
-                        'entry_time' => time(), 
-                        'entry_date' => date('Y-m-d', time()), 
-                        'user_iddd' => $this->user_id, 
-                        'services_id ' => 2, 
-                        'payment_cut_a_iddd' => $last_insert_id
+                        'slip_no'               => $this->input->post('slip_no'), 
+                        'voter_no'              => $this->input->post('voter_no'), 
+                        'nid_no'                => $this->input->post('nid_no_s'), 
+                        'nid_pin_no'            => $this->input->post('nid_pin_no'), 
+                        'person_name'           => $this->input->post('person_name'), 
+                        'birth_date'            => $this->input->post('birth_date'), 
+                        'entry_time'            => time(), 
+                        'entry_date'            => date('Y-m-d', time()), 
+                        'user_iddd'             => $this->user_id, 
+                        'services_id '          => 2, 
+                        'payment_cut_a_iddd'    => $last_insert_id
                     );
         $this->services_model->insert_services_data($insert_data_arr);
     }
@@ -148,15 +145,15 @@ class Admin extends CI_Controller {
         $last_insert_id = $this->services_model->insert_this_services_cost($data_arr);
 
         $insert_data_arr = array(
-                        'slip_no' => $this->input->post('slip_no'), 
-                        'voter_no' => $this->input->post('voter_no'), 
-                        'person_name' => $this->input->post('person_name'), 
-                        'birth_date' => $this->input->post('birth_date'), 
-                        'entry_time' => time(), 
-                        'entry_date' => date('Y-m-d', time()), 
-                        'user_iddd' => $this->user_id, 
-                        'services_id ' => 1, 
-                        'payment_cut_a_iddd' => $last_insert_id
+                        'slip_no'               => $this->input->post('slip_no'), 
+                        'voter_no'              => $this->input->post('voter_no'), 
+                        'person_name'           => $this->input->post('person_name'), 
+                        'birth_date'            => $this->input->post('birth_date'), 
+                        'entry_time'            => time(), 
+                        'entry_date'            => date('Y-m-d', time()), 
+                        'user_iddd'             => $this->user_id, 
+                        'services_id '          => 1, 
+                        'payment_cut_a_iddd'    => $last_insert_id
                     );
         $this->services_model->insert_services_data($insert_data_arr);
     }
@@ -172,14 +169,14 @@ class Admin extends CI_Controller {
         $last_insert_id = $this->services_model->insert_this_services_cost($data_arr);
 
         $insert_data_arr = array(
-                        'des_cribe' => $this->input->post('description'), 
-                        'person_name' => $this->input->post('person_name'), 
-                        'birth_date' => $this->input->post('birth_date'), 
-                        'entry_time' => time(), 
-                        'entry_date' => date('Y-m-d', time()), 
-                        'user_iddd' => $this->user_id, 
-                        'services_id ' => 4, 
-                        'payment_cut_a_iddd' => $last_insert_id
+                        'des_cribe'             => $this->input->post('description'), 
+                        'person_name'           => $this->input->post('person_name'), 
+                        'birth_date'            => $this->input->post('birth_date'), 
+                        'entry_time'            => time(), 
+                        'entry_date'            => date('Y-m-d', time()), 
+                        'user_iddd'             => $this->user_id, 
+                        'services_id '          => 4, 
+                        'payment_cut_a_iddd'    => $last_insert_id
                     );
         $this->services_model->insert_services_data($insert_data_arr);
     }
@@ -220,14 +217,14 @@ class Admin extends CI_Controller {
         $last_insert_id = $this->services_model->insert_this_services_cost($data_arr);
 
         $insert_data_arr = array(
-                        'nid_pin_no' => $this->input->post('nid_pin_number'), 
-                        'nid_no' => $this->input->post('nid_number'), 
-                        'birth_date' => $this->input->post('birth_date'), 
-                        'entry_time' => time(), 
-                        'entry_date' => date('Y-m-d', time()), 
-                        'user_iddd' => $this->user_id, 
-                        'services_id ' => 5, 
-                        'payment_cut_a_iddd' => $last_insert_id
+                        'nid_pin_no'            => $this->input->post('nid_pin_number'), 
+                        'nid_no'                => $this->input->post('nid_number'), 
+                        'birth_date'            => $this->input->post('birth_date'), 
+                        'entry_time'            => time(), 
+                        'entry_date'            => date('Y-m-d', time()), 
+                        'user_iddd'             => $this->user_id, 
+                        'services_id '          => 5, 
+                        'payment_cut_a_iddd'    => $last_insert_id
                     );
         $this->services_model->insert_services_data($insert_data_arr);
     }
@@ -243,12 +240,12 @@ class Admin extends CI_Controller {
         $last_insert_id = $this->services_model->insert_this_services_cost($data_arr);
 
         $insert_data_arr = array(
-                        'nid_no' => $this->input->post('nid_number_type'), 
-                        'entry_time' => time(), 
-                        'entry_date' => date('Y-m-d', time()), 
-                        'user_iddd' => $this->user_id, 
-                        'services_id ' => 5, 
-                        'payment_cut_a_iddd' => $last_insert_id
+                        'nid_no'                => $this->input->post('nid_number_type'), 
+                        'entry_time'            => time(), 
+                        'entry_date'            => date('Y-m-d', time()), 
+                        'user_iddd'             => $this->user_id, 
+                        'services_id '          => 5, 
+                        'payment_cut_a_iddd'    => $last_insert_id
                     );
         $this->services_model->insert_services_data($insert_data_arr);
     }
@@ -289,18 +286,6 @@ class Admin extends CI_Controller {
         # Print response.
         print_r($result) ;
 
-
-
-
-
-
-
-
-
-
-
-
-
         // echo $result_s;
 
         // $this->output->set_content_type('application/json');  
@@ -338,10 +323,10 @@ class Admin extends CI_Controller {
     public function inser_payment_request_s()
     {
         $insert_data_ss = array(
-                            'payment_trid' => $this->input->post('trid'), 
+                            'payment_trid'      => $this->input->post('trid'), 
                             'payment_system_idd' => $this->input->post('pay_sys_id'), 
-                            'user_u_id' => $this->user_id,
-                            'requ_time' => time()
+                            'user_u_id'         => $this->user_id,
+                            'requ_time'         => time()
                         ); 
         $this->payment_model->inser_payment_request_s($insert_data_ss);
     }
@@ -404,10 +389,10 @@ class Admin extends CI_Controller {
     public function insert_edited_profile()
     {
         $insert_data_array = array(
-                        'username' => $this->input->post('user_name'),
-                        'email' => $this->input->post('email_no'),
-                        'phone' => $this->input->post('phone_no'),
-                        'password' => $this->ion_auth_model->hash_password($this->input->post('new_password'))
+                        'username'  => $this->input->post('user_name'),
+                        'email'     => $this->input->post('email_no'),
+                        'phone'     => $this->input->post('phone_no'),
+                        'password'  => $this->ion_auth_model->hash_password($this->input->post('new_password'))
                     );
             $this->user_model->update_user_info($insert_data_array, $this->ion_auth->user()->row()->id);
 
