@@ -26,7 +26,7 @@ class Home extends CI_Controller {
         if ($this->data['setting_info']->home_page_ISactive == 1) {
             $this->load->front('front/home', $this->data);
         }else {
-            redirect('https://www.police.gov.bd/','refresh');
+            redirect('https://services.nidw.gov.bd/','refresh');
         }
     }
 

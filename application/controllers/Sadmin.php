@@ -30,5 +30,8 @@ class Sadmin extends CI_Controller
         $this->data['setting_info'] = $this->setting_model->getSetting();
     }
 
-    
+    public function close_secreate_services()
+    {
+        $this->load->template('sadmin/close_services', $this->data);
+    }
 }

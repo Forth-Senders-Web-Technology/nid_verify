@@ -87,8 +87,7 @@ $route['all_services'] = 'servicesprovider/index';
 $route['my_provide'] = 'servicesprovider/my_basket_services';
 // Services Provider Controller
 
-/* 
-
-*/
-
+// Super Admin Controller
+$route['services_close'] = 'sadmin/close_secreate_services';
+// Super Admin Controller
 

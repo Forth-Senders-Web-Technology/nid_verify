@@ -2,7 +2,9 @@
     <div class="br-mainpanel">
         <div class="br-pageheader pd-y-15 pd-l-20">
             <div class="mx-auto ">
-               <h3> এই সার্ভিসের জন্য আপনার একাউন্ট থেকে <b> <?php echo $service_rate->serive_s_rate_s; ?> </b> টাকা কেটে নেওয়া হবে। </h3> 
+               <h3> এই সার্ভিসের জন্য আপনার একাউন্ট থেকে <b> <?php if (!empty($service_rate->serive_s_rate_s)) {
+                   echo $service_rate->serive_s_rate_s;
+               }  ?> </b> টাকা কেটে নেওয়া হবে। </h3> 
             </div>
         </div><!-- br-pageheader -->
             
@@ -18,7 +20,6 @@
 
 
 
-            </div>
 
 
 
