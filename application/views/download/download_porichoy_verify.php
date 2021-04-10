@@ -10,20 +10,20 @@
 
         <div style="border: 1px solid black; width: 100%; height: 100%; ">
             <div style="margin: 0 auto; width: 80px;" >
-                <img style=" margin-top: 15px; " src="inc/verify_file/ec_logo.png" alt="">
+                <img style=" margin-top: 10px; " src="inc/verify_file/ec_logo.png" alt="">
             </div>
             <h2 style="text-align:center; " >অনলাইন জাতীয় পরিচয় পত্র যাচাই</h2>
 
             <div style="margin: 0 auto; width: 120px; border: 1.5px solid grey;" >
-                <img style="margin: 3px" src="data:image/jpg;base64, <?php echo $voter_info->voter->photo; ?>" alt="">
+                <img style="margin: 1px" src="data:image/jpg;base64, <?php echo $voter_info->voter->photo; ?>" alt="">
             </div>
-
+<!-- 
             <div style="margin: 3px auto; width: 120px; border: 1.5px solid grey;" >
                 <img style="margin: 3px" src="data:image/jpg;base64, <?php echo $signa_ture->photo; ?>" alt="">
-            </div>
+            </div> -->
 
 
-            <table border="1" style="border-collapse: collapse; margin: 5px 10px 0 55px;">
+            <table border="1" style="border-collapse: collapse; margin: 3px 10px 0 55px;">
                 <tr>
                     <td class="td_head">নাম (বাংলা)</td>
                     <td class="td_value"> <?php echo $voter_info->voter->name; ?></td>
@@ -90,22 +90,16 @@
                 </tr>
             </table>
 
-            <div style="margin: 70px 0 0 50px; ">
+            <div style="margin: 10px 0 0 50px; ">
                 <h3> * উপরের প্রদত্ত সকল তথ্য NID ডাটাবেইজ হতে পরিচয় এর মাধ্যমে প্রাপ্ত। <br> * এই কপিটি শুধুমাত্র অনলাইন NID যাচাইয়ের জন্য ব্যবহার করা যাবে। </h3>
             </div>
 
             <div style="float:right; width:100px" >
                 <img src="inc/verify_file/porichoy_main_logo_big.jpg" width="80px" height="60px" alt="">
             </div>
-            <div style="margin-top:20px;text-align:center">
-                <p>Company</p>
+            <div style="margin-top:5px;text-align:center">
+                <p> </p>
             </div>
-
-
-
-
-
-
 
 
         </div>

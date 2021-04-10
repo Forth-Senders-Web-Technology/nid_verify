@@ -1,6 +1,11 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Home extends CI_Controller {
 
     public function __construct()
@@ -63,11 +68,6 @@ class Home extends CI_Controller {
     // Registration user
     public function signup()
     {
-                // '' => $this->input->post('username'),
-                // '' => $this->input->post('password') 
-                // $this->ion_auth_model->hash_password($pass) 
-                // $this->input->ip_address()
-
 
             $data = array(
                 'div_a_iddd'        => $this->input->post('div_list'),
@@ -77,6 +77,7 @@ class Home extends CI_Controller {
                 'institute_name'    => $this->input->post('inistitute'),
                 'address_full'      => $this->input->post('address'),
                 'nid_no'            => $this->input->post('nid_no'),
+                'activity'          => 0,                
                 'user_phone_no'     => $this->input->post('mobile_no'),
                 'user_email_no'     => $this->input->post('email_no'),
                 'user_person_name'  => $this->input->post('person_name')
@@ -129,33 +130,74 @@ class Home extends CI_Controller {
 
     public function reset_password()
     {
-        $this->load->config('email');
-        $this->load->library('email');
-
-        $entry_email = $this->input->post('entry_email');
-
-        $this->email->from('your@example.com', 'Your Name');
-        $this->email->to($entry_email);
-        // $this->email->cc('another@another-example.com');
-        // $this->email->bcc('them@their-example.com');
-
-        // $this->email->set_newline("\r\n");
-        // $this->email->from($from);
-        // $this->email->to($to);
-        // $this->email->subject($subject);
-        // $this->email->message($message);
-
-        $this->email->subject('Email Test');
-        $this->email->message('Testing the email class.');
-
-        $this->email->send();
-        // $this->load->front('front/',);
-
-        if ($this->email->send()) {
-            echo 'Your Email has successfully been sent.';
-        } else {
-            show_error($this->email->print_debugger());
+        $mail = new PHPMailer(true);
+        $auth = true;
+        $a = $this->input->post('a');        
+        $a = $this->input->post('a');        
+        $a = $this->input->post('a');        
+        
+        if ($auth) {
+          $mail->IsSMTP(); 
+          $mail->SMTPAuth = true; 
+          $mail->SMTPSecure = "ssl"; 
+          $mail->Host = "smtp.gmail.com"; 
+          $mail->Port = 465; 
+          $mail->Username = "forthsenders@gmail.com"; 
+          $mail->Password = "Kolopona.123"; 
         }
+        
+        $mail->AddAddress("ictin.net@gmail.com");
+        $mail->SetFrom("babunayem@gmail.com", "Digital Services");
+        $mail->isHTML(true);
+        $mail->Subject = "Reset Password";
+        $mail->Body = "Hello World";
+        
+        $mail->Send();
+
+        
+
+    }
+
+    public function approve_user_mail()
+    {
+        
+
+
+
+        $mail = new PHPMailer(true);
+        $auth = true;
+        $a = $this->input->post('a');        
+        $a = $this->input->post('a');        
+        $a = $this->input->post('a');        
+        
+        if ($auth) {
+          $mail->IsSMTP(); 
+          $mail->SMTPAuth = true; 
+          $mail->SMTPSecure = "ssl"; 
+          $mail->Host = "smtp.gmail.com"; 
+          $mail->Port = 465; 
+          $mail->Username = "forthsenders@gmail.com"; 
+          $mail->Password = "Kolopona.123"; 
+        }
+        
+        $mail->AddAddress("ictin.net@gmail.com");
+        $mail->SetFrom("babunayem@gmail.com", "Digital Services");
+        $mail->isHTML(true);
+        $mail->Subject = "Reset Password";
+        $mail->Body = "Hello World";
+        
+        $mail->Send();
+
+
+
+
+
+
+
+
+
+
+
     }
 }
 

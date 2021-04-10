@@ -73,6 +73,26 @@ class Payment_model extends CI_Model {
         $this->db->insert('payment_add', $inserts_array_datass);        
     }
 
+    public function get_waiting_payments()
+    {
+        $this->db->where('status_present', 0);
+        $this->db->join('payment_system_list', 'payment_system_list.payment_list_id = payment_request_list.payment_system_idd', 'left');
+        $this->db->join('customer_full_info', 'customer_full_info.udc_list_auto_p_iidd = payment_request_list.user_u_id', 'left');
+        $sql = $this->db->get('payment_request_list');
+        return $sql->result();
+    }
+
+    public function payment_added_method($arr_data_for_db)
+    {
+        $this->db->insert('payment_add', $arr_data_for_db);
+    }
+
+    public function update_payment_request_opt($pay_request_id, $array_for_db)
+    {
+        $this->db->where('payment_request_list_idd', $pay_request_id);
+        $this->db->update('payment_request_list', $array_for_db);
+    }
+
 }
 
 /* End of file Payment_model.php */

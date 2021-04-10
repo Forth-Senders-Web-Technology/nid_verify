@@ -46,6 +46,13 @@ class Setting_model extends CI_Model {
         $sql = $this->db->get('un_list');
         return $sql->result();        
     }
+
+    public function update_setting_s($arrayData_s)
+    {
+        $this->db->where('setting_idd', 1);
+        $this->db->update('setting', $arrayData_s);
+    }
+    
 }
 
 /* End of file Setting_model.php */

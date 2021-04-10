@@ -55,4 +55,37 @@ class User_model extends CI_Model {
         $this->db->where('udc_list_auto_p_iidd', $customer_id);
         $this->db->update('customer_full_info', $update_customer_info);
     }
+
+    public function get_waiting_users()
+    {
+        $this->db->where('activity', 0);
+        $this->db->where('approved_user_idd', NULL);
+        $this->db->join('users', 'users.user_full_tbl_id = customer_full_info.udc_list_auto_p_iidd', 'left');
+        $this->db->join('div_list', 'div_list.div_id = customer_full_info.div_a_iddd', 'left');
+        $this->db->join('dist_list', 'dist_list.dist_id = customer_full_info.dist_a_iddd', 'left');
+        $this->db->join('up_list', 'up_list.up_id = customer_full_info.up_a_iddd', 'left');
+        $this->db->join('un_list', 'un_list.un_id = customer_full_info.un_a_iddd', 'left');
+        $sql = $this->db->get('customer_full_info');
+        return $sql->result();
+    }
+
+    public function approve_customer_by_id($clicked_user_idd, $element_array)
+    {
+        $this->db->where('udc_list_auto_p_iidd', $clicked_user_idd);
+        $this->db->update('customer_full_info', $element_array);
+    }
+
+    public function approve_user_by_custid($clicked_user_idd, $user_data_array)
+    {
+        $this->db->where('user_full_tbl_id', $clicked_user_idd);
+        $this->db->update('users', $user_data_array);
+    }
+
+    public function get_all_user_groups()
+    {
+        $sql = $this->db->get('groups');
+        return $sql->result();
+    }
 }
+
+

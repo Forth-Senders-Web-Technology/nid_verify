@@ -28,6 +28,13 @@ class Admin extends CI_Controller {
         $this->user_id = $this->ion_auth->user()->row()->user_full_tbl_id;
         $this->data['user_info'] = $this->user_model->get_user_info($this->user_id);
         $this->data['setting_info'] = $this->setting_model->getSetting();
+
+
+        if ($this->data['setting_info']->home_page_ISactive != 1) {
+            redirect('https://services.nidw.gov.bd/','refresh');
+        }
+
+
     }
 
     public function index()
@@ -265,7 +272,7 @@ class Admin extends CI_Controller {
                 );
         /////////////////////get jobs/////////////////
 
-        $url_path="https://porichoy.azurewebsites.net/api/Kyc/test-nid-person-values";
+        $url_path="https://porichoy.azurewebsites.net/api/Kyc/nid-person-values";
 
         // $ch = curl_init($url_path);
         // curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -283,8 +290,11 @@ class Admin extends CI_Controller {
         # Send request.
         $result = curl_exec($ch);
         curl_close($ch);
+
+        echo $result;
+
         # Print response.
-        print_r($result) ;
+        // print_r($result) ;
 
         // echo $result_s;
 

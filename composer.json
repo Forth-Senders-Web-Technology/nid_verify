@@ -12,7 +12,8 @@
 	},
 	"require": {
 		"php": ">=5.3.7",
-		"bigfish/pdf417": "^0.3.0"
+		"bigfish/pdf417": "^0.3.0",
+		"phpmailer/phpmailer": "^6.4"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

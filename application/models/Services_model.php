@@ -92,6 +92,29 @@ class Services_model extends CI_Model {
         return $sql->result(); 
     }
 
+    public function get_services_by_rate_group_wise()
+    {
+        $this->db->join('services_list_tbl', 'services_list_tbl.services_list_tbl_p_id = service_rate_group.service_s_iid', 'left');
+        $this->db->join('groups', 'groups.id = service_rate_group.user_group_uniq_idd', 'left');
+        $sql = $this->db->get('service_rate_group');
+        return $sql->result(); 
+    }
+
+    public function get_services_rates_by_id($this_rates_id)
+    {
+        $this->db->where('service_rate_by_group_id', $this_rates_id);
+        $this->db->join('services_list_tbl', 'services_list_tbl.services_list_tbl_p_id = service_rate_group.service_s_iid', 'left');
+        $this->db->join('groups', 'groups.id = service_rate_group.user_group_uniq_idd', 'left');
+        $sql = $this->db->get('service_rate_group');
+        return $sql->row();
+    }
+
+    public function update_services_rate_by_auto_id($services_rate_p_id_set, $arraysDatas)
+    {
+        $this->db->where('service_rate_by_group_id', $services_rate_p_id_set);
+        $this->db->update('service_rate_group', $arraysDatas);
+    }
+
 }
 
 /* End of file Services_model.php */

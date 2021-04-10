@@ -89,7 +89,7 @@
                     if (now_balance >= services_rate) {
                         $('.verify_box_set').html(`
                         <div class="input-group wd-xs-300">
-                            <input type="text" maxlength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' size="10" class="form-control nid_number_type" placeholder=" NID Number ">
+                            <input type="text" maxlength="17" onkeypress='return event.charCode >= 48 && event.charCode <= 57' size="17" class="form-control nid_number_type" placeholder=" NID Number ">
                             <div class="input-group-btn">
                                 <button class="btn btn-info nid_data_search_btn" style="cursor:pointer"><i class="fa fa-search"></i></button>
                             </div>
@@ -124,9 +124,12 @@
 
         function get_nid_data() {
             let get_nid_no_typing = $('.nid_number_type').val();
-            if (get_nid_no_typing == '' || get_nid_no_typing.length != 10) {
+
+
+
+/*             if (get_nid_no_typing == '' || get_nid_no_typing.length != 10) {
                 alert('Please give nid number and NID must be 10 digits');
-            }else {
+            }else { */
                             
                 $.ajax({
                     type: "post",
@@ -180,7 +183,7 @@
 
                     }
                 });
-            }
+            // }
 
         }
 
