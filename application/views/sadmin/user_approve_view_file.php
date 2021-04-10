@@ -41,6 +41,68 @@
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
 
+    
+
+          <!-- MODAL ALERT MESSAGE -->
+          <div id="select_this_user_group_modal" class="modal fade">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content tx-size-sm">
+                <div class="modal-body tx-center pd-y-20 pd-x-20">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+
+                  <h4 class="tx-success tx-semibold mg-b-20 modal_head_title"> Enter Rates </h4>
+
+                    <div class="form-layout form-layout-1">
+
+                      <input class="form-control selected_customer_p_id" type="hidden" value="">
+                      <input class="form-control selected_customer_email" type="hidden" value="">
+                      <input class="form-control this_login_user_idd" type="hidden" value="">
+
+                        <div class="form-group">
+                            <label class="form-control-label">This Services Rate: <span class="tx-danger">*</span></label>
+                            <select name="selected_group_id" class="selected_group_id" id="">
+                                <option value=""> Select Group </option>
+                                <?php foreach ($all_groups as $group) { ?>
+                                    <option value="<?php echo $group->id; ?>"> <?php echo $group->name; ?> </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="btn btn-success tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium mg-b-20 send_approve_user_btn" >Continue</button>
+
+                  </div><!-- modal-body -->
+                </div><!-- modal-content -->
+              </div><!-- modal-dialog -->
+            </div><!-- modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- 
     waiting_user_info -->
 
@@ -74,7 +136,7 @@
                                             <th scope="row">${reqs[e].user_phone_no}</th>
                                             <th scope="row">${reqs[e].nid_no}</th>
                                             <th scope="row">
-                                                <button class="btn btn-success btn-sm approve_user_btn" this_user_email="${reqs[e].user_email_no}" this_user_iiddd="${reqs[e].udc_list_auto_p_iidd}" style="cursor:pointer;"><i class="fa fa-check"></i></button>
+                                                <button class="btn btn-success btn-sm approve_user_btn"data-toggle="modal" data-target="#select_this_user_group_modal" this_user_email="${reqs[e].user_email_no}" this_login_user_idd="${reqs[e].id}" this_user_iiddd="${reqs[e].udc_list_auto_p_iidd}" style="cursor:pointer;"><i class="fa fa-check"></i></button>
                                                 <button class="btn btn-danger btn-sm cancel_user_btn" this_user_iiddd="${reqs[e].udc_list_auto_p_iidd}" style="cursor:pointer;"><i class="fa fa-times"></i></button>
                                             </th>
                                         </tr>`;
@@ -87,18 +149,15 @@
         $(document).on('click', '.approve_user_btn', function () {
             let this_clickable_user_id = $(this).attr('this_user_iiddd');
             let this_user_email = $(this).attr('this_user_email');
-            $.ajax({
-                type: "post",
-                url: "sadmin/approve_user_by_id",
-                data: {
-                    clicked_user_id: this_clickable_user_id,
-                    this_user_email: this_user_email,
-                },
-                success: function (rep) {
-                    toastr.success('This user approve successfully', 'Success');
-                    get_all_waiting_users();
-                }
-            });
+            let this_login_user_idd = $(this).attr('this_login_user_idd');
+
+            $('.selected_customer_p_id').val(this_clickable_user_id);
+            $('.selected_customer_email').val(this_user_email);
+            $('.this_login_user_idd').val(this_login_user_idd);
+        });
+
+        $(document).on('click', '.send_approve_user_btn', function () {
+            approved_user_change_group();
         });
 
 
@@ -118,8 +177,22 @@
             });
         });
 
-
-
-
+        function approved_user_change_group() {
+            $.ajax({
+                type: "post",
+                url: "sadmin/approve_user_by_id",
+                data: {
+                    clicked_user_id: $('.selected_customer_p_id').val(),
+                    this_user_email: $('.selected_customer_email').val(),
+                    selected_group_id: $('.selected_group_id').val(),
+                    this_login_user_idd: $('.this_login_user_idd').val(),
+                },
+                success: function (rep) {
+                    toastr.success('This user approve successfully', 'Success');
+                    get_all_waiting_users();
+                    $('#select_this_user_group_modal').modal('hide');
+                }
+            });
+        }
 
     </script>

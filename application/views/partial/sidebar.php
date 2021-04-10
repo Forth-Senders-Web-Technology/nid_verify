@@ -159,7 +159,7 @@
         </a><!-- br-menu-link -->
       </div><!-- br-sideleft-menu -->
 
-      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent', 's_udc'))) { ?>
+      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent', 's_udc', 'udc'))) { ?>
         <?php if ($setting_info->all_services_ISactive == 1) { ?>
 
           <div class="br-sideleft-menu " id="sidebar-menu">

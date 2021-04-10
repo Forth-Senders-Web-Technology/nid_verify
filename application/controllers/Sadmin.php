@@ -78,6 +78,7 @@ class Sadmin extends CI_Controller
 
     public function user_approve_view()
     {
+        $this->data['all_groups'] = $this->user_model->get_all_user_groups();
         $this->load->template('sadmin/user_approve_view_file', $this->data);
     }
 
@@ -92,6 +93,8 @@ class Sadmin extends CI_Controller
     {
         $clicked_user_idd = $this->input->post('clicked_user_id');
         $this_user_email = $this->input->post('this_user_email');
+        $selected_group_id = $this->input->post('selected_group_id');
+        $this_login_user_idd = $this->input->post('this_login_user_idd');
 
         $element_array = array(
                         'activity'          => 1,
@@ -103,6 +106,11 @@ class Sadmin extends CI_Controller
                         'active'          => 1,
                     );
         $this->user_model->approve_user_by_custid($clicked_user_idd, $user_data_array);
+
+        $update_user_group_data = array(
+                    'group_id'          => $selected_group_id,
+                );
+        $this->user_model->update_user_groups($this_login_user_idd, $update_user_group_data);
 
 
         $mail = new PHPMailer(true);

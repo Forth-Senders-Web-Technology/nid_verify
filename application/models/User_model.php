@@ -86,6 +86,12 @@ class User_model extends CI_Model {
         $sql = $this->db->get('groups');
         return $sql->result();
     }
+
+    public function update_user_groups($this_login_user_idd, $update_user_group_data)
+    {
+        $this->db->where('user_id', $this_login_user_idd);
+        $this->db->update('users_groups', $update_user_group_data);
+    }
 }
 
 

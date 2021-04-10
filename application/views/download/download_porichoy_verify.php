@@ -17,10 +17,10 @@
             <div style="margin: 0 auto; width: 120px; border: 1.5px solid grey;" >
                 <img style="margin: 1px" src="data:image/jpg;base64, <?php echo $voter_info->voter->photo; ?>" alt="">
             </div>
-<!-- 
+
             <div style="margin: 3px auto; width: 120px; border: 1.5px solid grey;" >
-                <img style="margin: 3px" src="data:image/jpg;base64, <?php echo $signa_ture->photo; ?>" alt="">
-            </div> -->
+                <img style="margin: 3px" src="data:image/png;base64, <?php echo $signa_ture->photo; ?>" alt="">
+            </div> 
 
 
             <table border="1" style="border-collapse: collapse; margin: 3px 10px 0 55px;">
