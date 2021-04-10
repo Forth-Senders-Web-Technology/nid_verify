@@ -140,7 +140,7 @@
                                                 <button class="btn btn-danger btn-sm cancel_user_btn" this_user_iiddd="${reqs[e].udc_list_auto_p_iidd}" style="cursor:pointer;"><i class="fa fa-times"></i></button>
                                             </th>
                                         </tr>`;
-                    }
+                    sl+=1 }
                     $('.customer_table_data').html(html_element);
                 }
             });

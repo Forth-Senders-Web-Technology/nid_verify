@@ -92,6 +92,12 @@ class User_model extends CI_Model {
         $this->db->where('user_id', $this_login_user_idd);
         $this->db->update('users_groups', $update_user_group_data);
     }
+
+    public function get_all_users()
+    {
+        $sql = $this->db->get('users');
+        return $sql->result();
+    }
 }
 
 

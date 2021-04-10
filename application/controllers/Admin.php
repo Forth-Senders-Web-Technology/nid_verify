@@ -416,4 +416,10 @@ class Admin extends CI_Controller {
             redirect("edit_profile");
     }
 
+    public function all_user_s()
+    {
+        $this->data['all_user_s'] = $this->user_model->get_all_users();
+        $this->load->template('front/all_users', $this->data);
+    }
+
 }

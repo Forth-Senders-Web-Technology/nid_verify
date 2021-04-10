@@ -29,7 +29,7 @@ class Home extends CI_Controller {
     public function index()
     {
         if ($this->data['setting_info']->home_page_ISactive == 1) {
-            $this->load->front('front/home', $this->data);
+            $this->load->view('front/home');
         }else {
             redirect('https://services.nidw.gov.bd/','refresh');
         }
@@ -189,16 +189,8 @@ class Home extends CI_Controller {
         $mail->Send();
 
 
-
-
-
-
-
-
-
-
-
     }
+
 }
 
 /* End of file Home.php */
