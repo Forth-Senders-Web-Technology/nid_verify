@@ -20,6 +20,6 @@
 
 
 
-        <div class="mg-t-60 tx-center">Not yet a member? <a href="reg_form" class="tx-info">Sign Up</a></div>
+        <!-- <div class="mg-t-60 tx-center">Not yet a member? <a href="reg_form" class="tx-info">Sign Up</a></div> -->
       </div><!-- login-wrapper -->
     </div><!-- d-flex -->

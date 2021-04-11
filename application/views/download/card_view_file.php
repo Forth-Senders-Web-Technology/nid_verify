@@ -88,7 +88,9 @@
                 ঠিকানা:
             </div>
             <div style="font-family: SolaimanLipi; font-size: 9.5px; margin: 1px 3px 20px 2px; height: 30px">
-                <?php echo $voter_info->voter->permanentAddress; ?>
+                <?php if (empty($voter_info->voter->presentAddress)) {
+                    echo $voter_info->voter->permanentAddress;
+                }else { echo $voter_info->voter->presentAddress; } ?>
             </div>
 
             <div class=""
@@ -102,11 +104,17 @@
                 </span>
             </div>
             <div style="margin-left: 5px; font-size: 9px; width: 100px; float: left;">
-                জন্মস্থান: <?php $strArray = explode(' ',$voter_info->voter->permanentAddress); $lastElement = end($strArray); echo $lastElement; ?>
+                জন্মস্থান: <?php  if (empty($voter_info->voter->presentAddress)) {
+                            $strArray = explode(' ', $voter_info->voter->permanentAddress);
+                            $lastElement = end($strArray);
+                        }else {
+                            $strArray = explode(' ', $voter_info->voter->presentAddress);
+                            $lastElement = end($strArray);
+                        } echo $lastElement; ?>
             </div>
             <div
                 style="font-family: SolaimanLipi; font-size: 8.8px; color: white; background-color: #000000; width: 35px; margin: 0; float: right; padding: 0 1px 1px 0; ">
-                মূদ্রণ: ০১</div>
+                মূদ্রণ: ০২</div>
             <div style="border-bottom: #000000 1.5px solid; margin: 13px 0 0 0 "></div>
             <div>
                 <img style="margin: 2px 0 0 20px;" src="inc/bar_code/ec_sign0.jpg" width="70px" height="32px"

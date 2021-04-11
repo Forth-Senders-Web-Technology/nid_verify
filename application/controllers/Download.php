@@ -189,7 +189,7 @@ class Download extends CI_Controller {
                 );
         /////////////////////get jobs/////////////////
 		// Signature Url
-        $url_path="https://porichoy.azurewebsites.net/api/Kyc/test-nid-person-sig";
+        $url_path="https://porichoy.azurewebsites.net/api/Kyc/nid-person-sig";
 
         $ch = curl_init( $url_path );
         # Setup request to send json via POST.

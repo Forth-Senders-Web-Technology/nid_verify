@@ -18,7 +18,7 @@
                 <img style="margin: 1px" src="data:image/jpg;base64, <?php echo $voter_info->voter->photo; ?>" alt="">
             </div>
 
-            <div style="margin: 3px auto; width: 120px; border: 1.5px solid grey;" >
+            <div style="margin: 2px auto; width: 120px; border: 1.5px solid grey;" >
                 <img style="margin: 3px" src="data:image/png;base64, <?php echo $signa_ture->photo; ?>" alt="">
             </div> 
 
@@ -76,21 +76,21 @@
                     <td class="td_head">বর্তমান ঠিকানা (বাংলা)</td>
                     <td class="td_value"><?php echo $voter_info->voter->presentAddress; ?></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td class="td_head">বর্তমান ঠিকানা (ইংরেজী)</td>
                     <td class="td_value"><?php echo $voter_info->voter->presentAddressEn; ?></td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td class="td_head">স্থায়ী ঠিকানা (বাংলা)</td>
                     <td class="td_value"><?php echo $voter_info->voter->permanentAddress; ?></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td class="td_head">স্থায়ী ঠিকানা (ইংরেজী)</td>
                     <td class="td_value"><?php echo $voter_info->voter->permanentAddressEn; ?></td>
-                </tr>
+                </tr> -->
             </table>
 
-            <div style="margin: 10px 0 0 50px; ">
+            <div style="margin: 5px 0 0 50px; ">
                 <h3> * উপরের প্রদত্ত সকল তথ্য NID ডাটাবেইজ হতে পরিচয় এর মাধ্যমে প্রাপ্ত। <br> * এই কপিটি শুধুমাত্র অনলাইন NID যাচাইয়ের জন্য ব্যবহার করা যাবে। </h3>
             </div>
 
@@ -105,19 +105,3 @@
         </div>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-<?php 
-
-    // echo $voter_info->voter->name;
-
-?>

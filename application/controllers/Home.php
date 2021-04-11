@@ -161,9 +161,6 @@ class Home extends CI_Controller {
     public function approve_user_mail()
     {
         
-
-
-
         $mail = new PHPMailer(true);
         $auth = true;
         $a = $this->input->post('a');        
@@ -187,8 +184,6 @@ class Home extends CI_Controller {
         $mail->Body = "Hello World";
         
         $mail->Send();
-
-
     }
 
 }

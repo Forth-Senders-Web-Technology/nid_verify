@@ -422,4 +422,35 @@ class Admin extends CI_Controller {
         $this->load->template('front/all_users', $this->data);
     }
 
+
+    // Get District by Division ID and Json Encoded
+    public function getDistrict_byDivID()
+    {
+        $div_id = $this->input->post('div_id');
+        $data = $this->setting_model->getDistrict($div_id);
+        echo json_encode($data);
+    }
+
+    // Get Upazilla by District ID and Json Encoded
+    public function getUpazilla_byDistID()
+    {
+        $dist_id = $this->input->post('dist_id');
+        $data = $this->setting_model->getUpazilla($dist_id);
+        echo json_encode($data);
+    }
+
+    // Get Union by Upazilla ID and Json Encoded
+    public function getUnion_byUPID()
+    {
+        $upid = $this->input->post('upid');
+        $data = $this->setting_model->getUnion($upid);
+        echo json_encode($data);
+    }
+
+    public function get_udc_by_selected_union_id()
+    {
+        $un_id = $this->input->post('un_id');
+        $get_data = $this->user_model->get_udc_by_selected_union_id($un_id);
+        echo json_encode($get_data);
+    }
 }

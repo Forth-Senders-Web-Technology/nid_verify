@@ -219,4 +219,49 @@ class Sadmin extends CI_Controller
         $this->session->set_flashdata('success', 'Update Successfuly');
         redirect("group_services_rate");
     }
+
+    public function user_manage_view_fun()
+    {
+        $this->data['div_info'] = $this->setting_model->getDivision();
+        $this->data['user_group'] = $this->user_model->get_all_users_group();
+        $this->load->template('sadmin/user_management_view_file', $this->data);
+    }
+
+    public function get_udc_verify_by_mobile()
+    {
+        $mobile_no = $this->input->post('type_mobile_no');
+        $get_data = $this->user_model->get_udc_by_mobile_no($mobile_no);
+        echo json_encode($get_data);
+    }
+
+    public function get_customer_info_by_cus_id()
+    {
+        $this_user_idd = $this->input->post('this_user_idd');
+        $get_data = $this->user_model->get_customer_info_by_cus_id($this_user_idd);
+        echo json_encode($get_data);
+    }
+
+    public function edit_user_group_user_name()
+    {
+        $this_login_user_id = $this->input->post('this_login_user_id');
+        $this_user_idd = $this->input->post('attr_this_customer_idd');
+        $select_user_group = $this->input->post('select_user_group');
+        $type_user_name = $this->input->post('type_user_name');
+
+        $user_data_array = array(
+                    'username' => $type_user_name, 
+                );
+        $this->user_model->edit_user_by_id($this_login_user_id, $user_data_array);
+    }
+
+    public function update_login_user_password()
+    {
+        $this_login_user_id = $this->input->post('this_login_user_id');
+        $type_user_password = $this->ion_auth_model->hash_password($this->input->post('type_user_password'));
+
+        $user_data_array = array(
+                'password' => $type_user_password, 
+            );
+        $this->user_model->edit_user_by_id($this_login_user_id, $user_data_array);
+    }
 }

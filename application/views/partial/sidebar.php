@@ -27,7 +27,7 @@
     </div><!-- br-sideleft-menu -->
 
     <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="" class="br-menu-link">
+        <a href="user_manage" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-users"></i>
             <span class="menu-item-label"> User Management </span>
