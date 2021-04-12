@@ -252,6 +252,11 @@ class Sadmin extends CI_Controller
                     'username' => $type_user_name, 
                 );
         $this->user_model->edit_user_by_id($this_login_user_id, $user_data_array);
+
+        $update_user_group_data = array(
+                    'group_id'          => $select_user_group,
+                );
+        $this->user_model->update_user_groups($this_login_user_id, $update_user_group_data);
     }
 
     public function update_login_user_password()

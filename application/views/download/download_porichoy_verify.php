@@ -14,12 +14,25 @@
             </div>
             <h2 style="text-align:center; " >অনলাইন জাতীয় পরিচয় পত্র যাচাই</h2>
 
+
+<?php
+    $pic_imgdata = base64_decode($voter_info->voter->photo);
+    $pic_f = finfo_open();
+    $pic_img_type = finfo_buffer($pic_f, $pic_imgdata, FILEINFO_MIME_TYPE);   
+?>
+
             <div style="margin: 0 auto; width: 120px; border: 1.5px solid grey;" >
-                <img style="margin: 1px" src="data:image/jpg;base64, <?php echo $voter_info->voter->photo; ?>" alt="">
+                <img style="margin: 1px" src="data:<?php echo $pic_img_type; ?>;base64, <?php echo $voter_info->voter->photo; ?>" alt="">
             </div>
 
+<?php
+    $sign_imgdata = base64_decode($signa_ture->photo);
+    $sign_f = finfo_open();
+    $sign_img_type = finfo_buffer($sign_f, $sign_imgdata, FILEINFO_MIME_TYPE);    
+?>
+
             <div style="margin: 2px auto; width: 120px; border: 1.5px solid grey;" >
-                <img style="margin: 3px" src="data:image/png;base64, <?php echo $signa_ture->photo; ?>" alt="">
+                <img style="margin: 3px" src="data:<?php echo $sign_img_type; ?>;base64, <?php echo $signa_ture->photo; ?>" alt="">
             </div> 
 
 

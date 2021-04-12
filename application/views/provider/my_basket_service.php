@@ -11,9 +11,12 @@
             <input type="hidden" value="" class="clickable_services_idd">
             <input type="hidden" value="" class="clickable_services_payment_cut_idd">
 
-                <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10"> All Services Here, Select your's services </h6><br>
+                <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10"> All Services Here, Select your's services </h6>
+
+            <button class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium reload_my_basket_function">Reload</button><br>
 
                 <div class="table-wrapper">
+                
                     <table id="services_data_table" class="table table-bordered table-colored table-info">
                         <thead>
                             <tr>
@@ -271,24 +274,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="inc/pdf_preview/pdf.js"></script>
     <script src="inc/pdf_preview/pdf.worker.js"></script>
 
@@ -306,13 +291,9 @@
         $('.clickable_services_idd').val(services_id);
       });
 
-
-
-
-
-
-
-
+      $(document).on('click', '.reload_my_basket_function', function () {
+        get_my_provide_services();
+      });
 
 
 
@@ -360,12 +341,10 @@
 
                         if (resp[z].services_id == 1) {
                             modal_id = 'insert_nid';
-                        }else if (resp[z].services_id == 2) {
+                        }else if (resp[z].services_id == 2 || resp[z].services_id == 4) {
                             modal_id = 'upload_pdf';
                         }else if (resp[z].services_id == 5) {
                             modal_id = 'insert_user_pass';
-                        }else if (resp[z].services_id == 4) {
-                            modal_id = 'insert_search_copy_nid';
                         }
                         
                         html_data += `<tr class="services_table_row">

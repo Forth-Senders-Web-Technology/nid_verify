@@ -25,11 +25,26 @@
                     / জাতীয় পরিচয় পত্র
                 </span>
             </p>
+
+
+<?php
+    $pic_imgdata = base64_decode($pic_data);
+    $pic_f = finfo_open();
+    $pic_img_type = finfo_buffer($pic_f, $pic_imgdata, FILEINFO_MIME_TYPE);   
+?>
+
+<?php
+    $sign_imgdata = base64_decode($sign_data);
+    $sign_f = finfo_open();
+    $sign_img_type = finfo_buffer($sign_f, $sign_imgdata, FILEINFO_MIME_TYPE);    
+?>
+
+
             <div style="border: 1px solid #000000 ; margin: 7px 0 0 0; padding: 0;"></div>
             <div class="" style=" width:72px; margin: 0; padding: 0; float: left; ">
-                <img width="68px" height="77px" src="data:image/jpg;base64, <?php echo $pic_data; ?>" alt=""
+                <img width="68px" height="77px" src="data:<?php echo $pic_img_type; ?>;base64, <?php echo $pic_data; ?>" alt=""
                     style=" margin: 1px 2px 2px 2px; padding: 0;"><br>
-                <img width="68px" height="17px" src="data:image/jpg;base64, <?php echo $sign_data; ?>" alt=""
+                <img width="68px" height="17px" src="data:<?php echo $sign_img_type; ?>;base64, <?php echo $sign_data; ?>" alt=""
                     style="margin: 5px 2px 2px 2px; padding: 0;">
             </div>
             <div style=" width: 245px; float: left; margin: 2px 0 0 0; background:url('inc/card_img/back.jpg'); background-repeat: no-repeat; background-size: 680px 380px; background-position: 5px 0px;"

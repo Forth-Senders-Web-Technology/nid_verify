@@ -13,6 +13,8 @@
         
             <div class="br-section-wrapper">
 
+            <button class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium reload_waiting_user_list">Reload</button><br>
+
                 <center><h3> User Waiting List </h3></center>
 
                 <div class="table-wrapper">
@@ -107,6 +109,10 @@
     waiting_user_info -->
 
     <script>
+
+        $(document).on('click', '.reload_waiting_user_list', function () {
+            get_all_waiting_users();
+        });
         
         get_all_waiting_users();
 

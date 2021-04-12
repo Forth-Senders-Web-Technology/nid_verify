@@ -8,7 +8,9 @@
         <div class="br-pagebody">
             <div class="br-section-wrapper">
 
-                <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10"> All Services Here, Select your's services </h6><br>
+                <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10"> All Services Here, Select your's services </h6>
+                
+            <button class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium reload_all_services_function">Reload</button><br>
 
                 <div class="table-wrapper">
                     <table id="services_data_table" class="table table-bordered table-colored table-info">
@@ -21,6 +23,7 @@
                                 <th class="wd-15p">Nid Pin No</th>
                                 <th class="wd-15p">Name</th>
                                 <th class="wd-15p">Birth Date</th>
+                                <th class="wd-15p">User Name</th>
                                 <th class="wd-15p">Services Name</th>
                                 <th class="wd-15p">Select</th>
                             </tr>
@@ -40,7 +43,11 @@
 
     <script>
 
-get_all_services();
+        $(document).on('click', '.reload_all_services_function', function () {
+            get_all_services();
+        });
+
+        get_all_services();
 
 
         function get_all_services() {
@@ -60,6 +67,7 @@ get_all_services();
                                         <td>${resp[z].nid_pin_no}</td>
                                         <td>${resp[z].person_name}</td>
                                         <td>${resp[z].birth_date}</td>
+                                        <td>${resp[z].user_person_name}</td>
                                         <td>${resp[z].services_name}</td>
                                         <td><button class="btn btn-info active btn-block mg-b-2" style="cursor:pointer;">Select</button></td>
                                     </tr>`;

@@ -8,7 +8,9 @@
         <div class="br-pagebody">
             <div class="br-section-wrapper">
 
-                <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10"> Customer waiting payment list </h6><br>
+                <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10"> Customer waiting payment list </h6>
+                
+            <button class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium reload_waiting_payment">Reload</button><br>
 
                 <div class="table-wrapper">
                     <table id="services_data_table" class="table table-bordered table-colored table-indigo">
@@ -70,6 +72,10 @@
 
 
     <script type="text/javascript">
+
+        $(document).on('click', '.reload_waiting_payment', function () {
+            get_waiting_payment();
+        });
 
         get_waiting_payment();
 

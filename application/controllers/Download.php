@@ -85,7 +85,7 @@ class Download extends CI_Controller {
 		// PHP Curl for get Signature
         $headers = array(
             'Content-Type:application/json',
-            'x-api-key:53c64d02-81d1-485b-97ba-b113ae251734',
+            'x-api-key:f22fbdf9-e30d-49cc-b899-ce12ac4ae752',
         );
 
         $fields= array(
@@ -160,6 +160,7 @@ class Download extends CI_Controller {
 		$mpdf->WriteHTML($html,2);
         $mpdf->Output($fileName,'D'); 
 		// Genarate mpdf File
+		// 
 		
     }
 
@@ -178,7 +179,7 @@ class Download extends CI_Controller {
 		// PHP Curl for get Signature
         $headers = array(
             'Content-Type:application/json',
-            'x-api-key:53c64d02-81d1-485b-97ba-b113ae251734',
+            'x-api-key:f22fbdf9-e30d-49cc-b899-ce12ac4ae752',
         );
 
         $fields= array(
@@ -278,6 +279,7 @@ class Download extends CI_Controller {
 		$mpdf->WriteHTML($html,2);
         $mpdf->Output($fileName,'D');
 		// Genarate mpdf file 
+		// 
 
 	}
 
@@ -380,7 +382,6 @@ class Download extends CI_Controller {
 		$mpdf->WriteHTML($html,2);
         $mpdf->Output($fileName,'D');
 		// Genarate mpdf file 
-
 
 	}
 

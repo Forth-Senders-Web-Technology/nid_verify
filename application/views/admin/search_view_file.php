@@ -120,9 +120,9 @@
                     now_balance = parseInt(total_added_money) - parseInt(total_cut_money);
 
                     if (now_balance >= services_rate) {
-                        $('.get_nid_request_form').html(`                            
+                        $('.get_nid_request_form').html(`  
+                                <div class="err_show" >  </div>                          
                             <div class="row no-gutters">
-                                <div class="err_show" >  </div><br><br><br>
 
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -182,6 +182,20 @@
                                         <input class="form-control birth_date" type="text" name="birth_date" value="" placeholder="Enter Birth Date">
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group bd-t-0-force">
+                                        <label class="form-control-label">Father NID: <span class="tx-danger"></span></label>
+                                        <input class="form-control father_nid_no" type="text" name="birth_date" value="" placeholder="Enter Father NID">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group bd-t-0-force">
+                                        <label class="form-control-label">Mother NID: <span class="tx-danger"></span></label>
+                                        <input class="form-control mother_nid_no" type="text" name="birth_date" value="" placeholder="Enter Mother NID">
+                                    </div>
+                                </div>
+
                                 <div class="col-md-8">
                                     <div class="form-group bd-t-0-force">
                                         <label class="form-control-label">জন্ম নিবন্ধন নং: <span class="tx-danger"></span></label>
@@ -251,6 +265,10 @@
             let v_un = $('.un_list option:selected').text();
             let v_father = $('.father_name').val();
             let v_mother = $('.mother_name').val();
+
+            let father_nid_no = $('.father_nid_no').val();
+            let mother_nid_no = $('.mother_nid_no').val();
+
             let birth_certificate = $('.birth_certificate').val();
             
             if ($('.div_list').val() == '' || $('.dis_list').val() == '' || $('.up_list').val() == ''|| $('.un_list').val() == '' || $('.person_name').val() == '' || $('.father_name').val() == '' || $('.mother_name').val() == '' || $('.birth_date').val() == '') {
@@ -261,7 +279,7 @@
                     type: "post",
                     url: "admin/insert_new_search_request",
                     data: {
-                        description: `বিভাগঃ ${v_div}, জেলাঃ ${v_dist}, উপজেলাঃ ${v_up}, ইউনিয়নঃ ${v_un}, বাবাঃ ${v_father}, মাতাঃ ${v_mother}, জন্ম নিবন্ধন নংঃ ${birth_certificate}`,
+                        description: `বিভাগঃ ${v_div}, জেলাঃ ${v_dist}, উপজেলাঃ ${v_up}, ইউনিয়নঃ ${v_un}, বাবাঃ ${v_father}, মাতাঃ ${v_mother}, বাবার এনআইডিঃ ${father_nid_no}, মাতার এনআইডিঃ ${mother_nid_no}, জন্ম নিবন্ধন নংঃ ${birth_certificate},`,
                         person_name: $('.person_name').val(),
                         birth_date:  $('.birth_date').val(),
                         services_rate: services_rate,

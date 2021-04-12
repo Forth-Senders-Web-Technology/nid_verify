@@ -60,6 +60,7 @@ class Services_model extends CI_Model {
         $this->db->where('requ_status', 0);
         $this->db->where('check_in_user_id', NULL);
         $this->db->join('services_list_tbl', 'services_list_tbl.services_list_tbl_p_id = services_request_tbl.services_id', 'left');        
+        $this->db->join('customer_full_info', 'customer_full_info.udc_list_auto_p_iidd = services_request_tbl.user_iddd', 'left');
         $sql = $this->db->get('services_request_tbl');
         return $sql->result(); 
     }
@@ -74,7 +75,8 @@ class Services_model extends CI_Model {
     {
         $this->db->where('requ_status', 0);
         $this->db->where('check_in_user_id', $user_id);
-        $this->db->join('services_list_tbl', 'services_list_tbl.services_list_tbl_p_id = services_request_tbl.services_id', 'left');        
+        $this->db->join('services_list_tbl', 'services_list_tbl.services_list_tbl_p_id = services_request_tbl.services_id', 'left');          
+        $this->db->join('customer_full_info', 'customer_full_info.udc_list_auto_p_iidd = services_request_tbl.user_iddd', 'left');    
         $sql = $this->db->get('services_request_tbl');
         return $sql->result(); 
     }

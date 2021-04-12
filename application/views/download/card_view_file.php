@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <div class="" style=" width: 332px; margin: 0px 6.38px 0 20px; float: left;">
         <div class="" style="margin: 0; padding: 0; border: 1.5px solid black; width: 320px;  height: 205px;">
             <img src="inc/card_img/bd_logo_0.jpg" width="37px" height="35px" alt=""
@@ -28,11 +29,24 @@
                     / জাতীয় পরিচয় পত্র
                 </span>
             </p>
+
+<?php
+    $pic_imgdata = base64_decode($voter_info->voter->photo);
+    $pic_f = finfo_open();
+    $pic_img_type = finfo_buffer($pic_f, $pic_imgdata, FILEINFO_MIME_TYPE);   
+?>
+
+<?php
+    $sign_imgdata = base64_decode($sign->photo);
+    $sign_f = finfo_open();
+    $sign_img_type = finfo_buffer($sign_f, $sign_imgdata, FILEINFO_MIME_TYPE);    
+?>
+
             <div style="border: 1px solid #000000 ; margin: 7px 0 0 0; padding: 0;"></div>
             <div class="" style=" width:72px; margin: 0; padding: 0; float: left; ">
-                <img width="68px" height="77px" src="data:image/jpg;base64, <?php echo $voter_info->voter->photo; ?>" alt=""
+                <img width="68px" height="77px" src="data:<?php echo $pic_img_type; ?>;base64, <?php echo $voter_info->voter->photo; ?>" alt=""
                     style=" margin: 2px 2px 2px 2px; padding: 0;"><br>
-                <img width="68px" height="13px" src="data:image/jpg;base64, <?php echo $sign->photo; ?>" alt=""
+                <img width="68px" height="13px" src="data:<?php echo $sign_img_type; ?>;base64, <?php echo $sign->photo; ?>" alt=""
                     style="margin: 5px 2px 2px 2px; padding: 0;">
             </div>
             <div style=" width: 245px; float: left; margin: 2px 0 0 0; background:url('inc/card_img/back.jpg'); background-repeat: no-repeat; background-size: 680px 380px; background-position: 5px 0px;"
@@ -89,8 +103,8 @@
             </div>
             <div style="font-family: SolaimanLipi; font-size: 9.5px; margin: 1px 3px 20px 2px; height: 30px">
                 <?php if (empty($voter_info->voter->presentAddress)) {
-                    echo $voter_info->voter->permanentAddress;
-                }else { echo $voter_info->voter->presentAddress; } ?>
+                    echo BanglaConverter::en2bn($voter_info->voter->permanentAddress);
+                }else { echo BanglaConverter::en2bn($voter_info->voter->presentAddress); } ?>
             </div>
 
             <div class=""
