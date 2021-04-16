@@ -34,7 +34,6 @@ class Admin extends CI_Controller {
             redirect('https://services.nidw.gov.bd/','refresh');
         }
 
-
     }
 
     public function index()
@@ -170,7 +169,7 @@ class Admin extends CI_Controller {
         $data_arr = array(
                     'cut_amount'    => $this->input->post('services_rate'), 
                     'cust_id'       => $this->user_id, 
-                    'services_iidd' => 1, 
+                    'services_iidd' => 4, 
                     'time_s'        => time(), 
                 );
         $last_insert_id = $this->services_model->insert_this_services_cost($data_arr);
@@ -218,7 +217,7 @@ class Admin extends CI_Controller {
         $data_arr = array(
                     'cut_amount'    => $this->input->post('services_rate'), 
                     'cust_id'       => $this->user_id, 
-                    'services_iidd' => 1, 
+                    'services_iidd' => 5, 
                     'time_s'        => time(), 
                 );
         $last_insert_id = $this->services_model->insert_this_services_cost($data_arr);
@@ -251,7 +250,8 @@ class Admin extends CI_Controller {
                         'entry_time'            => time(), 
                         'entry_date'            => date('Y-m-d', time()), 
                         'user_iddd'             => $this->user_id, 
-                        'services_id '          => 5, 
+                        'services_id '          => 9, 
+                        'requ_status'           => '1', 
                         'payment_cut_a_iddd'    => $last_insert_id
                     );
         $this->services_model->insert_services_data($insert_data_arr);
@@ -292,34 +292,6 @@ class Admin extends CI_Controller {
         curl_close($ch);
 
         echo $result;
-
-        # Print response.
-        // print_r($result) ;
-
-        // echo $result_s;
-
-        // $this->output->set_content_type('application/json');  
-
-        // curl_close($ch);      
-/* 
-    
-      if(curl_errno($ch)) {    
-          echo 'Curl error: ' . curl_error($ch);  
-
-          exit();  
-      } else {    
-          // check the HTTP status code of the request
-            $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            if ($resultStatus != 200) {
-                echo stripslashes($result_s);
-                die('Request failed: HTTP status code: ' . $resultStatus);
-
-            }
-         $featured_jobs_array=(array)json_decode($result_s);
-        //  print_r($featured_jobs_array);
-         exit();
-      } 
-       */
 
     }
 

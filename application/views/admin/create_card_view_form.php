@@ -27,15 +27,75 @@
             <form action="download/create_card_by_submit_info" method="post" enctype="multipart/form-data" autocomplete="off" data-parsley-validate>
 
 
+                <input type="hidden" class="serive_group_rates" name="serive_group_rates" value="<?php echo $service_rate->serive_s_rate_s; ?>">
+
                 <div class="br-section-wrapper">
                     <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10"> Fill-up all information </h6>
                     <p class="mg-b-30 tx-gray-600"> </p>
 
-                    <div class="form-layout form-layout-1">
-                        <div class="row mg-b-25">
-                        
-                        <input type="hidden" name="serive_group_rates" value="<?php echo $service_rate->serive_s_rate_s; ?>">
+                    <div class="form-layout form-layout-1 full_card_form"> </div>
+                </div>
+            </form>
 
+        </div><!-- br-pagebody -->
+
+    </div><!-- br-mainpanel -->
+    <!-- ########## END: MAIN PANEL ########## -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+     balance_query();
+
+    let now_balance;
+
+    let services_rate =  $('.serive_group_rates').val();
+
+    function balance_query() {
+        let total_added_money;
+        let total_cut_money;
+        $.ajax({
+            type: "get",
+            url: "admin/balance_query",
+            data: "",
+            dataType: "json",
+            success: function (bal) {
+
+                if (bal.payment_added) {
+                    total_added_money = bal.payment_added;
+                }else {
+                    total_added_money = 0;
+                }
+
+                if (bal.payment_cut) {
+                    total_cut_money = bal.payment_cut;
+                }else {
+                    total_cut_money = 0;
+                }
+                now_balance = parseInt(total_added_money) - parseInt(total_cut_money);
+
+                $('.bal_value').html(now_balance);
+                
+
+                if (now_balance >= services_rate) {
+                    $('.full_card_form').html(`
+
+                    <div class="row mg-b-25">
+                        
                         <div class="col-lg-6">
                             <div class="form-group">
                             <label class="form-control-label">নাম বাংলা: <span class="tx-danger">*</span></label>
@@ -149,74 +209,9 @@
                                 <button type="reset" class="btn btn-secondary btn-lg">Cancel</button>
                             </div><!-- form-layout-footer -->
                         </center>
-                    </div><!-- form-layout -->
-                </div>
-            </form>
-
-        </div><!-- br-pagebody -->
-
-    </div><!-- br-mainpanel -->
-    <!-- ########## END: MAIN PANEL ########## -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-     balance_query();
-
-    let now_balance;
-
-
-    function balance_query() {
-        let total_added_money;
-        let total_cut_money;
-        $.ajax({
-            type: "get",
-            url: "admin/balance_query",
-            data: "",
-            dataType: "json",
-            success: function (bal) {
-
-                if (bal.payment_added) {
-                    total_added_money = bal.payment_added;
-                }else {
-                    total_added_money = 0;
-                }
-
-                if (bal.payment_cut) {
-                    total_cut_money = bal.payment_cut;
-                }else {
-                    total_cut_money = 0;
-                }
-                now_balance = parseInt(total_added_money) - parseInt(total_cut_money);
-
-                $('.bal_value').html(now_balance);
-                
-
-                if (now_balance >= services_rate) {
-                    $('.verify_box_set').html(`
-                    <div class="input-group wd-xs-300">
-                        <input type="text" maxlength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' size="10" class="form-control nid_number_type" placeholder=" NID Number ">
-                        <div class="input-group-btn">
-                            <button class="btn btn-info nid_data_search_btn" style="cursor:pointer"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>  
                     `);
                 }else {
-                    $('.verify_box_set').html('আপনার একাউন্টে টাকা বেশি নেই দয়া করে আগে রিচার্গ করুন .... ');
+                    $('.full_card_form').html('<center><p style="color:black; font-size: 20px;">আপনার একাউন্টে টাকা বেশি নেই দয়া করে আগে রিচার্জ করুন ....</p> </center>');
                 }
             }
         });

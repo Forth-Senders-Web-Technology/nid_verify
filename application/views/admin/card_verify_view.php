@@ -135,11 +135,10 @@
                         nid_number_type:  $('.nid_number_type').val()
                     },
                     success: function (get_data) {
-
+                    
                         let full_data = JSON.parse(get_data);
 
                         insert_porichoy_verify_request();
-
 
                         $('.nid_get_data').html(`
                         <div style="width: 150px; margin-bottom: 30px;">
@@ -177,7 +176,6 @@
                             <input type="submit" style="cursor:pointer;" class="btn btn-info mx-auto btn-lg click_download_btn" value="Download">
                         </form>    
                         `); 
-
                     }
                 });
             }

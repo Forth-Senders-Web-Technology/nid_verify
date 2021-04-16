@@ -160,7 +160,7 @@ class Download extends CI_Controller {
 		$mpdf->WriteHTML($html,2);
         $mpdf->Output($fileName,'D'); 
 		// Genarate mpdf File
-		// 
+		
 		
     }
 
@@ -230,8 +230,6 @@ class Download extends CI_Controller {
 		// Genarate Barcode for This NID Card
 
 
-
-
 		// This is View File
        $html = $this->load->view('download/card_view_file', $object, true);
 
@@ -279,7 +277,6 @@ class Download extends CI_Controller {
 		$mpdf->WriteHTML($html,2);
         $mpdf->Output($fileName,'D');
 		// Genarate mpdf file 
-		// 
 
 	}
 
@@ -331,8 +328,6 @@ class Download extends CI_Controller {
 
 		$obj_data['pdf417_barcode'] = $renderer->render($data);
 		// Genarate Barcode for This NID Card
-
-
 
 
 		// This is View File

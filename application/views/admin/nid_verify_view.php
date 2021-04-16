@@ -22,28 +22,14 @@
              
             </div>
 
-
             <div>
                 <center class="nid_get_data"></center>
             </div>
-
-
 
         </div><!-- br-pagebody -->
 
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -124,13 +110,7 @@
 
         function get_nid_data() {
             let get_nid_no_typing = $('.nid_number_type').val();
-
-
-
-/*             if (get_nid_no_typing == '' || get_nid_no_typing.length != 10) {
-                alert('Please give nid number and NID must be 10 digits');
-            }else { */
-                            
+  
                 $.ajax({
                     type: "post",
                     url: "admin/nid_verify_data",
@@ -141,50 +121,47 @@
 
                         let full_data = JSON.parse(get_data);
 
-                        insert_porichoy_verify_request();
+                            insert_porichoy_verify_request();
 
+                            $('.nid_get_data').html(`
+                            <div style="width: 150px; margin-bottom: 30px;">
+                                <img src="data:image/png;base64,${full_data.voter.photo}" class="card-img-top" alt="image" style="">
+                            </div>
+                            <div style="width: 50%;">
+                                <table class="table">
+                                    <!-- class="thead-info" -->
+                                    <tr>
+                                        <th class="wd-25p"
+                                            style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
+                                            Name</th>
+                                        <td style="color: black; padding-left: 30px;">${full_data.voter.name}</td>
+                                    </tr>
 
-                        $('.nid_get_data').html(`
-                        <div style="width: 150px; margin-bottom: 30px;">
-                            <img src="data:image/png;base64,${full_data.voter.photo}" class="card-img-top" alt="image" style="">
-                        </div>
-                        <div style="width: 50%;">
-                            <table class="table">
-                                <!-- class="thead-info" -->
-                                <tr>
-                                    <th class="wd-25p"
-                                        style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
-                                        Name</th>
-                                    <td style="color: black; padding-left: 30px;">${full_data.voter.name}</td>
-                                </tr>
+                                    <tr>
+                                        <th class="wd-25p"
+                                            style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
+                                            Father's Name</th>
+                                        <td style="color: black; padding-left: 30px;">${full_data.voter.father}</td>
+                                    </tr>
 
-                                <tr>
-                                    <th class="wd-25p"
-                                        style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
-                                        Father's Name</th>
-                                    <td style="color: black; padding-left: 30px;">${full_data.voter.father}</td>
-                                </tr>
-
-                                <tr>
-                                    <th class="wd-25p"
-                                        style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
-                                        Mother's Name</th>
-                                    <td style="color: black; padding-left: 30px;">${full_data.voter.mother}</td>
-                                </tr>
-                            </table>
-                        </div><br>
-                                    
-                        <form action="download/porichoy_verify" method="post" target="_blank" id="html_submit_form">
-                            <input type="hidden" value="${get_nid_no_typing}" name="nid_typing_data">
-                            <textarea name="data_arr" id="" style="display:none" cols="30" rows="10">${get_data}</textarea>
-                            <input type="submit" style="cursor:pointer;" class="btn btn-info mx-auto btn-lg click_download_btn" value="Download">
-                        </form>    
-                        `); 
+                                    <tr>
+                                        <th class="wd-25p"
+                                            style="border: 1px solid; background-color: #17A2B8; color: white; text-align: right;">
+                                            Mother's Name</th>
+                                        <td style="color: black; padding-left: 30px;">${full_data.voter.mother}</td>
+                                    </tr>
+                                </table>
+                            </div><br>
+                                        
+                            <form action="download/porichoy_verify" method="post" target="_blank" id="html_submit_form">
+                                <input type="hidden" value="${get_nid_no_typing}" name="nid_typing_data">
+                                <textarea name="data_arr" id="" style="display:none" cols="30" rows="10">${get_data}</textarea>
+                                <input type="submit" style="cursor:pointer;" class="btn btn-info mx-auto btn-lg click_download_btn" value="Download">
+                            </form>    
+                            `); 
 
                     }
                 });
-            // }
-
         }
 
 
@@ -195,27 +172,6 @@
                 $('.nid_get_data').html(``);
             }, 1500);
         });
-
-/* 
-        $("#html_submit_form").submit(function(event) {
-
-            
-            $('.nid_get_data').html(``);
-
-        });
-        function pass_data_to_controller_for_download(param_s) {
-            $.ajax({
-                type: "post",
-                url: "download/porichoy_verify", 
-                data: {
-                    data_arr: param_s
-                },
-                success: function (response) {
-                    
-                }
-            });
-        }
- */
     
     </script>
 

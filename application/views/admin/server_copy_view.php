@@ -144,13 +144,13 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-control-label">Slip No: <span class="tx-danger">*</span></label>
+                                        <label class="form-control-label">NID No: <span class="tx-danger">*</span></label>
                                         <input class="form-control nid_no_s" type="text" name="nid_no_s" value="" placeholder="Enter Nid No">
                                     </div>
                                 </div> 
                                 <div class="col-md-6 mg-t--1 mg-md-t-0">
                                     <div class="form-group mg-md-l--1">
-                                        <label class="form-control-label">Voter No: <span class="tx-danger">*</span></label>
+                                        <label class="form-control-label">NID PIN No: <span class="tx-danger">*</span></label>
                                         <input class="form-control nid_pin_no" type="text" name="nid_pin_no" value="" placeholder="Enter Nid Pin No">
                                     </div>
                                 </div> 

@@ -334,7 +334,7 @@
 
         $.ajax({
             type: "post",
-            url: "sadmin/",
+            url: "sadmin/update_login_user_password",
             data: {
                 this_login_user_id: this_login_user_id,
                 type_user_password: type_user_password
