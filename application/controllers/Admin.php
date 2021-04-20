@@ -272,7 +272,7 @@ class Admin extends CI_Controller {
                 );
         /////////////////////get jobs/////////////////
 
-        $url_path="https://porichoy.azurewebsites.net/api/Kyc/nid-person-values";
+        $url_path="https://porichoy.azurewebsites.net/api/Kyc/test-nid-person-values";
 
         // $ch = curl_init($url_path);
         // curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -424,5 +424,18 @@ class Admin extends CI_Controller {
         $un_id = $this->input->post('un_id');
         $get_data = $this->user_model->get_udc_by_selected_union_id($un_id);
         echo json_encode($get_data);
+    }
+
+    public function issue_new_sonod()
+    {
+        $this->data['all_sonod'] = $this->services_model->get_all_sonod_for_select();
+        $this->load->template('admin/issue_sonod', $this->data);
+    }
+
+    public function get_this_sonod()
+    {
+        $this_sonod_idd = $this->input->post('this_sonod_idd');
+        $this->data['this_sonod_info'] = $this->services_model->get_this_sonod_info($this_sonod_idd);
+        echo json_encode($this->data);
     }
 }

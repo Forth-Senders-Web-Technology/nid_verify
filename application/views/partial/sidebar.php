@@ -14,35 +14,35 @@
           </div>
         </a>
       </div> 
+    
 
+    <?php if ($this->ion_auth->in_group(array('admin', 's_admin'))) { ?>
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="services_close" class="br-menu-link">
+          <div class="br-menu-item">
+              <i class="fa fa-window-close"></i>
+            <span class="menu-item-label"> Close Services </span>
+          </div>
+        </a>
+      </div>
 
-      <?php if ($this->ion_auth->in_group(array('admin', 's_admin'))) { ?>
-    <div class="br-sideleft-menu " id="sidebar-menu">
-      <a href="services_close" class="br-menu-link">
-        <div class="br-menu-item">
-            <i class="fa fa-window-close"></i>
-          <span class="menu-item-label"> Close Services </span>
-        </div><!-- menu-item -->
-      </a><!-- br-menu-link -->
-    </div><!-- br-sideleft-menu -->
-
-    <div class="br-sideleft-menu " id="sidebar-menu">
+      <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="user_manage" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-users"></i>
             <span class="menu-item-label"> User Management </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          </div>
+        </a>
+      </div>
 
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="user_approve" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-users"></i>
             <span class="menu-item-label"> User Approve </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          </div>
+        </a>
+      </div>
     <?php } ?>
 
 
@@ -58,50 +58,99 @@
       </div>
 
       <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="withdraw_check" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-contao"></i>
+            <span class="menu-item-label"> Withdraw Confirm </span>
+          </div>
+        </a>
+      </div>
+
+      <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-user-circle"></i>
             <span class="menu-item-label"> Admin List </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          </div>
+        </a>
+      </div>
 
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="group_services_rate" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-user-circle"></i>
             <span class="menu-item-label"> Services Rate </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          </div>
+        </a>
+      </div>
 
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-male"></i>
             <span class="menu-item-label"> Agent List </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          </div>
+        </a>
+      </div>
 
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-envelope"></i>
             <span class="menu-item-label"> SMS Marketing </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          </div>
+        </a>
+      </div>
 
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-inbox"></i>
             <span class="menu-item-label"> Add Payment in Porichoy </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          </div>
+        </a>
+      </div>
     <?php } ?>
+
+    <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent', 's_udc', 'udc'))) { ?>
+
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-file"></i>
+            <span class="menu-item-label"> নতুন সনদ ইস্যু </span>
+          </div>
+        </a>
+      </div>
+
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-book"></i>
+            <span class="menu-item-label"> ইস্যুকৃত পুরাতন সনদ </span>
+          </div>
+        </a>
+      </div>
+    
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-file"></i>
+            <span class="menu-item-label"> সনদ সেট করুন </span>
+          </div>
+        </a>
+      </div>
+
+      <div class="br-sideleft-menu " id="sidebar-menu">
+        <a href="payment" class="br-menu-link">
+          <div class="br-menu-item">
+            <i class="fa fa-btc"></i>
+            <span class="menu-item-label"> টাকা রিচার্জ </span>
+          </div>
+        </a>
+      </div>
+      <?php } ?>
+
 
       <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'services'))) { ?>
         <div class="br-sideleft-menu " id="sidebar-menu">
@@ -123,89 +172,88 @@
       </div>
       <?php } ?>
 
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="nid_verify" class="br-menu-link">
-          <div class="br-menu-item">
-            <i class="fa fa-id-card"></i>
-            <span class="menu-item-label"> NID Verify </span>
-          </div>
-        </a>
-      </div>
+      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent', 's_udc'))) { ?>
 
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="birth_verify" class="br-menu-link">
-          <div class="br-menu-item">
-            <i class="fa fa-credit-card"></i>
-            <span class="menu-item-label"> Birth Verify </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+        <div class="br-sideleft-menu " id="sidebar-menu">
+          <a href="birth_verify" class="br-menu-link">
+            <div class="br-menu-item">
+              <i class="fa fa-credit-card"></i>
+              <span class="menu-item-label"> Birth Verify </span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="br-sideleft-menu " id="sidebar-menu">
+          <a href="statement" class="br-menu-link">
+            <div class="br-menu-item">
+              <i class="fa fa-align-justify"></i>
+              <span class="menu-item-label"> Statement </span>
+            </div>
+          </a>
+        </div>
+      <?php } ?>
 
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="payment" class="br-menu-link">
-          <div class="br-menu-item">
-            <i class="fa fa-btc"></i>
-            <span class="menu-item-label"> Payment </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent'))) { ?>
 
-      <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="statement" class="br-menu-link">
-          <div class="br-menu-item">
-            <i class="fa fa-align-justify"></i>
-            <span class="menu-item-label"> Statement </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+        <div class="br-sideleft-menu " id="sidebar-menu">
+          <a href="nid_verify" class="br-menu-link">
+            <div class="br-menu-item">
+              <i class="fa fa-id-card"></i>
+              <span class="menu-item-label"> NID Verify </span>
+            </div>
+          </a>
+        </div>
 
-      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent', 's_udc', 'udc'))) { ?>
+
         <?php if ($setting_info->all_services_ISactive == 1) { ?>
+          <?php if ($setting_info->ec_services_is_active == 1) { ?> 
 
-          <div class="br-sideleft-menu " id="sidebar-menu">
-            <a href="get_nid_no" class="br-menu-link">
-              <div class="br-menu-item">
-                <i class="fa fa-list-ol"></i>
-                <span class="menu-item-label"> Get NID NO </span>
-              </div><!-- menu-item -->
-            </a><!-- br-menu-link -->
-          </div><!-- br-sideleft-menu -->
+            <div class="br-sideleft-menu " id="sidebar-menu">
+              <a href="get_nid_no" class="br-menu-link">
+                <div class="br-menu-item">
+                  <i class="fa fa-list-ol"></i>
+                  <span class="menu-item-label"> Get NID NO </span>
+                </div>
+              </a>
+            </div>
 
-          <div class="br-sideleft-menu " id="sidebar-menu">
-            <a href="serve_view" class="br-menu-link">
-              <div class="br-menu-item">
-                <i class="fa fa-address-book"></i>
-                <span class="menu-item-label"> EC Server Copy </span>
-              </div><!-- menu-item -->
-            </a><!-- br-menu-link -->
-          </div><!-- br-sideleft-menu -->
+            <div class="br-sideleft-menu " id="sidebar-menu">
+              <a href="serve_view" class="br-menu-link">
+                <div class="br-menu-item">
+                  <i class="fa fa-address-book"></i>
+                  <span class="menu-item-label"> EC Server Copy </span>
+                </div>
+              </a>
+            </div>
+
+            <div class="br-sideleft-menu " id="sidebar-menu">
+              <a href="search_copy" class="br-menu-link">
+                <div class="br-menu-item">
+                  <i class="fa fa-search"></i>
+                  <span class="menu-item-label"> Search NID No </span>
+                </div>
+              </a>
+            </div>
+
+          <?php } ?>
 
           <div class="br-sideleft-menu " id="sidebar-menu">
             <a href="card_view" class="br-menu-link">
               <div class="br-menu-item">
                 <i class="fa fa-address-card"></i>
                 <span class="menu-item-label"> Download Card </span>
-              </div><!-- menu-item -->
-            </a><!-- br-menu-link -->
-          </div><!-- br-sideleft-menu -->
-
-          <div class="br-sideleft-menu " id="sidebar-menu">
-            <a href="search_copy" class="br-menu-link">
-              <div class="br-menu-item">
-                <i class="fa fa-search"></i>
-                <span class="menu-item-label"> Search NID No </span>
-              </div><!-- menu-item -->
-            </a><!-- br-menu-link -->
-          </div><!-- br-sideleft-menu -->
+              </div>
+            </a>
+          </div>
 
           <div class="br-sideleft-menu " id="sidebar-menu">
             <a href="username_password" class="br-menu-link">
               <div class="br-menu-item">
                 <i class="fa fa-user-secret"></i>
                 <span class="menu-item-label"> User ID Password Set </span>
-              </div><!-- menu-item -->
-            </a><!-- br-menu-link -->
-          </div><!-- br-sideleft-menu -->
+              </div>
+            </a>
+          </div>
 
           <div class="br-sideleft-menu " id="sidebar-menu">
             <a href="create_card" class="br-menu-link">
@@ -224,9 +272,9 @@
           <div class="br-menu-item">
             <i class="fa fa-dollar"></i>
             <span class="menu-item-label"> Payment Withdraw </span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          </div>
+        </a>
+      </div>
 
       <br>
     </div><!-- br-sideleft -->
@@ -254,8 +302,20 @@
             </a>
             <div class="dropdown-menu dropdown-menu-header wd-200">
               <ul class="list-unstyled user-profile-nav">
+                <li> <br>
+                  <center>
+                    <b> 
+                      <?php
+                        if (!empty($user_info->un_bn_name)) {
+                          echo $user_info->un_bn_name. '  ইউনিয়ন পরিষদ';
+                        }else {
+                          echo 'Company User';
+                        } 
+                      ?>  
+                    </b>
+                  </center> 
+                </li>
                 <li><a href="edit_profile"><i class="icon ion-ios-person"></i> Edit Profile</a></li>
-<!--                 <li><a href=""><i class="icon ion-ios-gear"></i> Settings</a></li> -->
                 <li><a href="logout"><i class="icon ion-power"></i> Sign Out</a></li>
               </ul>
             </div><!-- dropdown-menu -->

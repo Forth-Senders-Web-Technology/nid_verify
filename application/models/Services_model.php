@@ -117,6 +117,19 @@ class Services_model extends CI_Model {
         $this->db->update('service_rate_group', $arraysDatas);
     }
 
+    public function get_all_sonod_for_select()
+    {
+        $sql = $this->db->get('cer_deft');
+        return $sql->result();
+    }
+
+    public function get_this_sonod_info($this_sonod_idd)
+    {
+        $this->db->where('cer_def_p_iidi', $this_sonod_idd);
+        $sql = $this->db->get('cer_deft');
+        return $sql->row();
+    }
+
 }
 
 /* End of file Services_model.php */

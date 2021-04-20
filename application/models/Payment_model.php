@@ -93,6 +93,28 @@ class Payment_model extends CI_Model {
         $this->db->update('payment_request_list', $array_for_db);
     }
 
+    public function get_waiting_withdraw_amount()
+    {
+        $this->db->where('withdraw_check_status_s', 0);
+        $this->db->join('payment_system_list', 'payment_system_list.payment_list_id = withsraw_request.payment_list_iidddd', 'left');
+        $this->db->join('customer_full_info', 'customer_full_info.udc_list_auto_p_iidd = withsraw_request.user_iddd', 'left');
+        $sql = $this->db->get('withsraw_request');
+        return $sql->result();
+    }
+
+    public function approve_withdraw_amount_request($pay_request_id, $UpdateArrayData)
+    {
+        $this->db->where('withsraw_request_idd', $pay_request_id);
+        $this->db->update('withsraw_request', $UpdateArrayData);
+    }
+
+    public function get_withdraw_requ_info_by_id($requ_idd)
+    {
+        $this->db->where('withsraw_request_idd', $requ_idd);
+        $sql = $this->db->get('withsraw_request');
+        return $sql->row();
+    }
+
 }
 
 /* End of file Payment_model.php */

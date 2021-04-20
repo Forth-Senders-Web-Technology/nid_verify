@@ -37,6 +37,12 @@ class User_model extends CI_Model {
     public function get_user_info($user_id)
     {
         $this->db->where('udc_list_auto_p_iidd', $user_id);
+
+        $this->db->join('div_list', 'div_list.div_id = customer_full_info.div_a_iddd', 'left');
+        $this->db->join('dist_list', 'dist_list.dist_id = customer_full_info.dist_a_iddd', 'left');
+        $this->db->join('up_list', 'up_list.up_id = customer_full_info.up_a_iddd', 'left');
+        $this->db->join('un_list', 'un_list.un_id = customer_full_info.un_a_iddd', 'left');
+
         $this->db->join('users', 'users.user_full_tbl_id = customer_full_info.udc_list_auto_p_iidd', 'left');
         $this->db->join('users_groups', 'users_groups.user_id = users.id', 'left');
         $this->db->join('groups', 'groups.id = users_groups.group_id', 'left');
@@ -145,5 +151,12 @@ class User_model extends CI_Model {
     {
         $this->db->where('id', $this_login_user_id);
         $this->db->update('users', $user_data_array);
+    }
+
+    public function get_user_by_login_user_id($this_user_iidd)
+    {
+        $this->db->where('id', $this_user_iidd);
+        $sql = $this->db->get('users');
+        return $sql->row();
     }
 }

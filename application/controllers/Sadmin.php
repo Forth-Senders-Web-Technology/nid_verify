@@ -76,6 +76,34 @@ class Sadmin extends CI_Controller
             $this->setting_model->update_setting_s($arrayData_s);
     }
 
+    public function update_ec_office_service_activity()
+    {
+        if ($this->data['setting_info']->ec_services_is_active == 1) {
+            $activity_s = 0;
+        }else {
+            $activity_s = 1;
+        }
+
+        $arrayData_s = array(
+                    'ec_services_is_active' => $activity_s,
+                );
+            $this->setting_model->update_setting_s($arrayData_s);
+    }
+
+    public function update_ec_service_on_off()
+    {
+        if ($this->data['setting_info']->ec_services_is_on_off == 1) {
+            $activity_s = 0;
+        }else {
+            $activity_s = 1;
+        }
+
+        $arrayData_s = array(
+                    'ec_services_is_on_off' => $activity_s,
+                );
+            $this->setting_model->update_setting_s($arrayData_s);
+    }
+
     public function user_approve_view()
     {
         $this->data['all_groups'] = $this->user_model->get_all_user_groups();
@@ -268,5 +296,75 @@ class Sadmin extends CI_Controller
                 'password' => $type_user_password, 
             );
         $this->user_model->edit_user_by_id($this_login_user_id, $user_data_array);
+    }
+
+    public function amount_withdraw_confirm_file_view()
+    {
+        $this->load->template('sadmin/amount_withdraw_confirm_file', $this->data);
+    }
+
+    public function get_waiting_withdraw_payment()
+    {
+        $get_data = $this->payment_model->get_waiting_withdraw_amount();
+        echo json_encode($get_data);
+    }
+
+    public function approve_withdraw_amount_request()
+    {
+        $pay_request_id = $this->input->post('pay_request_id');
+        $payment_trxid = $this->input->post('payment_trxid');
+        $UpdateArrayData = array(
+                    'payment_status' => 'Success', 
+                    'payment_sending_trid' => $payment_trxid, 
+                    'success_time' => time(),
+                    'withdraw_check_status_s' => 1
+                );
+        $this->payment_model->approve_withdraw_amount_request($pay_request_id, $UpdateArrayData);
+    }
+
+    public function reject_withdraw_pay_request()
+    {
+        $requ_idd = $this->input->post('requ_idd');
+        $withdraw_requ_info = $this->payment_model->get_withdraw_requ_info_by_id($requ_idd);
+        $UpdateArrayData = array(
+                    'payment_status' => 'Rejected', 
+                    'success_time' => time(),
+                    'withdraw_check_status_s' => 2
+                );
+        $this->payment_model->approve_withdraw_amount_request($requ_idd, $UpdateArrayData);
+
+        $inserts_array_datass = array(
+                        'added_amount' => $withdraw_requ_info->amount_s,
+                        'customer_id' => $withdraw_requ_info->user_iddd,
+                    );
+        $this->payment_model->payment_added($inserts_array_datass);
+    }
+
+    public function customer_wallet_by_customer_id()
+    {
+        $customer_iid = $this->input->post('customer_idd');
+        $payment_added = $this->payment_model->payment_added_info($customer_iid);
+        $payment_cut = $this->payment_model->payment_cut_info($customer_iid);
+        $now_balance = $payment_added - $payment_cut;
+        echo json_encode($now_balance);
+        $this->output->set_content_type('application/json'); 
+    }
+
+    public function active_inactive_user_fun()
+    {
+        $this_user_iidd = $this->input->post('this_user_iidd');
+        $user_info = $this->user_model->get_user_by_login_user_id($this_user_iidd);
+        
+        if ($user_info->active == 1) {
+            $user_s_activity = 0;
+        }else {
+            $user_s_activity = 1;
+        }
+
+        $user_data_array = array(
+            'active'          => $user_s_activity,
+        );
+        $this->user_model->edit_user_by_id($this_user_iidd, $user_data_array);
+        echo json_encode($user_info->user_full_tbl_id);
     }
 }

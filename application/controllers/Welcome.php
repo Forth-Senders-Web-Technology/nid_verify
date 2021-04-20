@@ -55,6 +55,13 @@ class Welcome extends CI_Controller {
         echo json_encode($data);
     }
 
-
+    public function home_page_active()
+    {
+        $arrayData_s = array(
+                    'home_page_ISactive' => 1,
+                );
+            $this->setting_model->update_setting_s($arrayData_s);
+        echo '<center><h1> Now Home Page is Active </h1></center>';
+    }
 	
 }

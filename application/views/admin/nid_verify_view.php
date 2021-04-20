@@ -1,6 +1,6 @@
 
 <!-- ########## START: MAIN PANEL ########## -->
-    <div class="br-mainpanel">
+<div class="br-mainpanel">
         <div class="br-pageheader pd-y-15 pd-l-20">
             <div class="mx-auto ">
                <h3> এই সার্ভিসের জন্য আপনার একাউন্ট থেকে <b class="services_rates"> <?php if (!empty($service_rate->serive_s_rate_s)) {
@@ -11,7 +11,7 @@
         </div><!-- br-pageheader -->
             
         <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-            <h5 class="text-center"> এই সার্ভিসে আপনি ভুল NID দিলেও টাকা কেটে নেওয়া হবে তাই খুব সতর্ক হয়ে NID নাম্বার দিন  </h5>
+            <h5 class="text-center" style="color: red; "> এই সার্ভিসে আপনি ভুল NID দিলেও বা ডাবল ভোটার দিলেও টাকা কেটে নেওয়া হবে  কিন্তু  ডাটা পাবেন না। <br> তাই খুব সতর্ক হয়ে NID নাম্বার দিন  </h5>
             <h4 class="tx-gray-800 mg-b-5">Your Balance: <span class="bal_value"></span></h4>
             <p class="mg-b-0"></p>
         </div>
@@ -23,6 +23,7 @@
             </div>
 
             <div>
+                <center style="color: black; font-size: 20px;" class="data_info"></center>
                 <center class="nid_get_data"></center>
             </div>
 
@@ -117,9 +118,23 @@
                     data: {
                         nid_number_type:  $('.nid_number_type').val()
                     },
+                    beforeSend: function() {
+                        $('.nid_data_search_btn').css('display', 'none');
+                    },
+                    complete: function() {
+                        $('.nid_data_search_btn').css('display', 'block');
+                    },
                     success: function (get_data) {
 
                         let full_data = JSON.parse(get_data);
+
+                        if (full_data.message != undefined) {
+                            $('.data_info').html(full_data.message);                    
+                        }else if (get_data.errorCode == null) {
+                            $('.data_info').html('সফল');
+                        }else if (get_data.voter == null) {
+                            $('.data_info').html('আপনি ভুল নং দিয়েছেন অন্যথায় এই ব্যক্তি ডাবল ভোটার। মনে রাখবেন ডাবল ভোটার, ভুল আইডি নং দিলেও আপনার একাউন্ট থেকে টাকা কাটবে। ');                          
+                        }
 
                             insert_porichoy_verify_request();
 

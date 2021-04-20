@@ -53,6 +53,12 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// Welcome Controller
+$route['home_active'] = 'welcome/home_page_active';
+// Welcome Controller
+
+
+
 // Auth Controller
 $route['login_check'] = 'auth/login';
 $route['logout'] = 'auth/logout';
@@ -93,5 +99,9 @@ $route['user_approve'] = 'sadmin/user_approve_view';
 $route['payment_check'] = 'sadmin/payment_confirm_file_view';
 $route['group_services_rate'] = 'sadmin/groupwise_services_rate';
 $route['user_manage'] = 'sadmin/user_manage_view_fun';
+$route['withdraw_check'] = 'sadmin/amount_withdraw_confirm_file_view';
 // Super Admin Controller
+
+
+
 
