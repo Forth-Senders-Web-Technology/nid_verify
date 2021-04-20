@@ -56,6 +56,8 @@
             }            
         });
 
+        
+/* 
         $(document).on('click', '.', function () {
             let customer_uniq_idd = $('.').attr('');
             let add_money_type = $('.').val();
@@ -87,6 +89,9 @@
                 }
             });
         });
+ */
+
+
 
         $(document).on('click', '.cut_money_box_assign', function () {
             $('.cut_money_box_set').html(`

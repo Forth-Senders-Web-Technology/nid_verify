@@ -130,6 +130,29 @@ class Services_model extends CI_Model {
         return $sql->row();
     }
 
+    public function add_new_certificate($insert_data)
+    {
+        $this->db->insert('certificate_entry', $insert_data); 
+        $insert_id = $this->db->insert_id();
+        return $insert_id;       
+    }
+
+    public function getCertificateByID($get_id)
+    {
+        $this->db->where('cer_p_iddd', $get_id);
+        $sql = $this->db->get('certificate_entry');
+        return $sql->row();
+    }
+
+    public function getLastCertificateByDate($this_date_today)
+    {
+        $this->db->where('cer_entry_date', $this_date_today);
+        $this->db->order_by('cer_p_iddd', 'DESC');
+        $this->db->limit(1);
+        $sql = $this->db->get('certificate_entry');
+        return $sql->row();
+    }
+
 }
 
 /* End of file Services_model.php */

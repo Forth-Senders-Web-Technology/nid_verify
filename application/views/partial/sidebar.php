@@ -115,7 +115,7 @@
     <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent', 's_udc', 'udc'))) { ?>
 
       <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="" class="br-menu-link">
+        <a href="admin/issue_new_sonod_view" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-file"></i>
             <span class="menu-item-label"> নতুন সনদ ইস্যু </span>
@@ -124,7 +124,7 @@
       </div>
 
       <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="" class="br-menu-link">
+        <a href="admin/get_the_issued_certificate" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-book"></i>
             <span class="menu-item-label"> ইস্যুকৃত পুরাতন সনদ </span>
@@ -193,8 +193,9 @@
         </div>
       <?php } ?>
 
-      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent'))) { ?>
 
+
+      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent', 's_udc'))) { ?>
         <div class="br-sideleft-menu " id="sidebar-menu">
           <a href="nid_verify" class="br-menu-link">
             <div class="br-menu-item">
@@ -203,7 +204,9 @@
             </div>
           </a>
         </div>
+      <?php } ?>
 
+      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent'))) { ?>
 
         <?php if ($setting_info->all_services_ISactive == 1) { ?>
           <?php if ($setting_info->ec_services_is_active == 1) { ?> 
@@ -263,7 +266,6 @@
               </div> 
             </a> 
           </div>
-
         <?php } ?>
       <?php } ?>
       

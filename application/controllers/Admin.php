@@ -426,7 +426,7 @@ class Admin extends CI_Controller {
         echo json_encode($get_data);
     }
 
-    public function issue_new_sonod()
+    public function issue_new_sonod_view()
     {
         $this->data['all_sonod'] = $this->services_model->get_all_sonod_for_select();
         $this->load->template('admin/issue_sonod', $this->data);
@@ -437,5 +437,40 @@ class Admin extends CI_Controller {
         $this_sonod_idd = $this->input->post('this_sonod_idd');
         $this->data['this_sonod_info'] = $this->services_model->get_this_sonod_info($this_sonod_idd);
         echo json_encode($this->data);
+    }
+
+    public function entry_new_certificate()
+    {
+        $certificate_title_name = $this->input->post('sonod_title');
+        $certificate_desc       = $this->input->post('full_certificate_description');
+        $bn_or_en               = 0;
+        $time_stamp             = time();
+        $this_date_today        = date('Y-m-d', time());
+        $getQueryDate           = $this->services_model->getLastCertificateByDate($this_date_today);
+        $temp_dateId            = date('ymd', time());
+        if (empty($getQueryDate)) {
+            $datewise_id        = $temp_dateId.'01'; 
+        }else {
+            $datewise_id        = ($getQueryDate->cer_id_datewise) + 1 ;
+        }
+
+        $insert_data = array(
+                        'cer_title'         => $certificate_title_name, 
+                        'cer_entry'         => $certificate_desc, 
+                        'cer_id_datewise'   => $datewise_id, 
+                        'cer_entry_date'    => $this_date_today, 
+                        'timestamp'         => $time_stamp,
+                        'approval'          => '1',
+                        'in_or_out'         => '1',
+                        'bn_or_en'          => $bn_or_en,
+                    );
+        $last_insert_id = $this->services_model->add_new_certificate($insert_data);
+
+        echo json_encode($last_insert_id);
+    }
+
+    public function get_the_issued_certificate()
+    {
+        $this->load->template('admin/issued_old_sonod', $this->data);
     }
 }

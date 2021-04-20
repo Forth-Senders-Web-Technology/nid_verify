@@ -380,4 +380,55 @@ class Download extends CI_Controller {
 
 	}
 
+
+    public function print_certificate()
+    {
+        $get_id = $this->input->get('get_id');
+
+        $this->data['c_entry_info'] = $this->services_model->getCertificateByID($get_id);
+
+
+
+		$html = $this->load->view('admin/print_certificate',$this->data,true);
+		
+		$defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
+		$fontDirs = $defaultConfig['fontDir'];
+
+		$defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
+		$fontData = $defaultFontConfig['fontdata'];
+
+		
+		$mpdf = new \Mpdf\Mpdf([
+			'format'=>'A4',
+			'orientation'=>'P',
+			'languageToFont' => new CustomLanguageToFontImplementation(),
+			'fontDir' => array_merge($fontDirs, ['/fonts']),
+			'fontdata' => $fontData + [
+				'solaimanlipi' => [
+					'R' => 'SolaimanLipi.ttf',
+					'useOTL' => 0xFF,
+                ],
+				'bangla' => [
+					'R' => 'Bangla.ttf',
+                    'I' => "Bangla.ttf",
+                ],
+				'nikosh' => [
+					'R' => 'Nikosh.ttf',
+                    'I' => "Nikosh.ttf",
+				]
+			],
+			'default_font' => 'solaimanlipi'
+        ]);
+        
+		$fileName = $this->data['c_entry_info']->cer_id_datewise.'.pdf';
+		$mpdf->defaultheaderline = 0;
+		$mpdf->defaultfooterline = 0;
+		// $mpdf->SetHeader('Document Title|Center Text|{PAGENO}');
+		// $mpdf->SetFooter('Document Title');
+		$stylesheet = file_get_contents(FCPATH.'inc/style/mpdfStyle.css'); // external css
+		$mpdf->WriteHTML($stylesheet,1);
+		$mpdf->WriteHTML($html,2);
+        $mpdf->Output($fileName,'D');         
+    }
+
 }
