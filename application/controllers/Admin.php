@@ -31,7 +31,7 @@ class Admin extends CI_Controller {
 
 
         if ($this->data['setting_info']->home_page_ISactive != 1) {
-            redirect('https://services.nidw.gov.bd/','refresh');
+            redirect('','refresh');
         }
 
     }

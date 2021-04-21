@@ -111,7 +111,7 @@
                 <img src="inc/verify_file/porichoy_main_logo_big.jpg" width="80px" height="60px" alt="">
             </div>
             <div style="margin-top:5px;text-align:center">
-                <p> </p>
+                <p> Powered by Porichoy || Service Company Forth Sender's Web Technology. </p>
             </div>
 
 
