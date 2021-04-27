@@ -238,16 +238,16 @@
               </a>
             </div>
 
-          <?php } ?>
+						<div class="br-sideleft-menu " id="sidebar-menu">
+							<a href="card_request_view" class="br-menu-link">
+								<div class="br-menu-item">
+									<i class="fa fa-address-card"></i>
+									<span class="menu-item-label"> Card Request </span>
+								</div>
+							</a>
+						</div>
 
-          <div class="br-sideleft-menu " id="sidebar-menu">
-            <a href="card_view" class="br-menu-link">
-              <div class="br-menu-item">
-                <i class="fa fa-address-card"></i>
-                <span class="menu-item-label"> Download Card </span>
-              </div>
-            </a>
-          </div>
+          <?php } ?>
 
           <div class="br-sideleft-menu " id="sidebar-menu">
             <a href="username_password" class="br-menu-link">

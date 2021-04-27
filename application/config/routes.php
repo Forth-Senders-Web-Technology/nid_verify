@@ -82,10 +82,13 @@ $route['get_nid_no'] = 'admin/get_nid_no';
 $route['serve_view'] = 'admin/ec_server_copy_view';
 $route['search_copy'] = 'admin/search_copy_view';
 $route['username_password'] = 'admin/set_username_password_request';
-$route['card_view'] = 'admin/download_card_view';
+$route['card_view_s'] = 'admin/download_card_view';
 $route['create_card'] = 'admin/create_card_view';
 $route['withdraw_view'] = 'admin/withdraw_request_view';
 $route['edit_profile'] = 'admin/edit_profile';
+$route['card_request_view'] = 'admin/card_request_view_option';
+$route['get_services_provide'] = 'sadmin/get_services_provide_print_view';
+$route['get_services_information'] = 'sadmin/get_personal_services_info';
 // Admin Controller
 
 // Services Provider Controller

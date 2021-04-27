@@ -367,4 +367,48 @@ class Sadmin extends CI_Controller
         $this->user_model->edit_user_by_id($this_user_iidd, $user_data_array);
         echo json_encode($user_info->user_full_tbl_id);
     }
+
+	public function add_payment_by_admin()
+	{
+        $arr_data_for_db = array(
+                        'added_amount'      => $this->input->post('add_money_type'),
+                        'payment_trid_s'    => 'Payment Add by Admin',
+                        'customer_id'       => $this->input->post('customer_uniq_idd'),
+                        'time_stamp'        => time(),
+                    );
+        $this->payment_model->payment_added_method($arr_data_for_db);
+	}
+
+	public function cut_payment_by_admin()
+	{        
+        $data_arr = array(
+                    'cut_amount'            => $this->input->post('cut_money_type'),
+                    'cust_id'               => $this->input->post('customer_uniq_idd'),
+                    'time_s'                => time(),
+                    'payment_cut_causes'    => 'Money Cut by Admin'
+                );
+        $this->services_model->insert_this_services_cost($data_arr);
+	}
+
+	public function get_services_provide_print_view()
+	{
+		$start_date_s = date('Y-m-d', strtotime($this->input->get('start_date')));
+		$ended_date_s = date('Y-m-d', strtotime($this->input->get('end_date')));
+        $this->data['services_provide_info'] = $this->services_model->get_services_provide_full_info($start_date_s, $ended_date_s);
+
+        $this->data['services_provide_user_info'] = $this->services_model->get_services_user_ss();
+
+        $this->data['get_services_list'] = $this->services_model->get_all_services_list_ss();
+
+		$this->load->view('sadmin/services_provider_view_file', $this->data);
+	}
+
+	public function get_personal_services_info()
+	{
+		$start_date_s = date('Y-m-d', strtotime($this->input->get('start_date')));
+		$ended_date_s = date('Y-m-d', strtotime($this->input->get('end_date')));
+        $this->data['personal_services_info'] = $this->services_model->get_personal_services_info_full_info($start_date_s, $ended_date_s, $this->user_id);
+
+		$this->load->view('sadmin/personal_services_info_view_file', $this->data);
+	}
 }

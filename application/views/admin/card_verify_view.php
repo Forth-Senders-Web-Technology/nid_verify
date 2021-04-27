@@ -54,7 +54,6 @@
 
         let now_balance;
 
-
         function balance_query() {
             let total_added_money;
             let total_cut_money;

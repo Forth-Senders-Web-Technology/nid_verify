@@ -56,14 +56,13 @@
             }            
         });
 
-        
-/* 
-        $(document).on('click', '.', function () {
-            let customer_uniq_idd = $('.').attr('');
-            let add_money_type = $('.').val();
+
+        $(document).on('click', '.add_money_btn', function () {
+            let customer_uniq_idd = $('.edit_username_group_s').attr('attr_this_customer_idd');
+            let add_money_type = $('.add_money_type_amount').val();
             $.ajax({
                 type: "post",
-                url: "sadmin/",
+                url: "sadmin/add_payment_by_admin",
                 data: {
                     customer_uniq_idd: customer_uniq_idd,
                     add_money_type: add_money_type
@@ -74,12 +73,12 @@
             });
         });
 
-        $(document).on('click', '.', function () {
-            let customer_uniq_idd = $('.').attr('');
-            let cut_money_type =  = $('.').val();
+        $(document).on('click', '.cut_money_btn', function () {
+            let customer_uniq_idd = $('.edit_username_group_s').attr('attr_this_customer_idd');
+            let cut_money_type = $('.cut_money_type_amount').val();
             $.ajax({
                 type: "post",
-                url: "sadmin/",
+                url: "sadmin/cut_payment_by_admin",
                 data: {
                     customer_uniq_idd: customer_uniq_idd,
                     cut_money_type: cut_money_type
@@ -89,14 +88,13 @@
                 }
             });
         });
- */
 
 
 
         $(document).on('click', '.cut_money_box_assign', function () {
             $('.cut_money_box_set').html(`
                 <div class="input-group">
-                    <input type="text" maxlength="5" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" size="5" class="form-control nid_number_type" placeholder=" Amount ">
+                    <input type="text" maxlength="5" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" size="5" class="form-control cut_money_type_amount" placeholder=" Amount ">
                     <div class="input-group-btn">
                         <button class="btn btn-warning cut_money_btn" style="cursor:pointer"><i class="fa fa-check"></i></button>
                     </div>
@@ -107,7 +105,7 @@
         $(document).on('click', '.add_money_box_assign', function () {
             $('.add_money_box_set').html(`
                 <div class="input-group">
-                    <input type="text" maxlength="5" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" size="5" class="form-control nid_number_type" placeholder=" Amount ">
+                    <input type="text" maxlength="5" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" size="5" class="form-control add_money_type_amount" placeholder=" Amount ">
                     <div class="input-group-btn">
                         <button class="btn btn-success add_money_btn" style="cursor:pointer"><i class="fa fa-check"></i></button>
                     </div>

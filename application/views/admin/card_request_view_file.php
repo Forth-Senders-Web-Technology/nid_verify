@@ -15,15 +15,11 @@
         
         <!--  br-pagebody --> 
         <div class="br-pagebody">
-            
-			<?php if ($setting_info->ec_services_is_on_off == 1) { ?>
-				<a href="" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-toggle="modal" data-target="#new_nid_requ"> সার্ভার কপির জন্য আবেদন </a>
+            <?php if ($setting_info->ec_services_is_on_off == 1) { ?>
+	            <a href="" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-toggle="modal" data-target="#new_nid_requ"> কার্ডের জন্য আবেদন </a>
 			<?php } ?>
 
-
             </div>
-
-
 
             <div class="br-section-wrapper">
                 <div class="row">
@@ -91,7 +87,7 @@
     <script>
 
         $(document).on('click', '.save_btn', function () {
-            insert_server_copy_request();
+            insert_card_request();
         });
 
         $(document).on('click', '.search_datewise_data', function () {
@@ -188,7 +184,7 @@
                 url: "admin/get_full_data_table_by_service",
                 data: {
                     query_date: query_date,
-                    services_list_id: 2,
+                    services_list_id: 3,
                 },
                 dataType: "json",
                 success: function (table_data) {
@@ -225,14 +221,14 @@
             });
         }
 
-        function insert_server_copy_request() {
+        function insert_card_request() {
             if (($('.slip_no').val() == '' || $('.voter_no').val() == '') && $('.person_name').val() == '') {
                 $('.err_show').html('Please fill-up Slip or Voter and Person name');
             }else {
                 $('.err_show').html('');                
                 $.ajax({
                     type: "post",
-                    url: "admin/insert_new_server_copy_request",
+                    url: "admin/insert_card_request",
                     data: {
                         slip_no: $('.slip_no').val(),
                         voter_no: $('.voter_no').val(),

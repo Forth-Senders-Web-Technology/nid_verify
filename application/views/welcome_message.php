@@ -26,9 +26,9 @@
               <div class="pd-25 d-flex align-items-center">
                 <i class="fa fa-id-card tx-60 lh-0 tx-white op-7"></i>
                 <div class="mg-l-20">
-                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10"> Today your services </p>
+                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10"> Today take </p>
                   <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><?php echo count($services_info); ?></p>
-                  <span class="tx-11 tx-roboto tx-white-6">  </span>
+                  <span class="tx-11 tx-roboto tx-white-6"> Services </span>
                 </div>
               </div>
             </div>
@@ -43,9 +43,9 @@
               <div class="pd-25 d-flex align-items-center">
                 <i class="fa fa-address-card tx-60 lh-0 tx-white op-7"></i>
                 <div class="mg-l-20">
-                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">% Unique Visits</p>
-                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1">54.45%</p>
-                  <span class="tx-11 tx-roboto tx-white-6">23% average duration</span>
+                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10"> Today Give </p>
+                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"> <?php echo count($admin_give_services_info); ?> </p>
+                  <span class="tx-11 tx-roboto tx-white-6"> Services </span>
                 </div>
               </div>
             </div>

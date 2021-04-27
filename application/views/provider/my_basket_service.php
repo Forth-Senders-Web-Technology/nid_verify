@@ -323,8 +323,6 @@
         insert_problem(services_id, services_payment_cut_idd);
       });
 
-
-
         get_my_provide_services();
 
         function get_my_provide_services() {
@@ -341,7 +339,7 @@
 
                         if (resp[z].services_id == 1) {
                             modal_id = 'insert_nid';
-                        }else if (resp[z].services_id == 2 || resp[z].services_id == 4) {
+                        }else if (resp[z].services_id == 2 || resp[z].services_id == 4 || resp[z].services_id == 3) {
                             modal_id = 'upload_pdf';
                         }else if (resp[z].services_id == 5) {
                             modal_id = 'insert_user_pass';

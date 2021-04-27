@@ -75,16 +75,17 @@ class Servicesprovider extends CI_Controller
                     'nid_pin_no'        => $this->input->post('nid_pin_no'), 
                     'requ_status'       => 1,
                     'delivery_time'     => time(), 
+					'delivery_this_date'=> date('Y-m-d', time()),
                     'delivery_user_id'  => $this->user_id, 
                 );
         $this->services_model->select_this_services_in_login_user($select_service_id, $array_data);
 
-        $inserts_array_datass = array(
+/*         $inserts_array_datass = array(
                     'added_amount'  => $this_data_payment_infos->amount_rate_s,
                     'customer_id'   => $this->user_id,
                     'time_stamp'    => time()
                 ); 
-        $this->payment_model->payment_added($inserts_array_datass);
+        $this->payment_model->payment_added($inserts_array_datass); */
 
     }
     
@@ -113,9 +114,10 @@ class Servicesprovider extends CI_Controller
             // Upload in Folder
             $img_urlName = "inc/server_pdf/" . $config['file_name'];
             $array_data = array(
-                            'online_copy_pdf_src'        => $img_urlName,
-                            'requ_status'                => '1',
+                            'online_copy_pdf_src'        =>  $img_urlName,
+                            'requ_status'                =>  '1',
                             'delivery_time'              =>  time(),
+							'delivery_this_date'		 =>  date('Y-m-d', time()),
                             'delivery_user_id'           =>  $this->user_id,              
                         );
             $this->services_model->select_this_services_in_login_user($select_service_id, $array_data);
@@ -124,12 +126,12 @@ class Servicesprovider extends CI_Controller
         $service_p_iddd = 4;
         $this_data_payment_infos = $this->payment_model->get_provider_amount_rate($service_p_iddd);
 
-        $inserts_array_datass = array(
+/*         $inserts_array_datass = array(
                     'added_amount'  => $this_data_payment_infos->amount_rate_s,
                     'customer_id'   => $this->user_id,
                     'time_stamp'    => time()
                 ); 
-        $this->payment_model->payment_added($inserts_array_datass);
+        $this->payment_model->payment_added($inserts_array_datass); */
 
     }
 
@@ -158,15 +160,16 @@ class Servicesprovider extends CI_Controller
             // Upload in Folder
             $img_urlName = "inc/server_pdf/" . $config['file_name'];
             $array_data = array(
-                            'online_copy_pdf_src'        => $img_urlName,
-                            'requ_status'                => '1',
+                            'online_copy_pdf_src'        =>  $img_urlName,
+                            'requ_status'                =>  '1',
                             'delivery_time'              =>  time(),
+							'delivery_this_date'		 =>  date('Y-m-d', time()),
                             'delivery_user_id'           =>  $this->user_id,              
                         );
             $this->services_model->select_this_services_in_login_user($select_service_id, $array_data);
         }
 
-        $service_p_iddd = 2;
+/*         $service_p_iddd = 2;
         $this_data_payment_infos = $this->payment_model->get_provider_amount_rate($service_p_iddd);
 
         $inserts_array_datass = array(
@@ -174,7 +177,7 @@ class Servicesprovider extends CI_Controller
                     'customer_id'   => $this->user_id,
                     'time_stamp'    => time()
                 ); 
-        $this->payment_model->payment_added($inserts_array_datass);
+        $this->payment_model->payment_added($inserts_array_datass); */
 
 
     }
@@ -185,6 +188,7 @@ class Servicesprovider extends CI_Controller
                     'coment_s'          => $this->input->post('problem_entry'),
                     'requ_status'       => 2,
                     'delivery_time'     => time(), 
+					'delivery_this_date'=> date('Y-m-d', time()),
                     'delivery_user_id'  => $this->user_id, 
                 );
         $this->services_model->select_this_services_in_login_user($this->input->post('services_id'), $array_data);
@@ -202,6 +206,7 @@ class Servicesprovider extends CI_Controller
                     'set_password'      => $this->input->post('set_password'),
                     'requ_status'       => 1,
                     'delivery_time'     => time(), 
+					'delivery_this_date'=> date('Y-m-d', time()),
                     'delivery_user_id'  => $this->user_id, 
                 );
         $this->services_model->select_this_services_in_login_user($this->input->post('services_id'), $array_data);
@@ -210,13 +215,17 @@ class Servicesprovider extends CI_Controller
         $service_p_iddd = 5;
         $this_data_payment_infos = $this->payment_model->get_provider_amount_rate($service_p_iddd);
 
-        $inserts_array_datass = array(
+/*         $inserts_array_datass = array(
                     'added_amount'      => $this_data_payment_infos->amount_rate_s,
                     'customer_id'       => $this->user_id,
                     'time_stamp'        => time()
                 ); 
-        $this->payment_model->payment_added($inserts_array_datass);
+        $this->payment_model->payment_added($inserts_array_datass); */
+
 
     }
 
 }
+
+
+

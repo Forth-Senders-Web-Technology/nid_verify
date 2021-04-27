@@ -153,6 +153,53 @@ class Services_model extends CI_Model {
         return $sql->row();
     }
 
+	public function get_admin_give_services_info_datewise($user_id, $this_date)
+	{
+        $this->db->where('delivery_this_date', $this_date);
+        $this->db->where('delivery_user_id', $user_id);
+        $this->db->where('requ_status', '1');
+        $sql = $this->db->get('services_request_tbl');
+        return $sql->result(); 
+	}
+
+	public function get_services_provide_full_info($start_date_s, $ended_date_s)
+	{
+        $this->db->where('delivery_this_date >=', $start_date_s);
+        $this->db->where('delivery_this_date <=', $ended_date_s);
+        $sql = $this->db->get('services_request_tbl');
+        return $sql->result(); 
+	}
+
+	public function get_services_user_ss()
+	{
+        $this->db->where('name', 'admin');
+        $this->db->or_where('name', 's_admin');
+        $this->db->or_where('name', 'services');
+		$this->db->join('users_groups', 'users_groups.user_id = users.id', 'left');
+		$this->db->join('groups', 'groups.id = users_groups.group_id', 'left');
+		$this->db->join('customer_full_info', 'customer_full_info.udc_list_auto_p_iidd = users.user_full_tbl_id', 'left');
+        $sql = $this->db->get('users');
+        return $sql->result(); 
+	}
+
+    public function get_all_services_list_ss()
+    {
+        $sql = $this->db->get('services_list_tbl');
+        return $sql->result(); 
+    }
+
+	public function get_personal_services_info_full_info($start_date_s, $ended_date_s, $user_id)
+	{
+        $this->db->where('entry_date >=', $start_date_s);
+        $this->db->where('entry_date <=', $ended_date_s);
+        $this->db->where('user_iddd', $user_id);
+		$this->db->join('services_list_tbl', 'services_list_tbl.services_list_tbl_p_id = services_request_tbl.services_id', 'left');
+		$this->db->join('payment_cut', 'payment_cut.payment_cut_a_iidd = services_request_tbl.payment_cut_a_iddd', 'left');
+		$this->db->join('customer_full_info', 'customer_full_info.udc_list_auto_p_iidd = services_request_tbl.user_iddd', 'left');
+        $sql = $this->db->get('services_request_tbl');
+        return $sql->result(); 
+	}
+
 }
 
 /* End of file Services_model.php */

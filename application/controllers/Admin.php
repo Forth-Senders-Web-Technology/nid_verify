@@ -42,6 +42,7 @@ class Admin extends CI_Controller {
         $this->data['payment_added'] = $this->payment_model->payment_added_info($this->user_id);
         $this->data['payment_cut'] = $this->payment_model->payment_cut_info($this->user_id);
         $this->data['services_info'] = $this->services_model->get_this_user_datewise_services_info($this->user_id, $this_date);
+        $this->data['admin_give_services_info'] = $this->services_model->get_admin_give_services_info_datewise($this->user_id, $this_date);
         $this->data['provider_rate'] = $this->services_model->get_sevices_rate_for_provider();
 		$this->load->template('welcome_message', $this->data);
     }
@@ -473,4 +474,39 @@ class Admin extends CI_Controller {
     {
         $this->load->template('admin/issued_old_sonod', $this->data);
     }
+	
+	public function card_request_view_option()
+	{
+        $user_group_id = $this->ion_auth->get_users_groups()->row()->id;
+        $service_s_idd = '3';
+        $this->data['service_rate'] = $this->services_model->get_services_list($service_s_idd, $user_group_id);
+        $this->load->template('admin/card_request_view_file', $this->data);
+	}
+
+	public function insert_card_request()
+	{
+        $data_arr = array(
+                    'cut_amount'    => $this->input->post('services_rate'), 
+                    'cust_id'       => $this->user_id, 
+                    'services_iidd' => 3, 
+                    'time_s'        => time(), 
+                );
+        $last_insert_id = $this->services_model->insert_this_services_cost($data_arr);
+
+        $insert_data_arr = array(
+                        'slip_no'               => $this->input->post('slip_no'), 
+                        'voter_no'              => $this->input->post('voter_no'), 
+                        'nid_no'                => $this->input->post('nid_no_s'), 
+                        'nid_pin_no'            => $this->input->post('nid_pin_no'), 
+                        'person_name'           => $this->input->post('person_name'), 
+                        'birth_date'            => $this->input->post('birth_date'), 
+                        'entry_time'            => time(), 
+                        'entry_date'            => date('Y-m-d', time()), 
+                        'user_iddd'             => $this->user_id, 
+                        'services_id '          => 3, 
+                        'payment_cut_a_iddd'    => $last_insert_id
+                    );
+        $this->services_model->insert_services_data($insert_data_arr);
+	}
+
 }

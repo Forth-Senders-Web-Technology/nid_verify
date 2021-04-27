@@ -15,9 +15,10 @@
         
         <!--  br-pagebody --> 
         <div class="br-pagebody">
-            
-            <a href="" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-toggle="modal" data-target="#new_nid_requ">Get NID Request</a>
-
+				
+			<?php if ($setting_info->ec_services_is_on_off == 1) { ?>
+				<a href="" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-toggle="modal" data-target="#new_nid_requ">Get NID Request</a>
+			<?php } ?>
 
 
 

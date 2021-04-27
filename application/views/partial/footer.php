@@ -67,25 +67,9 @@
     
 
     <script src="inc/js/bracket.js"></script>
-<!--    
-    <script src="inc/js/chart.chartist.js"></script>
-    <script src="inc/js/chart.chartjs.js"></script>
-    <script src="inc/js/chart.echarts.js"></script> 
-    <script src="inc/js/chart.flot.js"></script> 
-    <script src="inc/js/chart.morris.js"></script>
-    <script src="inc/js/chart.peity.js"></script>
-    <script src="inc/js/chart.rickshaw.js"></script>
-    <script src="inc/js/chart.sparkline.js"></script>
-    <script src="inc/js/map.apple.js"></script>
-    <script src="inc/js/map.bluewater.js"></script>
-    <script src="inc/js/map.mapbox.js"></script>
-    <script src="inc/js/map.shadesofgray.js"></script>
-    <script src="inc/js/map.shiftworker.js"></script>
-    <script src="inc/js/jquery.vmap.sampledata.js"></script>
- -->
+
     <script src="inc/js/dashboard.js"></script>
     <script src="inc/js/ResizeSensor.js"></script>
-    <!-- <script src="inc/js/widgets.js"></script> -->
     
     <script>
       $(function(){
@@ -409,7 +393,7 @@
       
     </script>
 
-<script src="inc/lib/rickshaw/rickshaw.min.js"></script>
-<script src="inc/lib/chartist/chartist.js"></script>
+		<script src="inc/lib/rickshaw/rickshaw.min.js"></script>
+		<script src="inc/lib/chartist/chartist.js"></script>
   </body>
 </html>
