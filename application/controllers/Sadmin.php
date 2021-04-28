@@ -411,4 +411,29 @@ class Sadmin extends CI_Controller
 
 		$this->load->view('sadmin/personal_services_info_view_file', $this->data);
 	}
+
+	public function get_agent_user_view()
+	{
+		$this->load->template('sadmin/get_all_agent_view', $this->data);
+	}
+
+	public function get_all_agent_user()
+	{
+		$user_group_s = 'agent';
+		$all_user = $this->user_model->get_user_by_usergroup($user_group_s);
+		echo json_encode($all_user);
+	}
+
+	public function get_agent_user_services_date_date()
+	{
+		$start_date_s = date('Y-m-d', strtotime($this->input->get('start_date')));
+		$ended_date_s = date('Y-m-d', strtotime($this->input->get('end_date')));
+		$user_group_s = 'agent';
+		$this->data['services_provide_user_info'] = $this->user_model->get_user_by_usergroup($user_group_s);
+        $this->data['services_provide_info'] = $this->services_model->get_services_provide_full_info($start_date_s, $ended_date_s);
+
+        $this->data['get_services_list'] = $this->services_model->get_all_services_list_ss();
+
+		$this->load->view('sadmin/agent_services_statement_view_file', $this->data);
+	}
 }

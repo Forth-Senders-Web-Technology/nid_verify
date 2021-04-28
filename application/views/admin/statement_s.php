@@ -29,6 +29,7 @@
 				<?php } ?>
 
 
+
 				<div class="bd pd-x-20 mt-2">
 					<h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10 mt-3">Services Statement</h6>
 					<p class="mg-b-30 tx-gray-600"> Total services information </p>
@@ -41,6 +42,27 @@
 						</div>
 					</div>
 				</div>
+
+
+
+				<?php if ($this->ion_auth->in_group(array('admin', 's_admin'))) { ?>
+
+					<div class="bd pd-x-20 mt-2">
+						<h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10 mt-3">Agent Statement</h6>
+						<p class="mg-b-30 tx-gray-600"> Total Agent User services </p>
+
+
+						<div class="d-flex align-items-center justify-content-center bg-gray-100 ht-md-60 ">
+							<div class="d-md-flex pd-y-20 pd-md-y-0">
+								<input type="text" class="form-control fc-datepicker agent_user_start_date" placeholder="Select Start Date">
+								<input type="text" class="form-control mg-md-l-10 mg-t-10 mg-md-t-0 fc-datepicker agent_user_ended_date" placeholder="Select End Date">
+								<button class="btn btn-info pd-y-13 pd-x-20 bd-0 mg-md-l-10 mg-t-10 mg-md-t-0 tx-uppercase tx-11 tx-spacing-2 agent_user_services_info_btn" style="cursor: pointer; ">View</button>
+							</div>
+						</div>
+					</div>
+
+				<?php } ?>
+
 
 
             </div>
@@ -73,5 +95,13 @@
             }
 		});
 
+		$(document).on('click', '.agent_user_services_info_btn', function () {
+			let selecte_start_date = $('.agent_user_start_date').val();
+			let selecte_ended_date = $('.agent_user_ended_date').val();
+
+            if (selecte_start_date != '' || selecte_ended_date != '') {
+                window.open('agent_statement?start_date=' + selecte_start_date + '&end_date=' + selecte_ended_date, '_blank', 'width=800,height=800,left=300,top=300');
+            }
+		});
 
 	</script>

@@ -103,6 +103,8 @@ $route['payment_check'] = 'sadmin/payment_confirm_file_view';
 $route['group_services_rate'] = 'sadmin/groupwise_services_rate';
 $route['user_manage'] = 'sadmin/user_manage_view_fun';
 $route['withdraw_check'] = 'sadmin/amount_withdraw_confirm_file_view';
+$route['agent_view'] = 'sadmin/get_agent_user_view';
+$route['agent_statement'] = 'sadmin/get_agent_user_services_date_date';
 // Super Admin Controller
 
 

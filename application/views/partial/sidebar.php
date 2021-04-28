@@ -66,6 +66,7 @@
         </a>
       </div>
 
+<!-- 
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="" class="br-menu-link">
           <div class="br-menu-item">
@@ -74,6 +75,7 @@
           </div>
         </a>
       </div>
+ -->
 
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="group_services_rate" class="br-menu-link">
@@ -85,7 +87,7 @@
       </div>
 
       <div class="br-sideleft-menu " id="sidebar-menu">
-        <a href="" class="br-menu-link">
+        <a href="agent_view" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-male"></i>
             <span class="menu-item-label"> Agent List </span>
@@ -93,6 +95,7 @@
         </a>
       </div>
 
+<!-- 
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="" class="br-menu-link">
           <div class="br-menu-item">
@@ -100,7 +103,7 @@
             <span class="menu-item-label"> SMS Marketing </span>
           </div>
         </a>
-      </div>
+      </div> 
 
       <div class="br-sideleft-menu " id="sidebar-menu">
         <a href="" class="br-menu-link">
@@ -110,6 +113,8 @@
           </div>
         </a>
       </div>
+-->
+
     <?php } ?>
 
     <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent', 's_udc', 'udc'))) { ?>
@@ -172,13 +177,13 @@
       </div>
       <?php } ?>
 
-      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent', 's_udc'))) { ?>
+      <?php if ($this->ion_auth->in_group(array('admin', 's_admin', 'agent'))) { ?>
 
         <div class="br-sideleft-menu " id="sidebar-menu">
           <a href="birth_verify" class="br-menu-link">
             <div class="br-menu-item">
               <i class="fa fa-credit-card"></i>
-              <span class="menu-item-label"> Birth Verify </span>
+              <span class="menu-item-label"> জন্ম নিবন্ধন ভেরিফাই </span>
             </div>
           </a>
         </div>
@@ -187,7 +192,7 @@
           <a href="statement" class="br-menu-link">
             <div class="br-menu-item">
               <i class="fa fa-align-justify"></i>
-              <span class="menu-item-label"> Statement </span>
+              <span class="menu-item-label"> সকল সেবার রিপোর্ট </span>
             </div>
           </a>
         </div>
@@ -215,7 +220,7 @@
               <a href="get_nid_no" class="br-menu-link">
                 <div class="br-menu-item">
                   <i class="fa fa-list-ol"></i>
-                  <span class="menu-item-label"> Get NID NO </span>
+                  <span class="menu-item-label"> NID নং দরকার </span>
                 </div>
               </a>
             </div>
@@ -224,7 +229,7 @@
               <a href="serve_view" class="br-menu-link">
                 <div class="br-menu-item">
                   <i class="fa fa-address-book"></i>
-                  <span class="menu-item-label"> EC Server Copy </span>
+                  <span class="menu-item-label"> অনলাইন কপি দরকার </span>
                 </div>
               </a>
             </div>
@@ -233,16 +238,25 @@
               <a href="search_copy" class="br-menu-link">
                 <div class="br-menu-item">
                   <i class="fa fa-search"></i>
-                  <span class="menu-item-label"> Search NID No </span>
+                  <span class="menu-item-label"> NID খোজা </span>
                 </div>
               </a>
             </div>
 
 						<div class="br-sideleft-menu " id="sidebar-menu">
+							<a href="card_view_s" class="br-menu-link">
+								<div class="br-menu-item">
+									<i class="fa fa-address-card"></i>
+									<span class="menu-item-label"> ২ মিনিটে কার্ড ডাউনলোড </span>
+								</div>
+							</a>
+						</div>
+
+						<div class="br-sideleft-menu " id="sidebar-menu">
 							<a href="card_request_view" class="br-menu-link">
 								<div class="br-menu-item">
 									<i class="fa fa-address-card"></i>
-									<span class="menu-item-label"> Card Request </span>
+									<span class="menu-item-label"> কার্ড রিইস্যুর দরকার </span>
 								</div>
 							</a>
 						</div>
@@ -253,7 +267,7 @@
             <a href="username_password" class="br-menu-link">
               <div class="br-menu-item">
                 <i class="fa fa-user-secret"></i>
-                <span class="menu-item-label"> User ID Password Set </span>
+                <span class="menu-item-label"> ফেইচ ভেরিফাই ছাড়া আইডি পাসওয়ার্ড </span>
               </div>
             </a>
           </div>
@@ -262,7 +276,7 @@
             <a href="create_card" class="br-menu-link">
               <div class="br-menu-item">
                 <i class="fa fa-id-card"></i>
-                <span class="menu-item-label"> কার্ড তৈরী </span>
+                <span class="menu-item-label"> কার্ড তৈরী করুন </span>
               </div> 
             </a> 
           </div>
@@ -273,7 +287,7 @@
         <a href="withdraw_view" class="br-menu-link">
           <div class="br-menu-item">
             <i class="fa fa-dollar"></i>
-            <span class="menu-item-label"> Payment Withdraw </span>
+            <span class="menu-item-label"> টাকা তুলে ফেলুন </span>
           </div>
         </a>
       </div>
@@ -317,8 +331,8 @@
                     </b>
                   </center> 
                 </li>
-                <li><a href="edit_profile"><i class="icon ion-ios-person"></i> Edit Profile</a></li>
-                <li><a href="logout"><i class="icon ion-power"></i> Sign Out</a></li>
+                <li><a href="edit_profile"><i class="icon ion-ios-person"></i> Edit Profile </a></li>
+                <li><a href="logout"><i class="icon ion-power"></i> লগ আউট </a></li>
               </ul>
             </div><!-- dropdown-menu -->
           </div><!-- dropdown -->

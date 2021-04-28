@@ -1,6 +1,9 @@
 <?php 
 	$this_success_services_count = 0; 
 	$this_reject_services_count = 0; 
+
+	$total_user_success = [];
+	$total_user_reject = [];
 ?>
 
 
@@ -9,7 +12,7 @@
 	<div style="margin-left: 25px;">
 		<table border="1px" >
 			<tr>
-				<th colspan="4">Admin Services Provide Information</th>
+				<th colspan="4">Agent Services Information</th>
 			</tr>
 				<tr>
 					<th> Service </th>
@@ -35,10 +38,12 @@
 						}
 					} ?>
 							<td>
-								<?php echo $this_success_services_count; ?>
+								<?php 
+										$total_user_success[] = $this_success_services_count;  echo $this_success_services_count; ?>
 							</td>
 							<td>
-								<?php echo $this_reject_services_count; ?>
+								<?php 
+									$total_user_reject[] = $this_reject_services_count; echo $this_reject_services_count; ?>
 							</td>
 					</tr>
 				<?php 
@@ -47,9 +52,15 @@
 				} ?>
 
 
-
-
+					<tr>
+						<td align="right">Total</td>
+						<td ><?php echo array_sum($total_user_success); ?></td>
+						<td ><?php echo array_sum($total_user_reject); ?></td>
+					</tr>
 				<!-- get_services_list -->
-			<?php } ?>
+			<?php
+				$total_user_success = NULL;
+				$total_user_reject = NULL;
+			} ?>
 		</table>
 	</div>

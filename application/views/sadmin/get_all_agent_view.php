@@ -5,8 +5,8 @@
             
             <div class="br-section-wrapper">
 
-                <button class="btn btn-primary verify_by_mobile_no">Verify by Mobile</button>
-                <button class="btn btn-primary verify_by_udc_select">Verify by UDC</button>
+<!--                 <button class="btn btn-primary verify_by_mobile_no">Verify by Mobile</button>
+                <button class="btn btn-primary verify_by_udc_select">Verify by UDC</button> -->
 
                 <div class="verify_form" ></div>
                 <div class="verify_data" ></div>
@@ -48,6 +48,7 @@
 
         let all_group = `<?php foreach ($user_group as $groups) { echo '<option value="'.$groups->id.'">'.$groups->name.'</option>'; } ?>`;
 
+		get_all_agent_user();
 
         $(document).on('click', '.active_inactive_user', function () {
             let confirmation = confirm("Want to change?");
@@ -329,6 +330,64 @@
             }
         });
     });
+
+	function get_all_agent_user() {
+		$.ajax({
+            type: "get",
+            url: "sadmin/get_all_agent_user",
+            data: '',
+            dataType: "json",
+            success: function (resp) {
+                    let html_data_element = '';
+                    for (let a = 0; a < resp.length; a++) {
+                        html_data_element += `
+                                                <tr style="cursor:pointer;" this_cus_id_attr="${resp[a].udc_list_auto_p_iidd}" class="this_cus_table_row">
+                                                    <td>${resp[a].user_person_name}</td>
+                                                    <td>${resp[a].username}</td>
+                                                    <td>${resp[a].user_phone_no}</td>
+                                                    <td>${resp[a].user_email_no}</td>
+                                                    <td>${resp[a].un_bn_name}</td>
+                                                    <td>${resp[a].up_bn_name}</td>
+                                                    <td>${resp[a].dist_bn_name}</td>
+                                                    <td>${resp[a].div_bn_name}</td>
+                                                </tr>
+                                            `;                    
+                    }
+                    $('.verify_data').html(`
+                                            <table class="table ">
+                                                <thead>
+                                                    <tr>
+                                                        <th>UDC Name</th>
+                                                        <th>Username</th>
+                                                        <th>Phone</th>
+                                                        <th>Email</th>
+                                                        <th>Union</th>
+                                                        <th>Upzila</th>
+                                                        <th>District</th>
+                                                        <th>Division</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="udc_data_set">${html_data_element}</tbody>
+                                            </table>
+                                        `);
+            }
+        });
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 
