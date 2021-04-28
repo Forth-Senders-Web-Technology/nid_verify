@@ -115,6 +115,20 @@ class Payment_model extends CI_Model {
         return $sql->row();
     }
 
+	public function all_user_payment_added_info()
+	{
+        $this->db->select_sum('added_amount');
+        $sql = $this->db->get('payment_add');
+        return $sql->row()->added_amount;
+	}
+
+	public function all_user_payment_cut_info()
+	{
+        $this->db->select_sum('cut_amount');
+        $sql = $this->db->get('payment_cut');
+        return $sql->row()->cut_amount;
+	}
+
 }
 
 /* End of file Payment_model.php */
