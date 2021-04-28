@@ -35,15 +35,15 @@
     <script src="inc/lib/jquery-switchbutton/jquery.switchButton.js"></script>
     <script src="inc/lib/peity/jquery.peity.js"></script>
     <script src="inc/lib/jquery.sparkline.bower/jquery.sparkline.min.js"></script>
-    <script src="inc/lib/d3/d3.js"></script>
+    <!-- <script src="inc/lib/d3/d3.js"></script> -->
     <script src="inc/lib/highlightjs/highlight.pack.js"></script>
     <script src="inc/lib/chart.js/Chart.js"></script>
     <script src="inc/lib/Flot/jquery.flot.js"></script>
     <script src="inc/lib/Flot/jquery.flot.pie.js"></script>
     <script src="inc/lib/Flot/jquery.flot.resize.js"></script>
     <script src="inc/lib/flot-spline/jquery.flot.spline.js"></script>
-    <script src="inc/lib/codemirror/codemirror.js"></script>
-    <script src="inc/lib/codemirror/mode/javascript/javascript.js"></script>
+     <script src="inc/lib/codemirror/codemirror.js"></script>
+   <script src="inc/lib/codemirror/mode/javascript/javascript.js"></script>
     <script src="inc/lib/codemirror/addon/scroll/simplescrollbars.js"></script>
     <script src="inc/lib/summernote/summernote-bs4.min.js"></script>
     <script src="inc/lib/medium-editor/medium-editor.js"></script>
@@ -56,12 +56,12 @@
     <script src="inc/lib/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
     <script src="inc/lib/parsleyjs/parsley.js"></script>
     <script src="inc/lib/jquery.steps/jquery.steps.js"></script>
-    <script src="inc/lib/raphael/raphael.min.js"></script>
+<!--     <script src="inc/lib/raphael/raphael.min.js"></script>
     <script src="inc/lib/morris.js/morris.js"></script>
     <script src="inc/lib/Jcrop/Jcrop.js"></script>
     <script src="inc/lib/jqvmap/jquery.vmap.min.js"></script>
     <script src="inc/lib/leaflet/leaflet-src.js"></script>
-    <script src="inc/lib/mocha/mocha.js"></script>
+    <script src="inc/lib/mocha/mocha.js"></script> -->
     <script src="inc/lib/toastr/build/toastr.min.js"></script>
 
     
@@ -392,8 +392,10 @@
       $('.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
       
     </script>
-
+<!-- 
 		<script src="inc/lib/rickshaw/rickshaw.min.js"></script>
 		<script src="inc/lib/chartist/chartist.js"></script>
+ -->
+
   </body>
 </html>
